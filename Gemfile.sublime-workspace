@@ -4,6 +4,270 @@
 		"selected_items":
 		[
 			[
+				"secon",
+				"second_half_deck"
+			],
+			[
+				"fir",
+				"first_half_deck"
+			],
+			[
+				"se",
+				"second_half"
+			],
+			[
+				"nex",
+				"next_card"
+			],
+			[
+				"card_rifle",
+				"card_riffle_test"
+			],
+			[
+				"next",
+				"next_word"
+			],
+			[
+				"find",
+				"find_next"
+			],
+			[
+				"insert",
+				"insert_tree"
+			],
+			[
+				"inse",
+				"insert_value"
+			],
+			[
+				"inser",
+				"insert_tree"
+			],
+			[
+				"chi",
+				"children"
+			],
+			[
+				"fin",
+				"find_next"
+			],
+			[
+				"cha",
+				"character"
+			],
+			[
+				"add",
+				"add_next"
+			],
+			[
+				"al",
+				"already"
+			],
+			[
+				"ins",
+				"insert"
+			],
+			[
+				"tra",
+				"traverse_tree"
+			],
+			[
+				"Linke",
+				"LinkedListNode"
+			],
+			[
+				"fi",
+				"first"
+			],
+			[
+				"sel",
+				"self"
+			],
+			[
+				"do",
+				"do"
+			],
+			[
+				"to",
+				"to_a"
+			],
+			[
+				"halve",
+				"halve_a"
+			],
+			[
+				"card",
+				"card"
+			],
+			[
+				"ha",
+				"halve_b"
+			],
+			[
+				"halv",
+				"halve_a"
+			],
+			[
+				"hale",
+				"halve_a"
+			],
+			[
+				"pro",
+				"program"
+			],
+			[
+				"inde",
+				"index_b"
+			],
+			[
+				"ind",
+				"index_b"
+			],
+			[
+				"index",
+				"index_a"
+			],
+			[
+				"fla",
+				"flags"
+			],
+			[
+				"q",
+				"queue"
+			],
+			[
+				"en",
+				"enqueue"
+			],
+			[
+				"be",
+				"be_empty"
+			],
+			[
+				"node",
+				"node"
+			],
+			[
+				"p",
+				"previous"
+			],
+			[
+				"has",
+				"has_left_child"
+			],
+			[
+				"deno",
+				"denom_type_count"
+			],
+			[
+				"val",
+				"values"
+			],
+			[
+				"value",
+				"value"
+			],
+			[
+				"new",
+				"new_tree"
+			],
+			[
+				"tree",
+				"tree_search"
+			],
+			[
+				"Binary",
+				"BinarySearchTree"
+			],
+			[
+				"Bina",
+				"BinarySearchTree"
+			],
+			[
+				"E",
+				"EmptyTree"
+			],
+			[
+				"B",
+				"BinarySearchTree"
+			],
+			[
+				"Binar",
+				"BinarySearchTree"
+			],
+			[
+				"Bin",
+				"BinarySearchTree"
+			],
+			[
+				"Bi",
+				"BinarySearchTree"
+			],
+			[
+				"ope",
+				"opening"
+			],
+			[
+				"current",
+				"current_max"
+			],
+			[
+				"max",
+				"max_so_far"
+			],
+			[
+				"hi",
+				"hi_array"
+			],
+			[
+				"all",
+				"all_combinations"
+			],
+			[
+				"bin",
+				"bindings"
+			],
+			[
+				"Va",
+				"VariableNode"
+			],
+			[
+				"Express",
+				"ExpressionNode"
+			],
+			[
+				"Expre",
+				"ExpressionNode"
+			],
+			[
+				"Oper",
+				"OperatorNode"
+			],
+			[
+				"O",
+				"OperatorNode"
+			],
+			[
+				"Expr",
+				"ExpressionNode"
+			],
+			[
+				"bina",
+				"BinaryTreeNode"
+			],
+			[
+				"right",
+				"right"
+			],
+			[
+				"number",
+				"number"
+			],
+			[
+				"to_",
+				"to_sym"
+			],
+			[
 				"run",
 				"run_length_encode"
 			],
@@ -32,10 +296,6 @@
 				"table_name"
 			],
 			[
-				"p",
-				"PATH"
-			],
-			[
 				"up",
 				"update"
 			],
@@ -46,10 +306,6 @@
 			[
 				"boo",
 				"booking_request"
-			],
-			[
-				"B",
-				"BookingRequest"
 			],
 			[
 				"pad",
@@ -152,10 +408,6 @@
 				"pig_word"
 			],
 			[
-				"se",
-				"seconds"
-			],
-			[
 				"tod",
 				"todos"
 			],
@@ -170,10 +422,6 @@
 			[
 				"no",
 				"nokogiri"
-			],
-			[
-				"new",
-				"new_todo"
 			],
 			[
 				"Dat",
@@ -228,10 +476,6 @@
 				"input"
 			],
 			[
-				"current",
-				"current_wall"
-			],
-			[
 				"redi",
 				"redirect"
 			],
@@ -260,10 +504,6 @@
 				"hot_or_cold"
 			],
 			[
-				"to",
-				"to_s"
-			],
-			[
 				"print",
 				"print_square"
 			],
@@ -274,50 +514,6 @@
 			[
 				"count",
 				"count_max"
-			],
-			[
-				"item",
-				"item_to_count"
-			],
-			[
-				"num",
-				"numbers"
-			],
-			[
-				"do",
-				"do"
-			],
-			[
-				"par",
-				"params"
-			],
-			[
-				"n",
-				"numbers"
-			],
-			[
-				"even",
-				"even_items"
-			],
-			[
-				"nu",
-				"number"
-			],
-			[
-				"start",
-				"start_number"
-			],
-			[
-				"str",
-				"string_to_characters"
-			],
-			[
-				"total",
-				"total_2"
-			],
-			[
-				"wor",
-				"word_count"
 			]
 		]
 	},
@@ -325,9 +521,14 @@
 	[
 	],
 	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
 	"command_palette":
 	{
 		"height": 392.0,
+		"last_filter": "",
 		"selected_items":
 		[
 			[
@@ -356,8 +557,74 @@
 	},
 	"file_history":
 	[
-		"/Users/Dave/Documents/CodeFiles/brew-city/Gemfile",
+		"/Users/Dave/Documents/CodeFiles/grow-and-swap/Gemfile",
+		"/Users/Dave/Documents/CodeFiles/grow-and-swap/Gemfile.lock",
+		"/Users/Dave/Documents/CodeFiles/grow-and-swap/gemfile",
+		"/Users/Dave/Documents/CodeFiles/data-structures/minmax_stack.rb",
+		"/Users/Dave/Documents/CodeFiles/data-structures/queue.rb",
+		"/Users/Dave/Documents/CodeFiles/data-structures/linked_list.rb",
+		"/Users/Dave/Documents/CodeFiles/data-structures/tree.rb",
+		"/Users/Dave/Documents/CodeFiles/data-structures/text_predictor",
+		"/Users/Dave/Documents/CodeFiles/data-structures/trie.rb",
+		"/Users/Dave/Documents/CodeFiles/topics-in-cs/card_riffle.rb",
+		"/Users/Dave/Documents/CodeFiles/data-structures/spec/trie_spec.rb",
+		"/Users/Dave/Documents/CodeFiles/data-structures/spec/queue_spec.rb",
+		"/Users/Dave/Documents/CodeFiles/data-structures/spec/linked_list_spec.rb",
+		"/Users/Dave/Documents/CodeFiles/data-structures/binary_tree.rb",
+		"/Users/Dave/Documents/CodeFiles/data-structures/binary_search_tree.rb",
+		"/Users/Dave/Documents/CodeFiles/data-structures/stack.rb",
+		"/Users/Dave/.ssh/id_rsa.pub",
+		"/Users/Dave/.ssh/known_hosts",
+		"/Users/Dave/Documents/CodeFiles/topics-in-cs/array_shuffle.rb",
+		"/Users/Dave/Documents/CodeFiles/data-structures/spec/trie_spec_2.rb",
+		"/Users/Dave/Documents/CodeFiles/data-structures/trie_2.rb",
+		"/Users/Dave/Documents/CodeFiles/symbolic-calculator/calculator",
+		"/Users/Dave/Documents/CodeFiles/rpn-calculator/calculator",
+		"/Users/Dave/Documents/CodeFiles/data-structures/text_predictor*",
+		"/Users/Dave/.irbrc",
+		"/Users/Dave/Documents/CodeFiles/data-structures/Gemfile",
+		"/Users/Dave/.bash_profile",
+		"/Users/Dave/Documents/CodeFiles/data-structures/priority_queue.rb",
+		"/Users/Dave/Documents/CodeFiles/data-structures/binary_heap.rb",
+		"/Users/Dave/Documents/CodeFiles/topics-in-cs/histogram.rb",
+		"/Users/Dave/Documents/CodeFiles/data-structures/binary_tr",
+		"/Users/Dave/Documents/CodeFiles/data-structures/doubly_linked_list.rb",
+		"/Users/Dave/Documents/CodeFiles/data-structures/scratch.rb",
+		"/Users/Dave/Documents/CodeFiles/data-structures/denominations.rb",
+		"/Users/Dave/Documents/CodeFiles/data-structures/array_shuffle.rb",
+		"/Users/Dave/Documents/CodeFiles/data-structures/histogram.rb",
+		"/Users/Dave/Documents/CodeFiles/data-structures/.rubocop.yml",
+		"/Users/Dave/Documents/CodeFiles/web-fundamentals-weekly-katas/week-02/factorial.rb",
+		"/Users/Dave/Documents/CodeFiles/web-fundamentals-weekly-katas/week-02/fibonacci.rb",
+		"/Users/Dave/Documents/CodeFiles/topics-in-cs/hash_assignment.c",
+		"/Users/Dave/Documents/CodeFiles/topics-in-cs/hash_aref.c",
+		"/Users/Dave/Documents/CodeFiles/topics-in-cs/hash_key.c",
+		"/Users/Dave/Documents/CodeFiles/topics-in-cs/hash_initialize.c",
+		"/Users/Dave/Documents/CodeFiles/topics-in-cs/hash.c",
+		"/Users/Dave/Documents/CodeFiles/symbolic-calculator/lib/scratch.rb",
+		"/Users/Dave/Documents/CodeFiles/symbolic-calculator/lib/symbolic_calculator.rb",
+		"/Users/Dave/Documents/CodeFiles/data-structures/max_stack.rb",
+		"/Users/Dave/Documents/CodeFiles/data-structures/min_stack.rb",
+		"/Users/Dave/Documents/CodeFiles/symbolic-calculator/lib/expression_1.rb",
+		"/Users/Dave/Documents/CodeFiles/symbolic-calculator/lib/expression.rb",
+		"/Users/Dave/Documents/CodeFiles/symbolic-calculator/lib/stack.rb",
+		"/Users/Dave/Documents/CodeFiles/symbolic-calculator/lib/operators/operator_node.rb",
+		"/Users/Dave/Documents/CodeFiles/symbolic-calculator/lib/binary_tree.rb",
+		"/Users/Dave/Documents/CodeFiles/data-structures/binary_tree",
+		"/Users/Dave/Documents/CodeFiles/data-structures/tree",
+		"/Users/Dave/Documents/CodeFiles/scratch.rb",
+		"/Users/Dave/Documents/CodeFiles/rpn-calculator/lib/rpn_expression.rb",
+		"/Users/Dave/Documents/CodeFiles/symbolic-calculator/lib/number.rb",
+		"/Users/Dave/Library/Application Support/Sublime Text 3/Packages/Default/Default (OSX).sublime-keymap",
+		"/Users/Dave/Library/Application Support/Sublime Text 3/Packages/User/Default (OSX).sublime-keymap",
+		"/Users/Dave/Documents/CodeFiles/symbolic-calculator/lib/operators/addition.rb",
+		"/Users/Dave/Documents/CodeFiles/symbolic-calculator/lib/operands/number.rb",
+		"/Users/Dave/Documents/CodeFiles/symbolic-calculator/lib/base.rb",
+		"/Users/Dave/Documents/CodeFiles/symbolic-calculator/Gemfile",
+		"/Users/Dave/Documents/CodeFiles/miscellaneous/method-visibility/method_visibility.rb",
+		"/Users/Dave/Documents/CodeFiles/miscellaneous/calculator.rb",
 		"/Users/Dave/Documents/CodeFiles/brew-city/config/database.yml",
+		"/Users/Dave/Documents/CodeFiles/brew-city/Gemfile",
 		"/Users/Dave/Documents/CodeFiles/request-for-feedback/request_feedback_V1.rb",
 		"/Users/Dave/Documents/CodeFiles/request-o-matic/lib/github_creds.rb",
 		"/Users/Dave/Documents/CodeFiles/request-o-matic/lib/help.txt",
@@ -395,7 +662,6 @@
 		"/Users/Dave/Documents/CodeFiles/placebook/config/environments/production.rb",
 		"/Users/Dave/Documents/CodeFiles/placebook/config/database.yml",
 		"/Users/Dave/Documents/CodeFiles/placebook/config/application.rb",
-		"/Users/Dave/.bash_profile",
 		"/Users/Dave/Documents/CodeFiles/placebook/config/initializers/devise.rb",
 		"/Users/Dave/Documents/CodeFiles/placebook/.gitignore",
 		"/Users/Dave/Documents/CodeFiles/placebook/config/secrets.yml",
@@ -418,72 +684,7 @@
 		"/Users/Dave/Documents/CodeFiles/placebook/tmp/cache/assets/development/sprockets/e2c4f946939f2d7d0b42d86383755cae",
 		"/Users/Dave/Documents/CodeFiles/placebook/tmp/cache/assets/development/sprockets/e21213baf504a0da0323206c6218eaf8",
 		"/Users/Dave/Documents/CodeFiles/placebook/tmp/cache/assets/development/sprockets/e1838748b739194fbdd11eddd66e1012",
-		"/Users/Dave/Documents/CodeFiles/placebook/tmp/cache/assets/development/sprockets/e15dc38c04249036fe13363631cd35cf",
-		"/Users/Dave/Documents/CodeFiles/placebook/app/views/devise/registrations/edit.html.erb",
-		"/Users/Dave/Documents/CodeFiles/placebook/app/views/devise/passwords/edit.html.erb",
-		"/Users/Dave/Documents/CodeFiles/placebook/tmp/cache/assets/development/sass/163270d00eedc688c27ba73a76ce550df25a02e3/_nav-vertical-align.scssc",
-		"/Users/Dave/Documents/CodeFiles/placebook/app/views/devise/mailer/reset_password_instructions.html.erb",
-		"/Users/Dave/Documents/CodeFiles/placebook/tmp/cache/assets/development/sass/163270d00eedc688c27ba73a76ce550df25a02e3/_nav-divider.scssc",
-		"/Users/Dave/Documents/CodeFiles/placebook/db/migrate/20141108001738_create_users.rb",
-		"/Users/Dave/Documents/CodeFiles/placebook/db/migrate/20141108003604_change_users_email_column.rb",
-		"/Users/Dave/Documents/CodeFiles/placebook/db/migrate/20141109221619_create_booking_requests.rb",
-		"/Users/Dave/Documents/CodeFiles/placebook/config/initializers/cookies_serializer.rb",
-		"/Users/Dave/Documents/CodeFiles/placebook/db/migrate/20141120015037_add_user_to_booking_requests.rb",
-		"/Users/Dave/Documents/CodeFiles/placebook/app/helpers/application_helper.rb",
-		"/Users/Dave/Documents/CodeFiles/placebook/app/assets/javascripts/application.js",
-		"/Users/Dave/Documents/CodeFiles/placebook/app/controllers/application_controller.rb",
-		"/Users/Dave/Documents/CodeFiles/placebook/app/assets/stylesheets/application.css.scss",
-		"/Users/Dave/Documents/CodeFiles/pictr-rails/Gemfile",
-		"/Users/Dave/Documents/CodeFiles/placebook/app/views/shared/_error.html.erb",
-		"/Users/Dave/Documents/CodeFiles/airbnb/app/views/listings/index.html.erb",
-		"/Users/Dave/Documents/CodeFiles/airbnb/app/views/booking_requests/show.html.erb",
-		"/Users/Dave/Documents/CodeFiles/airbnb/app/views/booking_requests/index.html.erb",
-		"/Users/Dave/Documents/CodeFiles/airbnb/app/models/user.rb",
-		"/Users/Dave/Documents/CodeFiles/airbnb/app/models/listing.rb",
-		"/Users/Dave/Documents/CodeFiles/airbnb/app/models/booking_request.rb",
-		"/Users/Dave/Documents/CodeFiles/airbnb/config/routes.rb",
-		"/Users/Dave/Documents/CodeFiles/airbnb/app/controllers/listings_controller.rb",
-		"/Users/Dave/Documents/CodeFiles/airbnb/db/schema.rb",
-		"/Users/Dave/Documents/CodeFiles/airbnb/app/views/welcome/index.html.erb",
-		"/Users/Dave/Documents/CodeFiles/airbnb/app/assets/stylesheets/application.css.scss",
-		"/Users/Dave/Documents/CodeFiles/airbnb/app/assets/stylesheets/scaffolds.css.scss",
-		"/Users/Dave/Documents/CodeFiles/airbnb/app/controllers/welcome_controller.rb",
-		"/Users/Dave/Documents/CodeFiles/airbnb/app/controllers/registrations_controller.rb",
-		"/Users/Dave/Documents/CodeFiles/airbnb/app/controllers/application_controller.rb",
-		"/Users/Dave/Documents/CodeFiles/airbnb/app/helpers/booking_requests_helper.rb",
-		"/Users/Dave/Documents/CodeFiles/airbnb/app/helpers/application_helper.rb",
-		"/Users/Dave/Documents/CodeFiles/airbnb/app/mailers/booking_request_mailer.rb",
-		"/Users/Dave/Documents/CodeFiles/airbnb/app/uploaders/photo_uploader.rb",
-		"/Users/Dave/Documents/CodeFiles/airbnb/app/views/booking_request_mailer/booking_request_email.html.erb",
-		"/Users/Dave/Documents/CodeFiles/airbnb/app/views/booking_requests/edit.html.erb",
-		"/Users/Dave/Documents/CodeFiles/airbnb/app/views/booking_requests/new.html.erb",
-		"/Users/Dave/Documents/CodeFiles/airbnb/app/views/booking_requests/_form.html.erb",
-		"/Users/Dave/Documents/CodeFiles/airbnb/app/views/devise/shared/_links.html.erb",
-		"/Users/Dave/Documents/CodeFiles/airbnb/app/views/layouts/application.html.erb",
-		"/Users/Dave/Documents/CodeFiles/airbnb/app/views/shared/_signed_in_nav.html.erb",
-		"/Users/Dave/Documents/CodeFiles/airbnb/app/views/users/index.html.erb",
-		"/Users/Dave/Documents/CodeFiles/airbnb/bin/spring",
-		"/Users/Dave/Documents/CodeFiles/airbnb/bin/rake",
-		"/Users/Dave/Documents/CodeFiles/airbnb/bin/rails",
-		"/Users/Dave/Documents/CodeFiles/airbnb/bin/bundle",
-		"/Users/Dave/Documents/CodeFiles/airbnb/config/environments/development.rb",
-		"/Users/Dave/Documents/CodeFiles/airbnb/config/environments/test.rb",
-		"/Users/Dave/Documents/CodeFiles/airbnb/config/initializers/assets.rb",
-		"/Users/Dave/Documents/CodeFiles/airbnb/config/initializers/backtrace_silencers.rb",
-		"/Users/Dave/Documents/CodeFiles/airbnb/config/initializers/cookies_serializer.rb",
-		"/Users/Dave/Documents/CodeFiles/airbnb/config/initializers/devise.rb",
-		"/Users/Dave/Documents/CodeFiles/airbnb/config/initializers/filter_parameter_logging.rb",
-		"/Users/Dave/Documents/CodeFiles/airbnb/config/initializers/inflections.rb",
-		"/Users/Dave/Documents/CodeFiles/airbnb/config/initializers/mime_types.rb",
-		"/Users/Dave/Documents/CodeFiles/airbnb/config/initializers/session_store.rb",
-		"/Users/Dave/Documents/CodeFiles/airbnb/config/initializers/wrap_parameters.rb",
-		"/Users/Dave/Documents/CodeFiles/airbnb/config/locales/en.yml",
-		"/Users/Dave/Documents/CodeFiles/airbnb/config/boot.rb",
-		"/Users/Dave/Documents/CodeFiles/airbnb/config/database.yml",
-		"/Users/Dave/Documents/CodeFiles/airbnb/config/environment.rb",
-		"/Users/Dave/Documents/CodeFiles/airbnb/config/secrets.yml",
-		"/Users/Dave/Documents/CodeFiles/airbnb/log/development.log",
-		"/Users/Dave/Documents/CodeFiles/airbnb/spec/rails_helper.rb"
+		"/Users/Dave/Documents/CodeFiles/placebook/tmp/cache/assets/development/sprockets/e15dc38c04249036fe13363631cd35cf"
 	],
 	"find":
 	{
@@ -501,6 +702,90 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"halve_b",
+			"halve_a",
+			"card_riffle",
+			"index_b",
+			"index_a",
+			"halve_b",
+			"next_string",
+			"word",
+			"string",
+			"result",
+			"join",
+			"string",
+			"first",
+			"string",
+			"add_next",
+			"shift",
+			"result",
+			"children.head.value",
+			"value",
+			"A",
+			"self",
+			"root",
+			"head",
+			"insert_string",
+			"node",
+			"value",
+			"insert_char",
+			"children",
+			"value",
+			"node",
+			"list",
+			"queue",
+			"each",
+			"LinkedListNode",
+			"return",
+			"true",
+			"build",
+			"@right",
+			"@left",
+			"@value",
+			"@right",
+			"@value",
+			"left?",
+			"Array",
+			"false",
+			"factorial",
+			"tree_search",
+			". ",
+			"BinarySearchTree",
+			"right",
+			"left",
+			"BinaryTree",
+			"left",
+			":empty",
+			"self",
+			"nil",
+			"new",
+			"value",
+			"LinkedList.new",
+			"Tree",
+			"children",
+			"@list.unshift(value)",
+			"@current_max",
+			"m",
+			"item",
+			"max_so_far",
+			"@stack",
+			"stack",
+			"real",
+			"    ---------",
+			"say_hi_array",
+			"puts",
+			"return",
+			"Node::",
+			"token",
+			"BinaryTreeNode",
+			"ExpressionNode",
+			"if",
+			"require",
+			"\"\n",
+			"left",
+			"right",
+			"operand",
+			"i",
 			"WWWWWWAAAAAAWWWWWWAAAAAABBBBBB",
 			"string",
 			"run_length_encode",
@@ -544,9 +829,7 @@
 			"user",
 			"current_user",
 			"user_",
-			"user",
-			"user_",
-			"else"
+			"user"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -611,10 +894,15 @@
 		]
 	},
 	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 125.0
+	},
 	"output.find_results":
 	{
 		"height": 0.0
 	},
+	"pinned_build_system": "",
 	"project": "Gemfile.sublime-project",
 	"replace":
 	{
@@ -624,6 +912,7 @@
 	"select_file":
 	{
 		"height": 0.0,
+		"last_filter": "",
 		"selected_items":
 		[
 			[
@@ -1076,6 +1365,7 @@
 	"select_project":
 	{
 		"height": 500.0,
+		"last_filter": "",
 		"selected_items":
 		[
 		],
@@ -1084,6 +1374,7 @@
 	"select_symbol":
 	{
 		"height": 0.0,
+		"last_filter": "",
 		"selected_items":
 		[
 		],
