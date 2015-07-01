@@ -1,7 +1,5 @@
 source 'https://rubygems.org'
 
-gem 'quiet_assets', '~> 1.0.3'
-
 gem 'autoprefixer-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -45,6 +43,7 @@ group :development, :test do
   gem 'spring'
   gem "rspec-rails", "~> 3.0.0"
   gem "pry"
+  gem 'quiet_assets', '~> 1.0.3'
 end
 
 group :production do
