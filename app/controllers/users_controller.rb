@@ -11,7 +11,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      session[:user_id] = @user.id
+      log_in @user
+      flash[:success] = "Welcome to Grow and Swap!"
       redirect_to(root_url)
     else
       render :new
