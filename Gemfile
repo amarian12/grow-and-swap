@@ -46,6 +46,7 @@ group :development, :test do
   gem 'quiet_assets', '~> 1.0.3'
   gem 'capybara'
   gem 'factory_girl_rails', '~> 4.0'
+  gem 'database_cleaner'
 end
 
 group :production do
