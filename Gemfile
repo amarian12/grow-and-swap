@@ -44,6 +44,8 @@ group :development, :test do
   gem "rspec-rails", "~> 3.0.0"
   gem "pry"
   gem 'quiet_assets', '~> 1.0.3'
+  gem 'capybara'
+  gem 'factory_girl_rails'
 end
 
 group :production do
