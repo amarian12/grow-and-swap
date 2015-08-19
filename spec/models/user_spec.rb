@@ -68,33 +68,28 @@ RSpec.describe User, :type => :model do
       end
 
       it "is valid with a first_name, last_name, email, and password" do
-        user = User.new(
-          first_name:   "John",
-          last_name:    "Doe",
-          email:        "j_doe@email.com",
-          password:     "password"
-        )
+        user = build(:user)
         expect(user).to be_valid
       end
     end
 
     context "on an existing user" do
       let(:user) do
-        user = User.create(password: "password", password_confirmation: "password")
+        user = create(:user)
         User.find user.id
       end
 
-      it "should be valid with no changes" do
+      it "is valid with no changes" do
         expect(user).to be_valid
       end
 
-      it "should not be valid with an empty password" do
-        user.password = user.password_confirmation = ""
+      it "is invalid with an empty password" do
+        user.password = user.password_confirmation = " "
         expect(user).to_not be_valid
       end
 
-      it "should be valid with a new (valid) password" do
-        user.password = user.password_confirmation = "new password"
+      it "is valid with a new (valid) password" do
+        user.password = user.password_confirmation = "new_password"
         expect(user).to be_valid
       end
     end
