@@ -11,5 +11,14 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe SessionsHelper, :type => :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:user) do
+    user = create(:user)
+  end
+
+  describe "#current_user" do
+    it "remembers the given user" do
+      remember(user)
+      expect(current_user).to eq(user)
+    end
+  end
 end

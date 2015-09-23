@@ -127,7 +127,6 @@ RSpec.describe UsersController, :type => :controller do
     context "with invalid params" do
       it "renders the edit user form" do
         patch :update, id: user.id, user: invalid_user_attributes
-        # binding.pry
         expect(response).to redirect_to edit_user_path(user)
       end
     end
