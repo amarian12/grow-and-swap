@@ -6,6 +6,7 @@ require 'rspec/rails'
 require 'capybara/rspec'
 require 'capybara/rails'
 require 'database_cleaner'
+require 'capybara/webkit/matchers'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -19,6 +20,10 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 # Checks for pending migrations before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.maintain_test_schema!
+
+session = Capybara::Session.new :webkit
+
+Capybara.javascript_driver = :webkit
 
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
@@ -66,4 +71,49 @@ RSpec.configure do |config|
   end
 
   config.include Capybara::DSL
+
+  config.include(Capybara::Webkit::RspecMatchers, :type => :feature)
+end
+
+Capybara::Webkit.configure do |config|
+  # Enable debug mode. Prints a log of everything the driver is doing.
+  config.debug = true
+
+  # By default, requests to outside domains (anything besides localhost) will
+  # result in a warning. Several methods allow you to change this behavior.
+
+  # Silently return an empty 200 response for any requests to unknown URLs.
+  config.block_unknown_urls
+
+  # Allow pages to make requests to any URL without issuing a warning.
+  config.allow_unknown_urls
+
+  # Allow a specifc domain without issuing a warning.
+  config.allow_url("example.com")
+
+  # Allow a specifc URL and path without issuing a warning.
+  config.allow_url("example.com/some/path")
+
+  # Wildcards are allowed in URL expressions.
+  config.allow_url("*.example.com")
+
+  # Silently return an empty 200 response for any requests to the given URL.
+  config.block_url("example.com")
+
+  # Timeout if requests take longer than 5 seconds
+  config.timeout = 5
+
+  # Don't raise errors when SSL certificates can't be validated
+  config.ignore_ssl_errors
+
+  # Don't load images
+  config.skip_image_loading
+
+  # Use a proxy
+  # config.use_proxy(
+  #   host: "example.com",
+  #   port: 1234,
+  #   user: "proxy",
+  #   pass: "secret"
+  # )
 end
