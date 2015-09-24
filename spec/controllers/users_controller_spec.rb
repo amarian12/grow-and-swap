@@ -14,6 +14,13 @@ RSpec.describe UsersController, :type => :controller do
       get :index
       expect(response).to be_success
     end
+
+    context "when not logged in" do
+      it "redirects index to login form" do
+        get :index
+        expect(response).to redirect_to login_path
+      end
+    end
   end
 
   describe "GET #show" do
@@ -63,9 +70,11 @@ RSpec.describe UsersController, :type => :controller do
           }.to change(User, :count).by(1)
       end
 
-      it "redirects to user welcome page" do
+      it "redirects to user home page" do
+        binding.pry
         post :create, user: user_attributes
-        expect(response).to redirect_to(root_path)
+        binding.pry
+        expect(response).to redirect_to user_path(user)
       end
     end
 
@@ -78,7 +87,7 @@ RSpec.describe UsersController, :type => :controller do
 
       it "renders the new user form" do
         post :create, user: invalid_user_attributes
-        expect(response).to redirect_to(new_user_path)
+        expect(response).to redirect_to new_user_path
       end
     end
   end
@@ -97,6 +106,22 @@ RSpec.describe UsersController, :type => :controller do
     it "renders the edit user form" do
       get :edit, id: user.id
       expect(response).to render_template(:edit)
+    end
+
+    context "when not logged in" do
+      it "redirects edit to login form" do
+        get :edit, id: user.id
+        expect(response).to redirect_to login_path
+      end
+    end
+
+    context "when logged in as wrong user" do
+      it "redirects edit to root path" do
+        # See page 398 of ruby on rails tutorial for example on how to correctly implement this
+        log_in_as(@other_user)
+        get :edit, id: user.id
+        expect(response).to redirect_to root_path
+      end
     end
   end
 
@@ -118,9 +143,9 @@ RSpec.describe UsersController, :type => :controller do
         expect(response.status).to eq 302
       end
 
-      it "redirects to user welcome page" do
+      it "redirects to user home page" do
         patch :update, id: user.id, user: user_attributes
-        expect(response).to redirect_to(root_path)
+        expect(response).to redirect_to user_path(user)
       end
     end
 
@@ -128,6 +153,22 @@ RSpec.describe UsersController, :type => :controller do
       it "renders the edit user form" do
         patch :update, id: user.id, user: invalid_user_attributes
         expect(response).to redirect_to edit_user_path(user)
+      end
+    end
+
+    context "when not logged in" do
+      it "redirects update to login form" do
+        patch :update, id: user.id, user: user_attributes
+        expect(response).to redirect_to login_path
+      end
+    end
+
+    context "when logged in as wrong user" do
+      it "redirects update to root path" do
+        # See page 398 of ruby on rails tutorial for example on how to correctly implement this
+        log_in_as(@other_user)
+        patch :update, id: user.id
+        expect(response).to redirect_to root_path
       end
     end
   end
