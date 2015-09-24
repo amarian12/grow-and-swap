@@ -1,5 +1,11 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user,        only: [:show, :edit, :update, :destroy]
+  before_action :logged_in_user,  only: [:edit, :update]
+  before_action :correct_user,    only: [:edit, :update]
+
+  def index
+    @users = User.paginate(page: params[:page])
+  end
 
   def show
   end
@@ -15,10 +21,10 @@ class UsersController < ApplicationController
       @user.save
       log_in @user
       flash[:success] = "Welcome to Grow and Swap!"
-      redirect_to(root_path)
+      redirect_to user_path(@user)
     else
       flash[:error] = "Could not create user"
-      redirect_to(new_user_path)
+      redirect_to new_user_path
     end
   end
 
@@ -28,7 +34,7 @@ class UsersController < ApplicationController
   def update
     if @user.update_attributes(user_params)
       flash[:success] = "User was successfully updated"
-      redirect_to(root_path)
+      redirect_to user_path(@user)
     else
       flash[:error] = "Could not update user"
       redirect_to edit_user_path(@user)
@@ -51,6 +57,18 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def logged_in_user
+    unless logged_in?
+      flash[:danger] = "Please log in"
+      redirect_to login_path
+    end
+  end
+
+  def correct_user
+    set_user
+    redirect_to root_path unless current_user?(@user)
   end
 
   def user_params
