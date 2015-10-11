@@ -1,30 +1,6 @@
 require 'rails_helper'
 
 RSpec.feature User, :type => :feature do
-  # module SessionHelpers
-    def is_logged_in?
-      !session[:user_id].nil?
-    end
-
-    def log_in_as(user, options = {})
-      password    = options[:password]    || 'password'
-      remember_me = options[:remember_me] || '1'
-      if feature_test?
-        post login_path, session: { email:        user.email,
-                                    password:     password,
-                                    remember_me:  remember_me }
-      else
-        session[:user_id] = user.id
-      end
-    end
-
-    private
-
-    def feature_test?
-      defined?(post_via_redirect)
-    end
-  # end
-
   background do
     @user = create(:user)
     User.find @user.id
@@ -68,19 +44,31 @@ RSpec.feature User, :type => :feature do
       expect(page).to have_text "Successfully logged out"
     end
 
-    # within_window first_window do
-    #   click_link 'Log out'
-    # end
+    within_window first_window do
+      click_link 'Log out'
+    end
   end
 
 # Still need to finish the following tests. Doesn't currently work.
-  scenario "log in is remembered" do
-    # include SessionHelpers
+  scenario "log in is remembered", :js => true do
+    include SessionsHelper
+    # current_window = page.driver.current_window
 
-    log_in_as(@user, remember_me: '1')
+    visit '/sessions/new'
+    fill_in 'Email', :with => @user.email
+    fill_in 'Password', :with => @user.password
+    check 'Remember me on this computer'
+    click_button 'Log in'
+    javascript:window.close()
+    visit '/'
+    expect(page).to have_button "Log out"
+
+    # log_in_as(@user, remember_me: '1')
+    # expect(cookies['remember_token']).to_not eq nil
   end
 
   scenario "log in is not remembered" do
     log_in_as(@user, remember_me: '0')
+    expect(cookies['remember_token']).to eq nil
   end
 end
