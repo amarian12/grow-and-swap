@@ -9,10 +9,24 @@ RSpec.describe UsersController, :type => :controller do
   let(:invalid_user_attributes) { attributes_for :user, first_name: "" }
   let(:new_user_attributes) { attributes_for :user, first_name: "David" }
 
+  let(:two_users) do
+    two_users = create_pair(:user)
+  end
+
+  let(:admin) do
+    admin = create(:admin)
+  end
+
   describe "GET #index" do
-    it "loads the page successfully" do
-      get :index
-      expect(response).to be_success
+    context "when logged in" do
+      before(:each) do
+        log_in user
+      end
+
+      it "loads the page successfully" do
+        get :index
+        expect(response).to be_success
+      end
     end
 
     context "when not logged in" do
@@ -71,15 +85,13 @@ RSpec.describe UsersController, :type => :controller do
       end
 
       it "redirects to user home page" do
-        binding.pry
         post :create, user: user_attributes
-        binding.pry
         expect(response).to redirect_to user_path(user)
       end
     end
 
     context "with invalid params" do
-      it "creates a user" do
+      it "does not create a user" do
         expect {
           post :create, user: invalid_user_attributes
           }.to change(User, :count).by(0)
@@ -93,19 +105,25 @@ RSpec.describe UsersController, :type => :controller do
   end
 
   describe "GET #edit" do
-    it "assigns the user" do
-      get :edit, id: user.id
-      expect(assigns(:user)).to be_a(User)
-    end
+    context "when logged in as correct user" do
+      before(:each) do
+        log_in user
+      end
 
-    it "loads the page successfully" do
-      get :edit, id: user.id
-      expect(response).to be_success
-    end
+      it "assigns the user" do
+        get :edit, id: user.id
+        expect(assigns(:user)).to be_a(User)
+      end
 
-    it "renders the edit user form" do
-      get :edit, id: user.id
-      expect(response).to render_template(:edit)
+      it "loads the page successfully" do
+        get :edit, id: user.id
+        expect(response).to be_success
+      end
+
+      it "renders the edit user form" do
+        get :edit, id: user.id
+        expect(response).to render_template(:edit)
+      end
     end
 
     context "when not logged in" do
@@ -116,10 +134,12 @@ RSpec.describe UsersController, :type => :controller do
     end
 
     context "when logged in as wrong user" do
-      it "redirects edit to root path" do
-        # See page 398 of ruby on rails tutorial for example on how to correctly implement this
-        log_in_as(@other_user)
-        get :edit, id: user.id
+      before(:each) do
+        log_in two_users[0]
+      end
+
+      it "redirects edit to welcome page" do
+        get :edit, id: two_users[1].id
         expect(response).to redirect_to root_path
       end
     end
@@ -127,6 +147,10 @@ RSpec.describe UsersController, :type => :controller do
 
   describe "PATCH #update" do
     context "with valid params" do
+      before(:each) do
+        log_in user
+      end
+
       it "assigns the user" do
         patch :update, id: user.id, user: user_attributes
         expect(assigns(:user)).to be_a(User)
@@ -150,6 +174,10 @@ RSpec.describe UsersController, :type => :controller do
     end
 
     context "with invalid params" do
+      before(:each) do
+        log_in user
+      end
+
       it "renders the edit user form" do
         patch :update, id: user.id, user: invalid_user_attributes
         expect(response).to redirect_to edit_user_path(user)
@@ -164,10 +192,12 @@ RSpec.describe UsersController, :type => :controller do
     end
 
     context "when logged in as wrong user" do
-      it "redirects update to root path" do
-        # See page 398 of ruby on rails tutorial for example on how to correctly implement this
-        log_in_as(@other_user)
-        patch :update, id: user.id
+      before(:each) do
+        log_in two_users[0]
+      end
+
+      it "redirects update to welcome page" do
+        patch :update, id: two_users[1].id
         expect(response).to redirect_to root_path
       end
     end
@@ -175,15 +205,57 @@ RSpec.describe UsersController, :type => :controller do
 
 # Implement user destroy action tests only with admin user functionality
 
-  # describe "DELETE #destroy" do
-  #   it "assigns the user" do
-  #     delete :destroy, id: user.id
-  #     expect(assigns(:user)).to be_a(user)
-  #   end
+  describe "DELETE #destroy" do
+    context "when logged in as correct user with admin privileges" do
+      before(:each) do
+        log_in admin
+      end
 
-  #   it "loads the page successfully" do
-  #     delete :destroy, id: user.id
-  #     expect(response).to be_success
-  #   end
-  # end
+      it "assigns the user" do
+        delete :destroy, id: admin.id
+        expect(assigns(:user)).to be_a(User)
+      end
+
+      it "deletes user" do
+        expect {
+          delete :destroy, id: admin.id
+          }.to change(User, :count).by(-1)
+      end
+
+      it "redirects to users index page" do
+        delete :destroy, id: admin.id
+        expect(response).to redirect_to users_path
+      end
+    end
+
+    context "when not logged in" do
+      it "does not delete user" do
+        expect {
+          delete :destroy, id: user.id
+          }.to change(User, :count).by(0)
+      end
+
+      it "redirects delete to login form" do
+        delete :destroy, id: user.id
+        expect(response).to redirect_to login_path
+      end
+    end
+
+    context "when logged in as a non-admin" do
+      before(:each) do
+        log_in user
+      end
+
+      it "does not delete user" do
+        expect {
+          delete :destroy, id: user.id
+          }.to change(User, :count).by(0)
+      end
+
+      it "redirects delete to welcome page" do
+        delete :destroy, id: user.id
+        expect(response).to redirect_to root_path
+      end
+    end
+  end
 end
