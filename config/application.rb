@@ -24,9 +24,9 @@ module GrowAndSwap
     config.active_record.raise_in_transactional_callbacks = true
 
     config.generators do |g|
-      g.test_framework :rspec, :fixture => true
+      g.test_framework :rspec, :fixture => false
       g.fixture_replacement :factory_girl, :dir => "spec/factories"
-      g.view_specs false
+      g.view_specs true
       g.helpers_spec false
       g.stylesheets = false
       g.javascripts = false
