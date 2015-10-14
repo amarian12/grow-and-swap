@@ -11,17 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151013051259) do
+ActiveRecord::Schema.define(version: 20151014051728) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "produce_items", force: :cascade do |t|
-    t.string   "name",       default: "", null: false
-    t.string   "category",   default: "", null: false
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+  create_table "gardens", force: :cascade do |t|
+    t.integer  "quantity",        default: 0,     null: false
+    t.integer  "user_id"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
+
+  add_index "gardens", ["user_id"], name: "index_gardens_on_user_id", using: :btree
+
+  create_table "produce_items", force: :cascade do |t|
+    t.string   "name",            default: "",    null: false
+    t.string   "category",        default: "",    null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.integer  "garden_id"
+  end
+
+  add_index "produce_items", ["garden_id"], name: "index_produce_items_on_garden_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name",      default: "",    null: false
@@ -36,4 +48,6 @@ ActiveRecord::Schema.define(version: 20151013051259) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
+  add_foreign_key "gardens", "users"
+  add_foreign_key "produce_items", "gardens"
 end

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :gardens
+
   resources :produce_items
 
   get 'sessions/new'

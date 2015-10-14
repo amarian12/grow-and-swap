@@ -1,0 +1,21 @@
+<%= form_for(@garden) do |f| %>
+  <% if @garden.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@garden.errors.count, "error") %> prohibited this garden from being saved:</h2>
+
+      <ul>
+      <% @garden.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :quantity %><br>
+    <%= f.number_field :quantity %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
