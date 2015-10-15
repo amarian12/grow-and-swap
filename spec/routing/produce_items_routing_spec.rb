@@ -4,31 +4,31 @@ RSpec.describe ProduceItemsController, :type => :routing do
   describe "routing" do
 
     it "routes to #index" do
-      expect(:get => "/produce_items").to route_to("produce_items#index")
+      expect(:get => "/gardens/1/produce_items").to route_to("produce_items#index", :garden_id => "1")
     end
 
     it "routes to #new" do
-      expect(:get => "/produce_items/new").to route_to("produce_items#new")
+      expect(:get => "/gardens/1/produce_items/new").to route_to("produce_items#new", :garden_id => "1")
     end
 
     it "routes to #show" do
-      expect(:get => "/produce_items/1").to route_to("produce_items#show", :id => "1")
+      expect(:get => "/gardens/1/produce_items/1").to route_to("produce_items#show", :garden_id => "1", :id => "1")
     end
 
     it "routes to #edit" do
-      expect(:get => "/produce_items/1/edit").to route_to("produce_items#edit", :id => "1")
+      expect(:get => "/gardens/1/produce_items/1/edit").to route_to("produce_items#edit", :garden_id => "1", :id => "1")
     end
 
     it "routes to #create" do
-      expect(:post => "/produce_items").to route_to("produce_items#create")
+      expect(:post => "/gardens/1/produce_items").to route_to("produce_items#create", :garden_id => "1")
     end
 
     it "routes to #update" do
-      expect(:put => "/produce_items/1").to route_to("produce_items#update", :id => "1")
+      expect(:put => "/gardens/1/produce_items/1").to route_to("produce_items#update", :garden_id => "1", :id => "1")
     end
 
     it "routes to #destroy" do
-      expect(:delete => "/produce_items/1").to route_to("produce_items#destroy", :id => "1")
+      expect(:delete => "/gardens/1/produce_items/1").to route_to("produce_items#destroy", :garden_id => "1", :id => "1")
     end
 
   end
