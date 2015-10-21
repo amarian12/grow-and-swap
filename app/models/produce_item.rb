@@ -2,6 +2,6 @@ class ProduceItem < ActiveRecord::Base
   validates :name, presence: true
   validates :category, presence: true
 
-  belongs_to :garden
-  belongs_to :user
+  has_many :gardens
+  has_many :users, through: :gardens
 end

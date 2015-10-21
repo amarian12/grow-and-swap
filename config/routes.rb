@@ -14,9 +14,9 @@ Rails.application.routes.draw do
 
   resources :users
 
-  resources :gardens do
-    resources :produce_items
-  end
+  resources :gardens
+
+  resources :produce_items
 
 
   # Example of regular route:

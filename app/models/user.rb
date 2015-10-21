@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
   has_many :gardens, dependent: :destroy
   has_many :produce_items, through: :gardens, dependent: :destroy
 
+  accepts_nested_attributes_for :gardens, allow_destroy: true, reject_if: :all_blank
+
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)

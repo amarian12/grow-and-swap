@@ -1,6 +1,11 @@
 class Garden < ActiveRecord::Base
   validates :quantity, presence: true
 
-  belongs_to :user
-  has_many :produce_items, dependent: :destroy
+  belongs_to :user, inverse_of: :gardens
+  belongs_to :produce_item
+
+  validates_presence_of :user
+  validates_presence_of :produce_item
+
+  accepts_nested_attributes_for :produce_item, reject_if: :all_blank
 end
