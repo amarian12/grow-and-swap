@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   resources :users
 
-  resources :gardens
+  resources :garden_items
 
   resources :produce_items
 

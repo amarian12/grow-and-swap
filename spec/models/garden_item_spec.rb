@@ -1,25 +1,25 @@
 require 'rails_helper'
 
-RSpec.describe Garden, :type => :model do
-  let(:garden) do
-    garden = create(:garden)
-    Garden.find garden.id
+RSpec.describe GardenItem, :type => :model do
+  let(:garden_item) do
+    garden_item = create(:garden_item)
+    GardenItem.find garden.id
   end
 
   let(:produce_item) do
-    produce_item = garden.produce_items.create(:produce_item)
+    produce_item = garden_item.produce_items.create(:produce_item)
     ProduceItem.find produce_item.id
   end
 
   let(:produce_items) do
-    create(:garden_with_produce_items)
+    create(:garden_item_with_produce_items)
   end
 
   describe "Validations" do
     it "is invalid without a quantity" do
-      garden = Garden.new(quantity: nil)
-      garden.valid?
-      expect(garden.errors[:quantity]).to include("can't be blank")
+      garden_item = GardenItem.new(quantity: nil)
+      garden_item.valid?
+      expect(garden_item.errors[:quantity]).to include("can't be blank")
     end
   end
 

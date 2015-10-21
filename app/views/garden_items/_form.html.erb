@@ -1,10 +1,10 @@
-<%= form_for(@garden) do |f| %>
-  <% if @garden.errors.any? %>
+<%= form_for(@garden_item) do |f| %>
+  <% if @garden_item.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@garden.errors.count, "error") %> prohibited this garden from being saved:</h2>
+      <h2><%= pluralize(@garden_item.errors.count, "error") %> prohibited this garden_item from being saved:</h2>
 
       <ul>
-      <% @garden.errors.full_messages.each do |message| %>
+      <% @garden_item.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>

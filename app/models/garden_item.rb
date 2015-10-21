@@ -1,7 +1,7 @@
-class Garden < ActiveRecord::Base
+class GardenItem < ActiveRecord::Base
   validates :quantity, presence: true
 
-  belongs_to :user, inverse_of: :gardens
+  belongs_to :user, inverse_of: :garden_items
   belongs_to :produce_item
 
   validates_presence_of :user

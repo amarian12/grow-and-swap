@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe "gardens/show", :type => :view do
+RSpec.describe "garden_items/show", :type => :view do
   before(:each) do
-    @garden = assign(:garden, Garden.create!(
+    @garden_item = assign(:garden_item, GardenItem.create!(
       :quantity => 1
     ))
   end
