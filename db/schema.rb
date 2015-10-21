@@ -11,10 +11,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20150925003840) do
+=======
+ActiveRecord::Schema.define(version: 20151021015327) do
+>>>>>>> produce_model
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "garden_items", force: :cascade do |t|
+    t.integer  "quantity",        default: 0, null: false
+    t.integer  "user_id"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "produce_item_id"
+  end
+
+  add_index "garden_items", ["produce_item_id"], name: "index_garden_items_on_produce_item_id", using: :btree
+  add_index "garden_items", ["user_id"], name: "index_garden_items_on_user_id", using: :btree
+
+  create_table "produce_items", force: :cascade do |t|
+    t.string   "name",       default: "", null: false
+    t.string   "category",   default: "", null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name",      default: "",    null: false
@@ -29,4 +51,6 @@ ActiveRecord::Schema.define(version: 20150925003840) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
+  add_foreign_key "garden_items", "produce_items"
+  add_foreign_key "garden_items", "users"
 end

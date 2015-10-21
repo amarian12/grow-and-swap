@@ -12,6 +12,14 @@ class User < ActiveRecord::Base
 
   before_save { self.email = email.downcase }
 
+<<<<<<< HEAD
+=======
+  has_many :gardens, dependent: :destroy
+  has_many :produce_items, through: :gardens, dependent: :destroy
+
+  accepts_nested_attributes_for :gardens, allow_destroy: true, reject_if: :all_blank
+
+>>>>>>> produce_model
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)

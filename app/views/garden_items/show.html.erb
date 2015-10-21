@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @garden_item.quantity %>
+</p>
+
+<%= link_to 'Edit', edit_garden_item_path(@garden_item) %> |
+<%= link_to 'Back', garden_items_path %>
