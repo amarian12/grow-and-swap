@@ -1,5 +1,7 @@
 class ProduceItemsController < ApplicationController
-  before_action :set_produce_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_produce_item,  only: [:show, :edit, :update, :destroy]
+  before_action :logged_in_user
+
 
   # GET /produce_items
   # GET /produce_items.json
@@ -62,12 +64,18 @@ class ProduceItemsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_produce_item
       @produce_item = ProduceItem.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+    def logged_in_user
+      unless logged_in?
+        flash[:danger] = "Please log in"
+        redirect_to login_path
+      end
+    end
+
     def produce_item_params
       params.require(:produce_item).permit(:name, :category)
     end

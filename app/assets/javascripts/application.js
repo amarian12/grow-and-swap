@@ -10,6 +10,9 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+// Loads all Semantic javascripts
+//= require semantic-ui
+//= require semantic_ui/semantic_ui
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks

@@ -7,20 +7,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="container">
-    <%= link_to "Grow and Swap", root_path, id: "logo" %>
-    <nav>
-      <ul class="nav navbar-nav pull-right">
-        <li><%= link_to "Home", root_path %></li>
-        <% if logged_in? %>
-          <li><%= link_to "Users", users_path %></li>
-          <li><%= link_to "Log out", logout_path, method: :delete %></li>
-        <% else %>
-          <li><%= link_to "Log in", login_path %></li>
-        <% end %>
-      </ul>
-    </nav>
+<div class="ui container">
+<header>
+  <div class="ui two item menu">
+    <%= link_to "Home", root_path, class: "item" %>
+    <% if logged_in? %>
+      <%= link_to "Log out", logout_path, method: :delete, class: "item" %>
+    <% else %>
+      <%= link_to "Log in", login_path, class: "item" %>
+    <% end %>
   </div>
   <div>
     <% flash.each do |name, msg| -%>
@@ -32,5 +27,6 @@
 <%= yield %>
 
 <%= debug(params) if Rails.env.development? %>
+</div>
 </body>
 </html>

@@ -55,21 +55,40 @@ RSpec.configure do |config|
 
   config.include FactoryGirl::Syntax::Methods
 
+  # Used the below DatabaseCleaner configuration based on another developers' example
+  #   found online. This setup doesn't roll back the database properly
+
+  # config.before(:suite) do
+  #   begin
+  #     DatabaseCleaner.start
+  #     FactoryGirl.lint
+  #   ensure
+  #     DatabaseCleaner.clean
+  #   end
+  # end
+
+  # config.before(:each) do
+  #   DatabaseCleaner.strategy = :transaction
+  # end
+
+  # config.before(:each, :js => true) do
+  #   DatabaseCleaner.strategy = :truncation
+  # end
+
+  # Below is an alternative DatabaseCleaner configuration recommended by the documentation
+  #   This config. rolls back the database correctly after each example
+
   config.before(:suite) do
-    begin
-      DatabaseCleaner.start
-      FactoryGirl.lint
-    ensure
-      DatabaseCleaner.clean
-    end
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with(:truncation)
   end
 
   config.before(:each) do
-    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.start
   end
 
-  config.before(:each, :js => true) do
-    DatabaseCleaner.strategy = :truncation
+  config.after(:each) do
+    DatabaseCleaner.clean
   end
 
   config.include Capybara::DSL

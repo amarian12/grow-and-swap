@@ -26,7 +26,6 @@ RSpec.describe GardenItem, :type => :model do
   describe "Default produce item quantity" do
     it "has a default of 0" do
       # produce_item = garden.produce_items.create()
-      binding.pry
       expect(produce_items.find(1).quantity).to eq 0
     end
   end
