@@ -2,6 +2,6 @@ class ProduceItem < ActiveRecord::Base
   validates :name, presence: true
   validates :category, presence: true
 
-  has_many :gardens
-  has_many :users, through: :gardens
+  has_many :garden_items
+  has_many :users, through: :garden_items
 end
