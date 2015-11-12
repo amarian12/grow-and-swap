@@ -50,6 +50,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'faker'
   gem 'capybara-webkit'
+  gem 'therubyracer'
 end
 
 group :production do
