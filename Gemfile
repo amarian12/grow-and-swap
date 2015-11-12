@@ -31,7 +31,7 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'capistrano-rails', group: :development
 
 gem 'will_paginate', '3.0.7'
-gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
+gem 'therubyracer'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -50,7 +50,6 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'faker'
   gem 'capybara-webkit'
-  gem 'therubyracer'
 end
 
 group :production do
