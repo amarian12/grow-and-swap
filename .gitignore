@@ -16,9 +16,7 @@
 !/log/.keep
 /tmp
 
-# Ignore all .yml files.
 /config/database.yml
-/config/secrets.yml
 
 # Ignore .sublime-workspace file
 *.sublime-workspace
