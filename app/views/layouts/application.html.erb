@@ -7,26 +7,19 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class="ui container">
-<header>
-  <div class="ui two item menu">
-    <%= link_to "Home", root_path, class: "item" %>
-    <% if logged_in? %>
-      <%= link_to "Log out", logout_path, method: :delete, class: "item" %>
-    <% else %>
-      <%= link_to "Log in", login_path, class: "item" %>
-    <% end %>
-  </div>
-  <div>
-    <% flash.each do |name, msg| -%>
-      <%= content_tag :div, msg, class: name %>
-    <% end -%>
-  </div>
-</header>
+  <div class="ui container">
+    <header>
+      <%= render "shared/nav" %>
+      <div>
+        <% flash.each do |name, msg| -%>
+          <%= content_tag :div, msg, class: name %>
+        <% end -%>
+      </div>
+    </header>
 
-<%= yield %>
+      <%= yield %>
 
-<%= debug(params) if Rails.env.development? %>
-</div>
+      <%= debug(params) if Rails.env.development? %>
+  </div>
 </body>
 </html>

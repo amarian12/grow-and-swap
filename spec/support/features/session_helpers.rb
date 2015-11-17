@@ -14,7 +14,7 @@ module Features
       click_button 'Sign up'
     end
 
-    def log_in
+    def log_in_with(user)
       visit '/sessions/new'
       fill_in 'Email', with: user.email
       fill_in 'Password', with: user.password
