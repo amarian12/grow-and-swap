@@ -6,14 +6,6 @@ RSpec.feature "Navbar", :type => :feature do
     User.find @user.id
   end
 
-  # scenario "log in unsuccessful with incorrect credentials" do
-  #   visit '/sessions/new'
-  #   fill_in 'Email', :with => " "
-  #   fill_in 'Password', :with => " "
-  #   click_button 'Log in'
-  #   expect(page).to have_text "Invalid email/password combination"
-  # end
-
   scenario "displays 'Home', 'Sign up', and 'Log in' links while not logged in" do
     visit '/'
     expect(page).to have_link("Home")
