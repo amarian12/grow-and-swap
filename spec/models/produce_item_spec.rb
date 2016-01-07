@@ -15,7 +15,13 @@ RSpec.describe ProduceItem, :type => :model do
     end
   end
 
-  describe ProduceItem do
-    it { is_expected.to belong_to :garden }
+  describe "Associations" do
+    it "has many garden items" do
+      is_expected.to have_many :garden_items
+    end
+
+    it "has many users through garden items" do
+      is_expected.to have_many(:users).through(:garden_items)
+    end
   end
 end
