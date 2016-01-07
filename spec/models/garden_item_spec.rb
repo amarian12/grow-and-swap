@@ -31,10 +31,11 @@ RSpec.describe GardenItem, :type => :model do
     end
   end
 
-  describe "Default produce item quantity" do
+  describe "Default garden item quantity" do
     it "has a default of 0" do
+      skip("not yet implemented")
       # produce_item = garden.produce_items.create()
-      expect(produce_items.find(1).quantity).to eq 0
+      expect(garden_item.find(1).quantity).to eq 0
     end
   end
 
