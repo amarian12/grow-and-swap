@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :produce_item do
-    name "Carrot"
+    name "carrot"
     category "Vegetable"
 
     trait :produce_item_with_garden_items do

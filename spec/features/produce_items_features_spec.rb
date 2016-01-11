@@ -41,8 +41,8 @@ RSpec.feature ProduceItem, :type => :feature do
     # Cannot get the following line to test
     # expect(page).to have_current_path(new_produce_item_path)
     expect(page).to have_field "Category"
-    fill_in("Name", :with => "Carrot")
-    select("vegetable", :from => "Category")
+    fill_in("Name", :with => "carrot")
+    select("Vegetable", :from => "Category")
     click_button "Create produce item"
     expect(page).to have_text "Produce item was successfully created."
   end
