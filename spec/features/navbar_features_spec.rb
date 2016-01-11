@@ -1,10 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature "Navbar", :type => :feature do
-  background do
-    @user = create(:user)
-    User.find @user.id
-  end
+  let(:user) { user = create(:user) }
 
   scenario "displays 'Home', 'Sign up', and 'Log in' links while not logged in" do
     visit '/'
@@ -15,7 +12,7 @@ RSpec.feature "Navbar", :type => :feature do
 
   scenario "displays 'Home', and 'Log out' links while logged in" do
     visit '/'
-    log_in_with(@user)
+    log_in_with(user)
     expect(page).to have_link("Home")
     expect(page).to have_link("Log out")
   end

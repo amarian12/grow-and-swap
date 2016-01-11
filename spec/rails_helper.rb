@@ -51,7 +51,7 @@ RSpec.configure do |config|
 
   config.include Rails.application.routes.url_helpers
 
-  config.include SessionsHelper
+  # config.include SessionHelpers
 
   config.include FactoryGirl::Syntax::Methods
 

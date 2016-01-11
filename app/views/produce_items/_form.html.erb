@@ -17,9 +17,9 @@
   </div>
   <div class="field">
     <%= f.label :category %><br>
-    <%= f.text_field :category %>
+    <%= f.select(:category, ["vegetable", "fruit"]) %><br>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Create produce item" %>
   </div>
 <% end %>
