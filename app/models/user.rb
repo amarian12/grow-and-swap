@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
 
   before_save { self.email = email.downcase }
 
-  has_many :garden_items, dependent: :destroy
+  has_many :garden_items, inverse_of: :user, dependent: :destroy
   has_many :produce_items, through: :garden_items, dependent: :destroy
 
   accepts_nested_attributes_for :garden_items, allow_destroy: true, reject_if: :all_blank

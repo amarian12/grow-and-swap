@@ -12,10 +12,14 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :produce_item %><br>
+    <%= f.select(:produce_item_id, produce_items_for_select, prompt: "Select") %><br>
+  </div>
+  <div class="field">
     <%= f.label :quantity %><br>
     <%= f.number_field :quantity %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Create garden item" %>
   </div>
 <% end %>
