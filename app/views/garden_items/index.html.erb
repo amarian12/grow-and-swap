@@ -6,6 +6,8 @@
   <table>
     <thead>
       <tr>
+        <th>Name</th>
+        <th>Category</th>
         <th>Quantity</th>
         <th colspan="3"></th>
       </tr>
@@ -14,6 +16,8 @@
     <tbody>
       <% @garden_items.each do |garden_item| %>
         <tr>
+          <td><%= garden_item.produce_item.name %></td>
+          <td><%= garden_item.produce_item.category %></td>
           <td><%= garden_item.quantity %></td>
           <td><%= link_to 'Show', garden_item %></td>
           <td><%= link_to 'Edit', edit_garden_item_path(garden_item) %></td>
