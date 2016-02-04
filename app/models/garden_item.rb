@@ -6,6 +6,4 @@ class GardenItem < ActiveRecord::Base
 
   validates_presence_of :user
   validates_presence_of :produce_item
-
-  accepts_nested_attributes_for :produce_item, reject_if: :all_blank
 end

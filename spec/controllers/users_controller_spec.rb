@@ -20,7 +20,7 @@ RSpec.describe UsersController, :type => :controller do
   describe "GET #index" do
     context "when logged in" do
       before(:each) do
-        log_in user
+        login(user)
       end
 
       it "loads the page successfully" do
@@ -107,7 +107,7 @@ RSpec.describe UsersController, :type => :controller do
   describe "GET #edit" do
     context "when logged in as correct user" do
       before(:each) do
-        log_in user
+        login(user)
       end
 
       it "assigns the user" do
@@ -135,7 +135,7 @@ RSpec.describe UsersController, :type => :controller do
 
     context "when logged in as wrong user" do
       before(:each) do
-        log_in two_users[0]
+        login two_users[0]
       end
 
       it "redirects edit to welcome page" do
@@ -148,7 +148,7 @@ RSpec.describe UsersController, :type => :controller do
   describe "PATCH #update" do
     context "with valid params" do
       before(:each) do
-        log_in user
+        login(user)
       end
 
       it "assigns the user" do
@@ -175,7 +175,7 @@ RSpec.describe UsersController, :type => :controller do
 
     context "with invalid params" do
       before(:each) do
-        log_in user
+        login(user)
       end
 
       it "renders the edit user form" do
@@ -193,7 +193,7 @@ RSpec.describe UsersController, :type => :controller do
 
     context "when logged in as wrong user" do
       before(:each) do
-        log_in two_users[0]
+        login two_users[0]
       end
 
       it "redirects update to welcome page" do
@@ -208,7 +208,7 @@ RSpec.describe UsersController, :type => :controller do
   describe "DELETE #destroy" do
     context "when logged in as correct user with admin privileges" do
       before(:each) do
-        log_in admin
+        login(user)
       end
 
       it "assigns the user" do
@@ -243,7 +243,7 @@ RSpec.describe UsersController, :type => :controller do
 
     context "when logged in as a non-admin" do
       before(:each) do
-        log_in user
+        login(user)
       end
 
       it "does not delete user" do

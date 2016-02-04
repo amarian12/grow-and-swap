@@ -78,6 +78,7 @@ class UsersController < ApplicationController
                                   :email,
                                   :password,
                                   :password_confirmation,
-                                  gardens_attributes: [:quantity])
+                                  garden_items_attributes: [:quantity]
+                                  )
   end
 end

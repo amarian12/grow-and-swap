@@ -1,7 +1,6 @@
-require 'pry'
-
 class GardenItemsController < ApplicationController
   before_action :set_garden_item, only: [:show, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @garden_items = GardenItem.all
@@ -18,10 +17,7 @@ class GardenItemsController < ApplicationController
   end
 
   def create
-    # @garden_item = GardenItem.new(garden_item_params)
-    # produce_item = ProduceItem.find(params[:produce_item_id])
     @garden_item = current_user.garden_items.build(garden_item_params)
-    # binding.pry
     @garden_item.produce_item = ProduceItem.find(params[:garden_item][:produce_item_id].to_i)
 
     respond_to do |format|
@@ -50,7 +46,7 @@ class GardenItemsController < ApplicationController
   def destroy
     @garden_item.destroy
     respond_to do |format|
-      format.html { redirect_to garden_items_url, notice: 'Garden item was successfully destroyed.' }
+      format.html { redirect_to garden_items_path, notice: 'Garden item was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -61,7 +57,14 @@ class GardenItemsController < ApplicationController
     @garden_item = GardenItem.find(params[:id])
   end
 
+  def logged_in_user
+    unless logged_in?
+      flash[:danger] = "Please log in"
+      redirect_to login_path
+    end
+  end
+
   def garden_item_params
-    params.require(:garden_item).permit(:quantity, produce_item_attributes: [:id, :name, :category])
+    params.require(:garden_item).permit(:quantity, :user_id, :produce_item_id)
   end
 end

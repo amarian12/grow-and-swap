@@ -7,6 +7,8 @@ class ProduceItem < ActiveRecord::Base
   has_many :garden_items
   has_many :users, through: :garden_items
 
+  accepts_nested_attributes_for :garden_items, reject_if: :all_blank
+
   protected
 
   def normalize_name

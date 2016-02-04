@@ -1,20 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe GardenItem, :type => :model do
-  let(:garden_item) do
-    garden_item = create(:garden_item)
-    GardenItem.find garden.id
-  end
-
-  let(:produce_item) do
-    produce_item = garden_item.produce_items.create(:produce_item)
-    ProduceItem.find produce_item.id
-  end
-
-  let(:produce_items) do
-    create(:garden_item_with_produce_items)
-  end
-
   describe "Validations" do
     it "is invalid without a quantity" do
       garden_item = GardenItem.new(quantity: nil)
@@ -31,14 +17,6 @@ RSpec.describe GardenItem, :type => :model do
     end
   end
 
-  describe "Default garden item quantity" do
-    it "has a default of 0" do
-      skip("not yet implemented")
-      # produce_item = garden.produce_items.create()
-      expect(garden_item.find(1).quantity).to eq 0
-    end
-  end
-
   describe "Associations" do
     it "belongs to user" do
       is_expected.to belong_to :user
@@ -46,12 +24,6 @@ RSpec.describe GardenItem, :type => :model do
 
     it "belongs to produce item" do
       is_expected.to belong_to :produce_item
-    end
-  end
-
-  describe "Nested attributes" do
-    it "accepts nested attributes for produce_item" do
-      is_expected.to accept_nested_attributes_for :produce_item
     end
   end
 end

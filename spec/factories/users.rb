@@ -6,7 +6,7 @@ FactoryGirl.define do
     password { Faker::Internet.password }
     password_confirmation { |u| u.password }
 
-    trait :user_with_garden_items do
+    factory :user_with_garden_items do
       # factory_girl_rails '~>4.0' uses ignore method; '5.0' uses transient
       ignore do
         garden_items_count 5
@@ -14,6 +14,20 @@ FactoryGirl.define do
 
       after(:create) do |user, evaluator|
         create_list(:garden_item, evaluator.garden_items_count, user: user)
+      end
+    end
+
+    factory :user_with_garden_item do
+      ignore do
+        produce_item { create :produce_item }
+      end
+
+      after(:create) do |user, evaluator|
+        user.produce_items << evaluator.produce_item
+        user.save
+        garden_item = user.garden_items.where(produce_item: evaluator.produce_item).first
+        garden_item.save
+        user.reload
       end
     end
   end

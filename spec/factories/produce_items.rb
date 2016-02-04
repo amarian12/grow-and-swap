@@ -3,7 +3,7 @@ FactoryGirl.define do
     name "carrot"
     category "Vegetable"
 
-    trait :produce_item_with_garden_items do
+    factory :produce_item_with_garden_items do
       # factory_girl_rails '~>4.0' uses ignore method; '5.0' uses transient
       ignore do
         garden_items_count 5
