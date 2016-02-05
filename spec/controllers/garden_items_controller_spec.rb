@@ -150,15 +150,21 @@ RSpec.describe GardenItemsController, :type => :controller do
         } }
 
         it "updates the requested garden_item" do
+          garden_item = GardenItem.create! valid_attributes
           put :update, id: garden_item.to_param, garden_item: new_attributes
+          expect {
+            garden_item.reload
+          }.to change(garden_item, :quantity).from(9).to(31)
         end
 
         it "assigns the requested garden_item as @garden_item" do
+          garden_item = GardenItem.create! valid_attributes
           put :update, id: garden_item.to_param, garden_item: new_attributes
           expect(assigns(:garden_item)).to eq(garden_item)
         end
 
         it "redirects to the garden_item" do
+          garden_item = GardenItem.create! valid_attributes
           put :update, id: garden_item.to_param, garden_item: new_attributes
           expect(response).to redirect_to(garden_item)
         end
@@ -166,11 +172,13 @@ RSpec.describe GardenItemsController, :type => :controller do
 
       context "with invalid params" do
         it "assigns the garden_item as @garden_item" do
-          put :update, id: garden_item.to_param, garden_item: invalid_attributes
+         garden_item = GardenItem.create! valid_attributes
+         put :update, id: garden_item.to_param, garden_item: invalid_attributes
           expect(assigns(:garden_item)).to eq(garden_item)
         end
 
         it "re-renders the 'edit' template" do
+          garden_item = GardenItem.create! valid_attributes
           put :update, id: garden_item.to_param, garden_item: invalid_attributes
           expect(response).to render_template("edit")
         end
