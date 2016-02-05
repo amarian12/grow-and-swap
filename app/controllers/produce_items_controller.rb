@@ -2,29 +2,20 @@ class ProduceItemsController < ApplicationController
   before_action :set_produce_item,  only: [:show, :edit, :update, :destroy]
   before_action :logged_in_user
 
-
-  # GET /produce_items
-  # GET /produce_items.json
   def index
     @produce_items = ProduceItem.all
   end
 
-  # GET /produce_items/1
-  # GET /produce_items/1.json
   def show
   end
 
-  # GET /produce_items/new
   def new
     @produce_item = ProduceItem.new
   end
 
-  # GET /produce_items/1/edit
   def edit
   end
 
-  # POST /produce_items
-  # POST /produce_items.json
   def create
     @produce_item = ProduceItem.new(produce_item_params)
 
@@ -39,8 +30,6 @@ class ProduceItemsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /produce_items/1
-  # PATCH/PUT /produce_items/1.json
   def update
     respond_to do |format|
       if @produce_item.update(produce_item_params)
@@ -53,8 +42,6 @@ class ProduceItemsController < ApplicationController
     end
   end
 
-  # DELETE /produce_items/1
-  # DELETE /produce_items/1.json
   def destroy
     @produce_item.destroy
     respond_to do |format|
