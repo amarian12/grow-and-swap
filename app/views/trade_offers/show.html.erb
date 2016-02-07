@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @trade_offer.quantity %>
+</p>
+
+<p>
+  <strong>Accepted:</strong>
+  <%= @trade_offer.accepted %>
+</p>
+
+<%= link_to 'Edit', edit_trade_offer_path(@trade_offer) %> |
+<%= link_to 'Back', trade_offers_path %>

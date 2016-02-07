@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160120013014) do
+ActiveRecord::Schema.define(version: 20160207002121) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,18 @@ ActiveRecord::Schema.define(version: 20160120013014) do
     t.datetime "updated_at",              null: false
   end
 
+  create_table "trade_offers", force: :cascade do |t|
+    t.integer  "quantity",       default: 1,     null: false
+    t.boolean  "accepted",       default: false, null: false
+    t.integer  "user_id",                        null: false
+    t.integer  "garden_item_id",                 null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
+  add_index "trade_offers", ["garden_item_id"], name: "index_trade_offers_on_garden_item_id", using: :btree
+  add_index "trade_offers", ["user_id"], name: "index_trade_offers_on_user_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "first_name",      default: "",    null: false
     t.string   "last_name",       default: "",    null: false
@@ -49,4 +61,6 @@ ActiveRecord::Schema.define(version: 20160120013014) do
 
   add_foreign_key "garden_items", "produce_items"
   add_foreign_key "garden_items", "users"
+  add_foreign_key "trade_offers", "garden_items"
+  add_foreign_key "trade_offers", "users"
 end
