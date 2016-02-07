@@ -10,26 +10,26 @@ RSpec.describe GardenItemsController, :type => :controller do
   end
 
   # This should return the minimal set of attributes required to create a valid
-  # Garden_item. As you add validations to Garden_item, be sure to
+  # garden_item. As you add validations to garden_item, be sure to
   # adjust the attributes here as well.
 
   # I initially used #attributes_for on :garden_item but it didn't work and caused me several days
   #   of head-scratching to figure out. Stay away from in the future.
   let(:valid_attributes) { {
     quantity: 9,
-    user_id: garden_item.user.id,
+    user_id: garden_item.seller.id,
     produce_item_id: garden_item.produce_item.id
   } }
 
   let(:invalid_attributes) { {
     quantity: "",
-    user_id: garden_item.user.id,
+    user_id: garden_item.seller.id,
     produce_item_id: garden_item.produce_item.id
   } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
-  # Garden_itemsController. Be sure to keep this updated too.
+  # garden_items Controller. Be sure to keep this updated too.
   # let(:valid_session) { {} }
 
   describe "GET index" do
@@ -59,7 +59,7 @@ RSpec.describe GardenItemsController, :type => :controller do
   describe "GET new" do
     context "when logged in" do
       it "assigns a new garden_item as @garden_item" do
-        login(garden_item.user)
+        login(garden_item.seller)
         get :new
         expect(assigns(:garden_item)).to be_a_new(GardenItem)
       end
@@ -76,7 +76,7 @@ RSpec.describe GardenItemsController, :type => :controller do
   describe "GET edit" do
     context "when logged in" do
       it "assigns the requested garden_item as @garden_item" do
-        login(garden_item.user)
+        login(garden_item.seller)
         get :edit, id: garden_item.to_param
         expect(assigns(:garden_item)).to eq(garden_item)
       end
@@ -93,7 +93,7 @@ RSpec.describe GardenItemsController, :type => :controller do
   describe "POST create" do
     context "when logged in" do
       before(:each) do
-        login(garden_item.user)
+        login(garden_item.seller)
       end
 
       context "with valid params" do
@@ -139,13 +139,13 @@ RSpec.describe GardenItemsController, :type => :controller do
   describe "PUT update" do
     context "when logged in" do
       before(:each) do
-        login(garden_item.user)
+        login(garden_item.seller)
       end
 
       context "with valid params" do
         let(:new_attributes) { {
           quantity: 31,
-          user_id: garden_item.user.id,
+          user_id: garden_item.seller.id,
           produce_item_id: garden_item.produce_item.id
         } }
 
@@ -196,7 +196,7 @@ RSpec.describe GardenItemsController, :type => :controller do
   describe "DELETE destroy" do
     context "when logged in" do
       before(:each) do
-        login(garden_item.user)
+        login(garden_item.seller)
       end
 
       it "destroys the requested garden_item" do

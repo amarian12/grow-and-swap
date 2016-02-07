@@ -28,8 +28,8 @@ RSpec.describe ProduceItem, :type => :model do
       is_expected.to have_many :garden_items
     end
 
-    it "has many users through garden items" do
-      is_expected.to have_many(:users).through(:garden_items)
+    it "has many selers through garden items" do
+      is_expected.to have_many(:sellers).through(:garden_items)
     end
   end
 end

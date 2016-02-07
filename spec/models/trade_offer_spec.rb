@@ -14,8 +14,8 @@ RSpec.describe TradeOffer, :type => :model do
       expect(trade_offer.errors[:accepted]).to include("can't be blank")
     end
 
-    it "validates presence of user" do
-      is_expected.to validate_presence_of :user
+    it "validates presence of buyer" do
+      is_expected.to validate_presence_of :buyer
     end
 
     it "validates presence of garden item" do
@@ -24,12 +24,16 @@ RSpec.describe TradeOffer, :type => :model do
   end
 
   describe "Associations" do
-    it "belongs to user" do
-      is_expected.to belong_to :user
+    it "belongs to buyer" do
+      is_expected.to belong_to :buyer
     end
 
     it "belongs to garden item" do
       is_expected.to belong_to :garden_item
+    end
+
+    it "has one seller through garden item" do
+      is_expected.to have_one :seller
     end
   end
 end

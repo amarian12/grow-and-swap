@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :garden_item do
     quantity 7
-    user
+    seller
     produce_item
   end
 end

@@ -17,7 +17,7 @@ class GardenItemsController < ApplicationController
   end
 
   def create
-    @garden_item = current_user.garden_items.build(garden_item_params)
+    @garden_item = current_user.garden_items_selling.build(garden_item_params)
     @garden_item.produce_item = ProduceItem.find(params[:garden_item][:produce_item_id].to_i)
 
     respond_to do |format|
