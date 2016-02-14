@@ -9,5 +9,11 @@
 <div>
 
 <div class="ui center aligned container">
-  <%= link_to 'Browse produce items in your area', garden_items_path %>
+  <%= link_to "Browse produce items in your area", garden_items_path %>
+
+  <br>
+
+  <% if logged_in? %>
+    <%= link_to "My trade offers", trade_offers_path %>
+  <% end %>
 </div>
