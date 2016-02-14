@@ -8,12 +8,6 @@ RSpec.describe TradeOffer, :type => :model do
       expect(trade_offer.errors[:quantity]).to include("can't be blank")
     end
 
-    it "is invalid without an accepted value" do
-      trade_offer = TradeOffer.new(accepted: nil)
-      trade_offer.valid?
-      expect(trade_offer.errors[:accepted]).to include("can't be blank")
-    end
-
     it "validates presence of buyer" do
       is_expected.to validate_presence_of :buyer
     end

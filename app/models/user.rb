@@ -15,17 +15,19 @@ class User < ActiveRecord::Base
   has_many :garden_items_selling, class_name: "GardenItem",
            inverse_of: :seller, dependent: :destroy
 
-  has_many :produce_items, through: :garden_items
+  has_many :produce_items, through: :garden_items_selling, source: :garden_items
 
   has_many :trade_offers_received, class_name: "TradeOffer",
            through: :garden_items_selling, source: :trade_offers
 
-  has_many :trade_offers_made, class_name: "TradeOffer"
+  has_many :trade_offers_made, class_name: "TradeOffer",
+           inverse_of: :buyer, dependent: :destroy
 
   has_many :garden_items_buying, class_name: "GardenItem",
            through: :trade_offers_made, source: :garden_items
 
   accepts_nested_attributes_for :garden_items_selling, allow_destroy: true, reject_if: :all_blank
+  accepts_nested_attributes_for :trade_offers_made, allow_destroy: true, reject_if: :all_blank
 
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost

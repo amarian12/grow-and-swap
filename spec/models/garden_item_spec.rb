@@ -27,7 +27,7 @@ RSpec.describe GardenItem, :type => :model do
     end
 
     it "has many trade offers" do
-      is_expected.to have_many :trade_offers
+      is_expected.to have_many :trade_offers_made
     end
 
     it "has many buyers through trade offers" do

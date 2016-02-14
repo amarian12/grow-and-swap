@@ -6,9 +6,11 @@ class GardenItem < ActiveRecord::Base
 
   belongs_to :produce_item
 
-  has_many :trade_offers
+  has_many :trade_offers_made, class_name: "TradeOffer", inverse_of: :garden_item
 
-  has_many :buyers, class_name: "User", through: :trade_offers
+  has_many :buyers, class_name: "User", through: :trade_offers_made
+
+  accepts_nested_attributes_for :trade_offers_made, reject_if: :all_blank
 
   validates_presence_of :seller
   validates_presence_of :produce_item
