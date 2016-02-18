@@ -10,6 +10,13 @@ RSpec.describe ProduceItem, :type => :model do
       expect(produce_item.errors[:name]).to include("can't be blank")
     end
 
+    it "is invalid with a duplicate name regardless of case" do
+      produce_item = create(:produce_item)
+      produce_item = ProduceItem.new(name: "Carrot", category: "Vegetable")
+      produce_item.valid?
+      expect(produce_item.errors[:name]).to include("has already been taken")
+    end
+
     it "is invalid without a category" do
       produce_item = ProduceItem.new(category: nil)
       produce_item.valid?

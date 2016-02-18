@@ -1,5 +1,5 @@
 class ProduceItem < ActiveRecord::Base
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: { case_sensitive: false }
   validates :category, presence: true
 
   after_validation :normalize_name, on: :create
