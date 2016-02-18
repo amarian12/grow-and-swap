@@ -21,8 +21,8 @@ class ProduceItemsController < ApplicationController
 
     respond_to do |format|
       if @produce_item.save
-        format.html { redirect_to @produce_item, notice: 'Produce item was successfully created.' }
-        format.json { render :show, status: :created, location: @produce_item }
+        format.html { redirect_to produce_items_path, notice: 'Produce item was successfully created.' }
+        format.json { render :index, status: :created, location: @produce_item }
       else
         format.html { render :new }
         format.json { render json: @produce_item.errors, status: :unprocessable_entity }
@@ -33,8 +33,8 @@ class ProduceItemsController < ApplicationController
   def update
     respond_to do |format|
       if @produce_item.update(produce_item_params)
-        format.html { redirect_to @produce_item, notice: 'Produce item was successfully updated.' }
-        format.json { render :show, status: :ok, location: @produce_item }
+        format.html { redirect_to produce_items_path, notice: 'Produce item was successfully updated.' }
+        format.json { render :index, status: :ok, location: @produce_item }
       else
         format.html { render :edit }
         format.json { render json: @produce_item.errors, status: :unprocessable_entity }

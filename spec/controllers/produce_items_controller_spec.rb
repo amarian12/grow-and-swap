@@ -72,9 +72,9 @@ RSpec.describe ProduceItemsController, :type => :controller do
           expect(assigns(:produce_item)).to be_persisted
         end
 
-        it "redirects to the created produce_item" do
+        it "redirects to the list of produce_items" do
           post :create, produce_item: valid_attributes
-          expect(response).to redirect_to(ProduceItem.last)
+          expect(response).to redirect_to produce_items_path
         end
       end
 
@@ -109,10 +109,10 @@ RSpec.describe ProduceItemsController, :type => :controller do
           expect(assigns(:produce_item)).to eq(produce_item)
         end
 
-        it "redirects to the produce_item" do
+        it "redirects to the list of produce_items" do
           produce_item = ProduceItem.create! valid_attributes
           put :update, id: produce_item.to_param, produce_item: new_attributes
-          expect(response).to redirect_to(produce_item)
+          expect(response).to redirect_to produce_items_path
         end
       end
 
