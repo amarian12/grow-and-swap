@@ -10,8 +10,16 @@ class GardenItem < ActiveRecord::Base
 
   has_many :buyers, class_name: "User", through: :trade_offers_made
 
-  accepts_nested_attributes_for :trade_offers_made, reject_if: :all_blank
+  accepts_nested_attributes_for :trade_offers_made, allow_destroy: true, reject_if: :all_blank
 
   validates_presence_of :seller
   validates_presence_of :produce_item
+
+  def self.current_user_garden_items(user)
+    GardenItem.where(id: user.garden_items_selling)
+  end
+
+  def self.other_users_garden_items(user)
+    GardenItem.all.where.not(id: user.garden_items_selling)
+  end
 end

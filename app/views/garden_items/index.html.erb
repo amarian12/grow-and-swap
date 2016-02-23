@@ -6,9 +6,10 @@
   <table>
     <thead>
       <tr>
-        <th>Name</th>
+        <th>Item</th>
         <th>Category</th>
         <th>Quantity</th>
+        <th>Owner</th>
         <th colspan="3"></th>
       </tr>
     </thead>
@@ -19,6 +20,7 @@
           <td><%= garden_item.produce_item.name %></td>
           <td><%= garden_item.produce_item.category %></td>
           <td><%= garden_item.quantity %></td>
+          <td><%= garden_item.seller.full_name %></td>
           <td><%= link_to 'Show', garden_item %></td>
           <td><%= link_to 'Edit', edit_garden_item_path(garden_item) %></td>
           <td><%= link_to 'Destroy', garden_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -29,5 +31,5 @@
 
   <br>
 
-  <%= link_to 'New Garden Item', new_garden_item_path %>
+  <%= link_to 'New garden item', new_garden_item_path %>
 </div>

@@ -3,7 +3,7 @@ class GardenItemsController < ApplicationController
   before_action :logged_in_user, only: [:new, :create, :edit, :update, :destroy]
 
   def index
-    @garden_items = GardenItem.all
+    @garden_items = GardenItem.other_users_garden_items(current_user)
   end
 
   def show
