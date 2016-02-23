@@ -51,4 +51,8 @@ class User < ActiveRecord::Base
   def forget
     update_attribute(:remember_digest, nil)
   end
+
+  def full_name
+    self.first_name << " " << self.last_name
+  end
 end
