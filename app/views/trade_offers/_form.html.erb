@@ -11,15 +11,22 @@
     </div>
   <% end %>
 
+  <p>
+    <strong>Garden item:</strong>
+    <%= @garden_item.produce_item.name %><br>
+
+    <strong>Category:</strong>
+    <%= @garden_item.produce_item.category %>
+  </p>
+
+  <div class="field">
+    <%= f.hidden_field :garden_item_id, value: params[:garden_item_id] %>
+  </div>
   <div class="field">
     <%= f.label :quantity %><br>
     <%= f.number_field :quantity %>
   </div>
-  <div class="field">
-    <%= f.label :accepted %><br>
-    <%= f.check_box :accepted %>
-  </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Submit trade offer" %>
   </div>
 <% end %>

@@ -4,13 +4,16 @@ class TradeOffersController < ApplicationController
 
   def index
     @trade_offers = TradeOffer.all
+    @trade_offers_made = current_user.trade_offers_made
+    # @trade_offers_received = current_user.trade_offers_received
   end
 
   def show
   end
 
   def new
-    @trade_offer = TradeOffer.new
+    @garden_item = GardenItem.find(params[:garden_item_id])
+    @trade_offer = TradeOffer.new(garden_item_id: @garden_item.id)
   end
 
   def edit

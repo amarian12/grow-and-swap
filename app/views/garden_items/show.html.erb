@@ -1,9 +1,19 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Garden item:</strong>
+  <%= @garden_item.produce_item.name %><br>
+
+  <strong>Category:</strong>
+  <%= @garden_item.produce_item.category %><br>
+
   <strong>Quantity:</strong>
-  <%= @garden_item.quantity %>
+  <%= @garden_item.quantity %><br>
+
+  <strong>Owner:</strong>
+  <%= @garden_item.seller.full_name %>
 </p>
 
+<%= link_to 'New trade offer', new_trade_offer_path(garden_item_id: @garden_item.id) %> |
 <%= link_to 'Edit', edit_garden_item_path(@garden_item) %> |
 <%= link_to 'Back', garden_items_path %>
