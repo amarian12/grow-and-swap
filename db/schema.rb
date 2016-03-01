@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160207002121) do
+ActiveRecord::Schema.define(version: 20160301042104) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,15 +35,17 @@ ActiveRecord::Schema.define(version: 20160207002121) do
   end
 
   create_table "trade_offers", force: :cascade do |t|
-    t.integer  "quantity",       default: 1,     null: false
-    t.boolean  "accepted",       default: false, null: false
-    t.integer  "user_id",                        null: false
-    t.integer  "garden_item_id",                 null: false
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.integer  "quantity",               default: 1,     null: false
+    t.boolean  "accepted",               default: false, null: false
+    t.integer  "user_id",                                null: false
+    t.integer  "garden_item_id",                         null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.integer  "initial_trade_offer_id"
   end
 
   add_index "trade_offers", ["garden_item_id"], name: "index_trade_offers_on_garden_item_id", using: :btree
+  add_index "trade_offers", ["initial_trade_offer_id"], name: "index_trade_offers_on_initial_trade_offer_id", using: :btree
   add_index "trade_offers", ["user_id"], name: "index_trade_offers_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
