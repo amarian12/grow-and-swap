@@ -2,6 +2,7 @@
   <div class="ui top menu">
     <%= link_to "Home", root_path, class: "item" %>
     <div class="right menu">
+      <%= "Welcome #{current_user.full_name}" %>
       <%= link_to "Log out", logout_path, method: :delete, class: "item" %>
     </div>
   </div>
