@@ -1,14 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<h1>My Trade Offers</h1>
+<h1>My Trade Offers Made</h1>
 
 <table>
   <thead>
     <tr>
+      <th>Item wanted</th>
       <th>Quantity</th>
-      <th>Accepted</th>
-      <th>Item</th>
       <th>Owner</th>
+      <th>Accepted</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,10 +16,10 @@
   <tbody>
     <% @trade_offers_made.each do |trade_offer| %>
       <tr>
-        <td><%= trade_offer.quantity %></td>
-        <td><%= trade_offer.accepted %></td>
         <td><%= trade_offer.garden_item.produce_item.name %></td>
+        <td><%= trade_offer.quantity %></td>
         <td><%= trade_offer.garden_item.seller.full_name %></td>
+        <td><%= trade_offer.accepted %></td>
         <td><%= link_to 'Show', trade_offer %></td>
         <td><%= link_to 'Edit', edit_trade_offer_path(trade_offer) %></td>
         <td><%= link_to 'Destroy', trade_offer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -29,3 +29,31 @@
 </table>
 
 <br>
+
+<h1>My Trade Offers Received</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Item wanted</th>
+      <th>Quantity</th>
+      <th>Owner</th>
+      <th>Accepted</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @trade_offers_received.each do |trade_offer| %>
+      <tr>
+        <td><%= trade_offer.garden_item.produce_item.name %></td>
+        <td><%= trade_offer.quantity %></td>
+        <td><%= trade_offer.buyer.full_name %></td>
+        <td><%= trade_offer.accepted %></td>
+        <td><%= link_to 'Show', trade_offer %></td>
+        <td><%= link_to 'Edit', edit_trade_offer_path(trade_offer) %></td>
+        <td><%= link_to 'Destroy', trade_offer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

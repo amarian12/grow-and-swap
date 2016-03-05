@@ -4,5 +4,6 @@ FactoryGirl.define do
     accepted false
     buyer
     garden_item
+    initial_trade_offer
   end
 end

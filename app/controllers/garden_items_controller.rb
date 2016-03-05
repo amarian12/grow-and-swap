@@ -1,6 +1,7 @@
 class GardenItemsController < ApplicationController
   before_action :set_garden_item, only: [:show, :edit, :update, :destroy]
   before_action :logged_in_user, only: [:new, :create, :edit, :update, :destroy]
+  before_action :set_trade_offer, only: :index
 
   def index
     @garden_items = GardenItem.other_users_garden_items(current_user)
@@ -55,6 +56,13 @@ class GardenItemsController < ApplicationController
 
   def set_garden_item
     @garden_item = GardenItem.find(params[:id])
+  end
+
+  def set_trade_offer
+    if params[:initial_trade_offer_id].present?
+      @trade_offer = TradeOffer.find(params[:initial_trade_offer_id])
+      session[:initial_trade_offer_id] = @trade_offer.id
+    end
   end
 
   def logged_in_user

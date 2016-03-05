@@ -1,11 +1,12 @@
+'pry'
+
 class TradeOffersController < ApplicationController
   before_action :set_trade_offer, only: [:show, :edit, :update, :destroy]
   before_action :logged_in_user
 
   def index
-    @trade_offers = TradeOffer.all
     @trade_offers_made = current_user.trade_offers_made
-    # @trade_offers_received = current_user.trade_offers_received
+    @trade_offers_received = current_user.trade_offers_received
   end
 
   def show
@@ -22,6 +23,9 @@ class TradeOffersController < ApplicationController
   def create
     @trade_offer = current_user.trade_offers_made.build(trade_offer_params)
     @trade_offer.garden_item = GardenItem.find(params[:trade_offer][:garden_item_id].to_i)
+    if session[:initial_trade_offer_id].present?
+      @trade_offer.initial_trade_offer = TradeOffer.find(session[:initial_trade_offer_id])
+    end
 
     respond_to do |format|
       if @trade_offer.save
@@ -32,6 +36,7 @@ class TradeOffersController < ApplicationController
         format.json { render json: @trade_offer.errors, status: :unprocessable_entity }
       end
     end
+    session[:initial_trade_offer_id] = nil
   end
 
   def update
@@ -68,6 +73,8 @@ class TradeOffersController < ApplicationController
   end
 
   def trade_offer_params
-    params.require(:trade_offer).permit(:quantity, :accepted, :user_id, :garden_item_id)
+    params.require(:trade_offer).permit(
+      :quantity, :accepted, :user_id, :garden_item_id, :initial_trade_offer_id
+    )
   end
 end

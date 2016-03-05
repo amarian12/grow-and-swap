@@ -22,10 +22,16 @@
   <div class="field">
     <%= f.hidden_field :garden_item_id, value: params[:garden_item_id] %>
   </div>
+
+  <div class="field">
+    <%= f.hidden_field :initial_trade_offer_id, value: params[:intial_trade_offer_id] %>
+  </div>
+
   <div class="field">
     <%= f.label :quantity %><br>
     <%= f.number_field :quantity %>
   </div>
+
   <div class="actions">
     <%= f.submit "Submit trade offer" %>
   </div>

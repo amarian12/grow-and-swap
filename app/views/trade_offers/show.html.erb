@@ -1,14 +1,60 @@
 <p id="notice"><%= notice %></p>
 
+<h1>Initial Trade Offer</h1>
+
+<p>
+  <strong>Item wanted:</strong>
+  <%= @trade_offer.garden_item.produce_item.name %>
+</p>
+
 <p>
   <strong>Quantity:</strong>
   <%= @trade_offer.quantity %>
 </p>
 
 <p>
+  <strong>Owner:</strong>
+  <%= @trade_offer.buyer.full_name %>
+</p>
+
+<p>
   <strong>Accepted:</strong>
   <%= @trade_offer.accepted %>
 </p>
+
+<h1>Reciprocated Trade Offer</h1>
+
+<p>
+  <strong>Item wanted:</strong>
+  <%= @trade_offer.garden_item.produce_item.name %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @trade_offer.quantity %>
+</p>
+
+<p>
+  <strong>Owner:</strong>
+  <%= @trade_offer.buyer.full_name %>
+</p>
+
+<p>
+  <strong>Accepted:</strong>
+  <%= @trade_offer.accepted %>
+</p>
+
+<% if @trade_offer.reciprocated? %>
+  <%= link_to "See #{@trade_offer.initial_trade_offer.buyer.first_name}'s garden items",
+    garden_items_path(
+      initial_trade_offer_id: @trade_offer.initial_trade_offer_id
+    ) %>
+<% else %>
+  <%= link_to "See #{@trade_offer.buyer.first_name}'s garden items",
+    garden_items_path(
+      initial_trade_offer_id: @trade_offer.id
+    ) %>
+<% end %>
 
 <%= link_to 'Edit', edit_trade_offer_path(@trade_offer) %> |
 <%= link_to 'Back', trade_offers_path %>
