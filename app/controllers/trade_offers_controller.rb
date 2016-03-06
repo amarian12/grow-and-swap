@@ -1,7 +1,5 @@
-'pry'
-
 class TradeOffersController < ApplicationController
-  before_action :set_trade_offer, only: [:show, :edit, :update, :destroy]
+  before_action :set_trade_offer, only: [:show, :edit, :update, :accept, :destroy]
   before_action :logged_in_user
 
   def index
@@ -46,6 +44,24 @@ class TradeOffersController < ApplicationController
         format.json { render :show, status: :ok, location: @trade_offer }
       else
         format.html { render :edit }
+        format.json { render json: @trade_offer.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def accept
+    respond_to do |format|
+      if params['@trade_offer.initial_trade_offer'].present?
+        @trade_offer.update_attribute(:accepted,
+        params['@trade_offer.initial_trade_offer'][:accepted])
+        format.html { redirect_to @trade_offer, notice: 'Trade offer was successfully updated.' }
+        format.json { render :show, status: :ok, location: @trade_offer }
+      elsif params['@trade_offer'].present?
+        @trade_offer.update_attribute(:accepted, params['@trade_offer'][:accepted])
+        format.html { redirect_to @trade_offer, notice: 'Trade offer was successfully updated.' }
+        format.json { render :show, status: :ok, location: @trade_offer }
+      else
+        format.html { redirect_to :back }
         format.json { render json: @trade_offer.errors, status: :unprocessable_entity }
       end
     end

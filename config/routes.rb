@@ -18,7 +18,9 @@ Rails.application.routes.draw do
 
   resources :produce_items
 
-  resources :trade_offers
+  resources :trade_offers do
+    put 'accept', on: :member
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

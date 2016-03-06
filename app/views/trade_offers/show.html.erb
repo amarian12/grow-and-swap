@@ -1,60 +1,111 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Initial Trade Offer</h1>
-
-<p>
-  <strong>Item wanted:</strong>
-  <%= @trade_offer.garden_item.produce_item.name %>
-</p>
-
-<p>
-  <strong>Quantity:</strong>
-  <%= @trade_offer.quantity %>
-</p>
-
-<p>
-  <strong>Owner:</strong>
-  <%= @trade_offer.buyer.full_name %>
-</p>
-
-<p>
-  <strong>Accepted:</strong>
-  <%= @trade_offer.accepted %>
-</p>
-
-<h1>Reciprocated Trade Offer</h1>
-
-<p>
-  <strong>Item wanted:</strong>
-  <%= @trade_offer.garden_item.produce_item.name %>
-</p>
-
-<p>
-  <strong>Quantity:</strong>
-  <%= @trade_offer.quantity %>
-</p>
-
-<p>
-  <strong>Owner:</strong>
-  <%= @trade_offer.buyer.full_name %>
-</p>
-
-<p>
-  <strong>Accepted:</strong>
-  <%= @trade_offer.accepted %>
-</p>
-
 <% if @trade_offer.reciprocated? %>
+
+  <h1>Initial Trade Offer</h1>
+
+  <p>
+    <strong>Item wanted:</strong>
+    <%= @trade_offer.initial_trade_offer.garden_item.produce_item.name %>
+  </p>
+
+  <p>
+    <strong>Quantity:</strong>
+    <%= @trade_offer.initial_trade_offer.quantity %>
+  </p>
+
+  <p>
+    <strong>Item wanted by:</strong>
+    <%= @trade_offer.initial_trade_offer.buyer.full_name %>
+  </p>
+
+  <p>
+    <strong>Accepted:</strong>
+    <%= @trade_offer.initial_trade_offer.accepted %>
+  </p>
+
+  <%=
+    link_to 'Accept trade offer',
+    accept_trade_offer_path(@trade_offer.initial_trade_offer,
+    '@trade_offer.initial_trade_offer[accepted]' => true),
+    method: :put, data: { confirm: 'Are you sure?' }
+  %>
+
+  <h1>Reciprocated Trade Offer</h1>
+
+  <p>
+    <strong>Item wanted:</strong>
+    <%= @trade_offer.garden_item.produce_item.name %>
+  </p>
+
+  <p>
+    <strong>Quantity:</strong>
+    <%= @trade_offer.quantity %>
+  </p>
+
+  <p>
+    <strong>Item wanted by:</strong>
+    <%= @trade_offer.buyer.full_name %>
+  </p>
+
+  <p>
+    <strong>Accepted:</strong>
+    <%= @trade_offer.accepted %>
+  </p>
+
   <%= link_to "See #{@trade_offer.initial_trade_offer.buyer.first_name}'s garden items",
     garden_items_path(
       initial_trade_offer_id: @trade_offer.initial_trade_offer_id
     ) %>
+
+  <br>
+
+  <%=
+    link_to 'Accept trade offer',
+    accept_trade_offer_path(@trade_offer.id, '@trade_offer[accepted]' => true),
+    method: :put, data: { confirm: 'Are you sure?' }
+  %>
+
 <% else %>
+
+  <h1>Initial Trade Offer</h1>
+
+  <p>
+    <strong>Item wanted:</strong>
+    <%= @trade_offer.garden_item.produce_item.name %>
+  </p>
+
+  <p>
+    <strong>Quantity:</strong>
+    <%= @trade_offer.quantity %>
+  </p>
+
+  <p>
+    <strong>Item wanted by:</strong>
+    <%= @trade_offer.buyer.full_name %>
+  </p>
+
+  <p>
+    <strong>Accepted:</strong>
+    <%= @trade_offer.accepted %>
+  </p>
+
+  <h1>Reciprocated Trade Offer</h1>
+
+  <p>
+    <strong>None at this time</strong>
+  </p>
+
   <%= link_to "See #{@trade_offer.buyer.first_name}'s garden items",
     garden_items_path(
       initial_trade_offer_id: @trade_offer.id
     ) %>
+
+  <br>
+
 <% end %>
+
+<br>
 
 <%= link_to 'Edit', edit_trade_offer_path(@trade_offer) %> |
 <%= link_to 'Back', trade_offers_path %>
