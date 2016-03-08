@@ -1,38 +1,40 @@
-<%= form_for(@trade_offer) do |f| %>
-  <% if @trade_offer.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@trade_offer.errors.count, "error") %> prohibited this trade_offer from being saved:</h2>
+<div class="ui form">
+  <%= form_for(@trade_offer) do |f| %>
+    <% if @trade_offer.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@trade_offer.errors.count, "error") %> prohibited this trade_offer from being saved:</h2>
 
-      <ul>
-      <% @trade_offer.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% @trade_offer.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <p>
+      <strong>Garden item:</strong>
+      <%= @garden_item.produce_item.name %><br>
+
+      <strong>Category:</strong>
+      <%= @garden_item.produce_item.category %>
+    </p>
+
+    <div class="field">
+      <%= f.hidden_field :garden_item_id, value: params[:garden_item_id] %>
+    </div>
+
+    <div class="field">
+      <%= f.hidden_field :initial_trade_offer_id, value: params[:intial_trade_offer_id] %>
+    </div>
+
+    <div class="field">
+      <%= f.label :quantity %><br>
+      <%= f.number_field :quantity %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Submit trade offer" %>
     </div>
   <% end %>
-
-  <p>
-    <strong>Garden item:</strong>
-    <%= @garden_item.produce_item.name %><br>
-
-    <strong>Category:</strong>
-    <%= @garden_item.produce_item.category %>
-  </p>
-
-  <div class="field">
-    <%= f.hidden_field :garden_item_id, value: params[:garden_item_id] %>
-  </div>
-
-  <div class="field">
-    <%= f.hidden_field :initial_trade_offer_id, value: params[:intial_trade_offer_id] %>
-  </div>
-
-  <div class="field">
-    <%= f.label :quantity %><br>
-    <%= f.number_field :quantity %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Submit trade offer" %>
-  </div>
-<% end %>
+</div>
