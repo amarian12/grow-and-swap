@@ -1,35 +1,39 @@
-<div class="ui container"
-  <p id="notice"><%= notice %></p>
+<p id="notice"><%= notice %></p>
 
-  <h1>Listing Garden Items</h1>
-
-  <table class="ui green celled table">
-    <thead>
-      <tr>
-        <th>Item</th>
-        <th>Category</th>
-        <th>Quantity</th>
-        <th>Owner</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @garden_items.each do |garden_item| %>
-        <tr>
-          <td><%= garden_item.produce_item.name %></td>
-          <td><%= garden_item.produce_item.category %></td>
-          <td><%= garden_item.quantity %></td>
-          <td><%= garden_item.seller.full_name %></td>
-          <td><%= link_to 'Show', garden_item %></td>
-          <td><%= link_to 'Edit', edit_garden_item_path(garden_item) %></td>
-          <td><%= link_to 'Destroy', garden_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-
-  <br>
-
-  <%= link_to 'New garden item', new_garden_item_path %>
+<div class="ui inverted vertical masthead center aligned green segment">
+  <div class="ui text container">
+    <h1 class="ui inverted header">
+      <h1>Garden Items in Your Area</h1>
+    </h1>
+  </div>
 </div>
+
+<table class="ui green celled table">
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Category</th>
+      <th>Quantity</th>
+      <th>Owner</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @garden_items.each do |garden_item| %>
+      <tr>
+        <td><%= garden_item.produce_item.name %></td>
+        <td><%= garden_item.produce_item.category %></td>
+        <td><%= garden_item.quantity %></td>
+        <td><%= garden_item.seller.full_name %></td>
+        <td><%= link_to 'Show', garden_item %></td>
+        <td><%= link_to 'Edit', edit_garden_item_path(garden_item) %></td>
+        <td><%= link_to 'Destroy', garden_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New garden item', new_garden_item_path %>
