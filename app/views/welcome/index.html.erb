@@ -7,16 +7,32 @@
   </div>
 </div>
 
+<div class="ui hidden divider"></div>
+
 <div class="ui center aligned container">
-  <%= link_to "Browse garden items in your area", garden_items_path %>
+  <%= link_to(garden_items_path) do %>
+    <div class="ui green basic button">
+      Browse garden items in your area
+    </div>
+  <% end %>
 
   <br>
+  <div class="ui hidden divider"></div>
 
   <% if logged_in? %>
-    <%= link_to "My trade offers", trade_offers_path %>
+    <%= link_to(trade_offers_path) do %>
+      <div class="ui green basic button">
+        My trade offers
+      </div>
+    <% end %>
 
     <br>
+    <div class="ui hidden divider"></div>
 
-    <%= link_to "View produce items inventory", produce_items_path %>
+    <%= link_to(produce_items_path) do %>
+      <div class="ui green basic button">
+        View produce items inventory
+      </div>
+    <% end %>
   <% end %>
 </div>
