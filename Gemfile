@@ -31,7 +31,17 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'capistrano-rails', group: :development
 
 gem 'will_paginate', '3.0.7'
-gem 'therubyracer'
+
+# The only way I found to install libv8 and therubyracer successfully is as follows:
+#  installed xcode from app store
+#  gem uninstall libv8 therubyracer (if previously installed)
+#  brew install homebrew/versions/v8-315
+#  brew link --overwrite v8-315 --force
+#  gem install libv8 -v '3.16.14.13' -- --with-system-v8
+#  gem install therubyracer -v '0.12.2' -- --with-system-v8
+
+gem 'libv8', '3.16.14.13'
+gem 'therubyracer', '~> 0.12'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -55,4 +65,5 @@ end
 
 group :production do
   gem 'rails_12factor'
+  gem 'puma'
 end
