@@ -42,6 +42,8 @@ gem 'will_paginate', '3.0.7'
 
 gem 'libv8', '3.16.14.13'
 gem 'therubyracer', '~> 0.12'
+gem 'foreman'
+gem 'puma'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -65,5 +67,4 @@ end
 
 group :production do
   gem 'rails_12factor'
-  gem 'puma'
 end
