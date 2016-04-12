@@ -4,7 +4,11 @@ class GardenItemsController < ApplicationController
   before_action :set_trade_offer, only: :index
 
   def index
-    @garden_items = GardenItem.other_users_garden_items(current_user)
+    if logged_in?
+      @garden_items = GardenItem.other_users_garden_items(current_user)
+    else
+      @garden_items = GardenItem.all
+    end
   end
 
   def show

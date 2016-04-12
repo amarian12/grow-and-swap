@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'pry'
 
 RSpec.describe GardenItemsController, :type => :controller do
   let(:garden_item) do
@@ -33,14 +34,30 @@ RSpec.describe GardenItemsController, :type => :controller do
   # let(:valid_session) { {} }
 
   describe "GET index" do
-    it "loads the page successfully" do
-      get :index
-      expect(response).to be_success
+    context "when logged in" do
+      it "loads the page successfully" do
+        login(garden_item.seller)
+        get :index
+        expect(response).to be_success
+      end
+
+      it "assigns all garden_items as @garden_items" do
+        login(garden_item.seller)
+        get :index
+        expect(assigns(:garden_items)).to eq(garden_items)
+      end
     end
 
-    it "assigns all garden_items as @garden_items" do
-      get :index
-      expect(assigns(:garden_items)).to eq(garden_items)
+    context "when not logged in" do
+      it "loads the page successfully" do
+        get :index
+        expect(response).to be_success
+      end
+
+      it "assigns all garden_items as @garden_items" do
+        get :index
+        expect(assigns(:garden_items)).to eq(garden_items)
+      end
     end
   end
 

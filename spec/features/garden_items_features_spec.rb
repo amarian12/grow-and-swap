@@ -12,6 +12,12 @@ RSpec.feature GardenItem, :type => :feature do
     produce_item = create(:produce_item)
   end
 
+  scenario "View list of garden items" do
+    visit "/"
+    click_link "Browse garden items in your area"
+    expect(page).to have_text "Garden Items in Your Area"
+  end
+
   scenario "Create garden item" do
     visit "/"
     log_in_with(user)

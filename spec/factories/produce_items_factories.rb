@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :produce_item do
-    name "carrot"
+    name { Faker::Lorem.words }
     category "Vegetable"
 
     factory :produce_item_with_garden_items do
