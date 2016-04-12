@@ -32,5 +32,8 @@ module GrowAndSwap
       g.javascripts = false
       g.helper = false
     end
+
+    # config.threadsafe! unless File.split($0).last == "rake"
+    config.autoload_paths += %W(#{config.root}/lib/tasks)
   end
 end
