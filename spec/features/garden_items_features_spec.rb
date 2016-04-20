@@ -1,15 +1,14 @@
 require 'rails_helper'
-require 'pry'
 
 RSpec.feature GardenItem, :type => :feature do
-  let(:user) { user = create(:user) }
+  given(:user) { user = create(:user) }
 
-  let(:garden_item) do
+  given(:garden_item) do
     garden_item = create(:garden_item)
   end
 
-  let!(:produce_item) do
-    produce_item = create(:produce_item)
+  given!(:produce_item) do
+    produce_item = create(:produce_item, name: "Carrot")
   end
 
   scenario "View list of garden items" do
@@ -22,7 +21,7 @@ RSpec.feature GardenItem, :type => :feature do
     visit "/"
     log_in_with(user)
     visit "/garden_items"
-    click_link "New Garden Item"
+    click_link "New garden item"
     # Cannot get the following line to test
     # expect(page).to have_current_path(new_garden_item_path)
     expect(page).to have_field "Quantity"
