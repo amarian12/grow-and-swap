@@ -6,4 +6,11 @@ FactoryGirl.define do
     garden_item
     initial_trade_offer
   end
+
+  factory :initial_trade_offer, class: TradeOffer do
+    quantity 6
+    accepted false
+    buyer
+    garden_item
+  end
 end

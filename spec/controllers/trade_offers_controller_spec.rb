@@ -5,6 +5,10 @@ RSpec.describe TradeOffersController, :type => :controller do
     trade_offer = create(:trade_offer)
   end
 
+  let(:initial_trade_offer) do
+    initial_trade_offer = create(:initial_trade_offer)
+  end
+
   let(:trade_offers) do
     trade_offers = create_list(:trade_offer, 5)
   end
@@ -39,7 +43,7 @@ RSpec.describe TradeOffersController, :type => :controller do
 
     describe "GET show" do
       it "redirects new to login form" do
-        get :show, id: trade_offer.to_param
+        get :show, id: initial_trade_offer.to_param
         expect(response).to redirect_to login_path
       end
     end
@@ -47,9 +51,9 @@ RSpec.describe TradeOffersController, :type => :controller do
 
   context "when logged in" do
     describe "GET index" do
-      before(:each) do
-        login(trade_offers.first.buyer)
-      end
+      # before(:each) do
+      #   login(trade_offer.buyer)
+      # end
 
       it "loads the page successfully" do
         get :index
@@ -57,6 +61,8 @@ RSpec.describe TradeOffersController, :type => :controller do
       end
 
       it "assigns all trade_offers as @trade_offers" do
+        login(trade_offers.first.buyer)
+        # binding.pry
         get :index
         expect(assigns(:trade_offers)).to eq(trade_offers)
       end
@@ -78,7 +84,18 @@ RSpec.describe TradeOffersController, :type => :controller do
         login(trade_offer.buyer)
       end
 
+      # before(:each) do
+      #   trade_offer.garden_item_id
+      # end
+
+      it "finds the garden_item by id given by params" do
+        # binding.pry
+        get :new, { trade_offer: { garden_item_id: trade_offer.garden_item_id.to_param }}
+        expect(GardenItem).to receive(:find).with(1)
+      end
+
       it "assigns a new trade_offer as @trade_offer" do
+        garden_item = double()
         get :new
         expect(assigns(:trade_offer)).to be_a_new(TradeOffer)
       end
