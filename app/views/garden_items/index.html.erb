@@ -8,6 +8,18 @@
   </div>
 </div>
 
+<div class="ui hidden divider"></div>
+
+<div class="ui center aligned container">
+  <%= link_to(new_garden_item_path) do %>
+    <div class="ui green basic button">
+      New garden item
+    </div>
+  <% end %>
+</div>
+
+<div class="ui hidden divider"></div>
+
 <table class="ui green celled table">
   <thead>
     <tr>
@@ -33,7 +45,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New garden item', new_garden_item_path %>
