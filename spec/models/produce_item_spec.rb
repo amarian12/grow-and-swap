@@ -12,7 +12,7 @@ RSpec.describe ProduceItem, :type => :model do
 
     it "is invalid with a duplicate name regardless of case" do
       produce_item = create(:produce_item)
-      produce_item = ProduceItem.new(name: "Carrot", category: "Vegetable")
+      produce_item = ProduceItem.new(name: produce_item.name, category: produce_item.category)
       produce_item.valid?
       expect(produce_item.errors[:name]).to include("has already been taken")
     end
@@ -26,6 +26,7 @@ RSpec.describe ProduceItem, :type => :model do
 
   describe "Callbacks" do
     it "capitalizes each word in name attribute" do
+      produce_item = ProduceItem.create!(name: "carrot", category: "Vegetable")
       expect(produce_item.name).to eq "Carrot"
     end
   end

@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'pry'
 
 RSpec.describe GardenItemsController, :type => :controller do
   let(:garden_item) do

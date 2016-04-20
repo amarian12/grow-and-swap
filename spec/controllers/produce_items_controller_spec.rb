@@ -5,7 +5,11 @@ RSpec.describe ProduceItemsController, :type => :controller do
   let(:produce_item) { produce_item = create(:produce_item) }
   let(:produce_items) { produce_items = create_list(:produce_item, 5) }
 
-  let(:valid_attributes) { attributes_for :produce_item }
+  # let(:valid_attributes) { attributes_for(:produce_item, user_id: user.id) }
+  let(:valid_attributes) { {
+    name: "tiger nut",
+    category: "Vegetable"
+  } }
 
   let(:invalid_attributes) { attributes_for :produce_item, name: "" }
 
