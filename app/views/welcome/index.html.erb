@@ -29,10 +29,12 @@
     <br>
     <div class="ui hidden divider"></div>
 
-    <%= link_to(produce_items_path) do %>
-      <div class="ui green basic button">
-        View produce items inventory
-      </div>
+    <% if current_user.admin? %>
+      <%= link_to(produce_items_path) do %>
+        <div class="ui green basic button">
+          View produce items inventory
+        </div>
+      <% end %>
     <% end %>
   <% end %>
 </div>

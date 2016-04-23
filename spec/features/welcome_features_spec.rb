@@ -1,26 +1,51 @@
 require 'rails_helper'
 
-RSpec.feature "Welcome page", :type => :feature do
-  background do
-    @user = create(:user)
-    User.find @user.id
+RSpec.feature "Welcome page features", :type => :feature do
+  given(:user) { user = create(:user) }
+  given(:admin) { admin = create(:admin) }
+
+  context "When not logged in" do
+    background do
+      visit '/'
+    end
+
+    scenario "Visiting home page shows welcome page" do
+      expect(page).to have_text("Welcome to Grow and Swap")
+    end
+
+    scenario "Visitor can browse garden items" do
+      click_link "Browse garden items in your area"
+      expect(current_path).to eq(garden_items_path)
+    end
   end
 
-  scenario "visitor can browse produce items" do
-    visit '/'
-    click_link 'Browse produce items in your area'
-    expect(current_path).to eq(garden_items_path)
+  context "When logged in as non-admin user" do
+    background do
+      log_in_with(user)
+      visit '/'
+    end
+
+    scenario "User can browse garden items" do
+      click_link "Browse garden items in your area"
+      expect(current_path).to eq(garden_items_path)
+    end
+
+    scenario "User can view their trade offers" do
+      click_link "My trade offers"
+      expect(current_path).to eq(trade_offers_path)
+    end
+
+    scenario "Non-admin user can't see 'View produce items inventory' button" do
+      expect(page).to_not have_link "View produce items inventory"
+    end
   end
 
-  scenario "logged in user can browse produce items" do
-    log_in_with(@user)
-    visit '/'
-    click_link 'Browse produce items in your area'
-    expect(current_path).to eq(garden_items_path)
-  end
-
-  scenario "find text" do
-    visit '/'
-    expect(page).to have_text("Welcome to Grow and Swap")
+  context "When logged in as admin user" do
+    scenario "Admin user can view produce items inventory" do
+      log_in_with(admin)
+      visit '/'
+      click_link "View produce items inventory"
+      expect(current_path).to eq(produce_items_path)
+    end
   end
 end
