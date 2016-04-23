@@ -17,6 +17,14 @@ RSpec.feature "Welcome page features", :type => :feature do
       click_link "Browse garden items in your area"
       expect(current_path).to eq(garden_items_path)
     end
+
+    scenario "Visitor can't see 'My trade offers' button" do
+      expect(page).to_not have_link "My trade offers"
+    end
+
+    scenario "Visitor can't see 'View produce items inventory' button" do
+      expect(page).to_not have_link "View produce items inventory"
+    end
   end
 
   context "When logged in as non-admin user" do
@@ -35,15 +43,7 @@ RSpec.feature "Welcome page features", :type => :feature do
       expect(current_path).to eq(trade_offers_path)
     end
 
-    scenario "Non-admin user can't see 'View produce items inventory' button" do
-      expect(page).to_not have_link "View produce items inventory"
-    end
-  end
-
-  context "When logged in as admin user" do
-    scenario "Admin user can view produce items inventory" do
-      log_in_with(admin)
-      visit '/'
+    scenario "User can view produce items inventory" do
       click_link "View produce items inventory"
       expect(current_path).to eq(produce_items_path)
     end
