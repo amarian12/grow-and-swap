@@ -8,6 +8,20 @@
   </div>
 </div>
 
+<div class="ui hidden divider"></div>
+
+<% if current_user.admin? %>
+  <div class="ui center aligned container">
+    <%= link_to(new_produce_item_path) do %>
+      <div class="ui green basic button">
+        New produce item
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<div class="ui hidden divider"></div>
+
 <table class="ui green celled table">
   <thead>
     <tr>
@@ -23,13 +37,7 @@
         <td><%= produce_item.name %></td>
         <td><%= produce_item.category %></td>
         <td><%= link_to 'Show', produce_item %></td>
-        <td><%= link_to 'Edit', edit_produce_item_path(produce_item) %></td>
-        <td><%= link_to 'Destroy', produce_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Produce Item', new_produce_item_path %>
