@@ -20,6 +20,15 @@
   <div class="ui hidden divider"></div>
 
   <% if logged_in? %>
+    <%= link_to(users_path) do %>
+      <div class="ui green basic button">
+        View other gardeners
+      </div>
+    <% end %>
+
+    <br>
+    <div class="ui hidden divider"></div>
+
     <%= link_to(trade_offers_path) do %>
       <div class="ui green basic button">
         My trade offers

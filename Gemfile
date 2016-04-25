@@ -31,6 +31,7 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'capistrano-rails', group: :development
 
 gem 'will_paginate', '3.0.7'
+gem 'possessive'
 
 # The only way I found to install libv8 and therubyracer successfully is as follows:
 #  installed xcode from app store
