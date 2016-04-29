@@ -56,6 +56,11 @@ GEM
     capybara-webkit (1.7.0)
       capybara (>= 2.3.0, < 2.6.0)
       json
+    carrierwave (0.11.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
+      mime-types (>= 1.16)
     coderay (1.1.0)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
@@ -109,6 +114,7 @@ GEM
       mime-types (>= 1.16, < 3)
     method_source (0.8.2)
     mime-types (2.4.3)
+    mini_magick (4.5.1)
     mini_portile (0.6.2)
     minitest (5.5.1)
     multi_json (1.10.1)
@@ -231,6 +237,7 @@ DEPENDENCIES
   byebug
   capybara
   capybara-webkit
+  carrierwave
   database_cleaner
   factory_girl_rails (~> 4.0)
   faker
@@ -239,6 +246,7 @@ DEPENDENCIES
   jquery-rails
   less-rails-semantic_ui
   libv8 (= 3.16.14.13)
+  mini_magick
   pg
   possessive
   pry-rails

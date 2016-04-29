@@ -32,6 +32,8 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'will_paginate', '3.0.7'
 gem 'possessive'
+gem 'carrierwave'
+gem 'mini_magick'
 
 # The only way I found to install libv8 and therubyracer successfully is as follows:
 #  installed xcode from app store
