@@ -5,6 +5,7 @@ FactoryGirl.define do
     email { Faker::Internet.email }
     password { Faker::Internet.password }
     password_confirmation { |u| u.password }
+    avatar { Faker::Avatar.image }
 
     factory :user_with_garden_items do
       # factory_girl_rails '~>4.0' uses ignore method; '5.0' uses transient

@@ -7,6 +7,7 @@ require 'capybara/rspec'
 require 'capybara/rails'
 require 'database_cleaner'
 require 'capybara/webkit/matchers'
+require 'carrierwave/test/matchers'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -95,6 +96,8 @@ RSpec.configure do |config|
   config.include Capybara::DSL
 
   config.include(Capybara::Webkit::RspecMatchers, :type => :feature)
+
+  config.include CarrierWave::Test::Matchers
 end
 
 Capybara::Webkit.configure do |config|
