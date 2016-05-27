@@ -17,7 +17,7 @@
 /tmp
 
 /config/database.yml
-/public/user
+/public/uploads
 
 # Ignore .sublime-workspace file
 *.sublime-workspace

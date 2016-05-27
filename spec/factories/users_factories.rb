@@ -1,3 +1,5 @@
+include ActionDispatch::TestProcess
+
 FactoryGirl.define do
   factory :user, aliases: [:seller, :buyer] do
     first_name { Faker::Name.first_name }
@@ -5,7 +7,11 @@ FactoryGirl.define do
     email { Faker::Internet.email }
     password { Faker::Internet.password }
     password_confirmation { |u| u.password }
-    avatar { Faker::Avatar.image }
+    avatar {
+      fixture_file_upload(
+        Rails.root.join("spec", "support", "test_photo_1.jpg"), "image/jpg"
+      )
+    }
 
     factory :user_with_garden_items do
       # factory_girl_rails '~>4.0' uses ignore method; '5.0' uses transient

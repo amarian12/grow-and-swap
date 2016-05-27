@@ -1,7 +1,5 @@
-<h2>Sign up</h2>
-
 <div class="ui form">
-  <%= form_for(@user) do |f| %>
+  <%= form_for @user, html: { multipart: true } do |f| %>
     <% if @user.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -35,11 +33,12 @@
       <%= f.password_field :password_confirmation %>
     </div>
     <div class="field">
-      <%= f.label "Add profile picture" %><br>
+      <%= f.label :avatar, "Add profile picture" %><br>
       <%= f.file_field :avatar %><br>
+      <%= f.hidden_field :avatar_cache %>
     </div>
     <div class="actions">
-      <%= f.submit "Sign up" %>
+      <%= f.submit "Submit" %>
     </div>
   <% end %>
 </div>

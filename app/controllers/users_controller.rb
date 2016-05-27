@@ -33,6 +33,7 @@ class UsersController < ApplicationController
   end
 
   def update
+    logger.debug "Updated user: #{@user.attributes.inspect}"
     if @user.update_attributes(user_params)
       flash[:success] = "User was successfully updated"
       redirect_to user_path(@user)
@@ -73,12 +74,15 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:first_name,
-                                  :last_name,
-                                  :email,
-                                  :password,
-                                  :password_confirmation,
-                                  garden_items_attributes: [:quantity]
-                                  )
+    params.fetch(:user, {}).permit(
+      :first_name,
+      :last_name,
+      :email,
+      :password,
+      :password_confirmation,
+      :avatar,
+      :avatar_cache,
+      garden_items_attributes: [:quantity]
+    )
   end
 end
