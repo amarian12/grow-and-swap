@@ -18,15 +18,8 @@ RSpec.feature User, :type => :feature do
     fill_in("Email", with: Faker::Internet.email)
     fill_in("Password", with: 12345678)
     fill_in("Password confirmation", with: 12345678)
-    attach_file("user_avatar", "spec/support/test_photo_1.jpg")
     click_button "Submit"
     expect(page).to have_text "Welcome to Grow and Swap!"
-  end
-
-  scenario "User can view users' avatars" do
-    log_in_with(user)
-    visit "/users"
-    expect(page).to have_xpath("//img[@src=\"/spec/support/test_photo_1.jpg\"]")
   end
 
   feature "User garden items" do

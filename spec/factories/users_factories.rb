@@ -7,11 +7,6 @@ FactoryGirl.define do
     email { Faker::Internet.email }
     password { Faker::Internet.password }
     password_confirmation { |u| u.password }
-    avatar {
-      fixture_file_upload(
-        Rails.root.join("spec", "support", "test_photo_1.jpg"), "image/jpg"
-      )
-    }
 
     factory :user_with_garden_items do
       # factory_girl_rails '~>4.0' uses ignore method; '5.0' uses transient
