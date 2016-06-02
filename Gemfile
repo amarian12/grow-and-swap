@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.0.0'
+
 gem 'less-rails-semantic_ui'
 
 gem 'autoprefixer-rails'
