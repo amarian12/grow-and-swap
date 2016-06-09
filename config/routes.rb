@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get       'signup'  => 'users#new'
   get       'login'   => 'sessions#new'
   post      'login'   => 'sessions#create'
-  delete    'logout'  => 'sessions#destroy'
+  match 'logout', to: 'sessions#destroy', as: 'logout', via: [:get, :post, :delete]
 
   get 'sessions/new'
 
