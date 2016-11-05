@@ -35,9 +35,12 @@
       </div>
     <% end %>
 
+  <% end %>
+
     <br>
     <div class="ui hidden divider"></div>
 
+  <% if logged_in? && current_user.admin? %>
     <%= link_to(produce_items_path) do %>
       <div class="ui green basic button">
         View produce items inventory
