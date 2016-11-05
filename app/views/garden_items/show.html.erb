@@ -15,5 +15,9 @@
 </p>
 
 <%= link_to 'New trade offer', new_trade_offer_path(garden_item_id: @garden_item.id) %> |
-<%= link_to 'Edit', edit_garden_item_path(@garden_item) %> |
-<%= link_to 'Back', garden_items_path %>
+
+<% if logged_in? && current_user?(@garden_item.seller) %>
+  <%= link_to 'Edit', edit_garden_item_path(@garden_item) %> |
+<% end %>
+
+<%= link_to 'Back', garden_items_path %> |

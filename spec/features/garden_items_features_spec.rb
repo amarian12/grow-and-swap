@@ -48,14 +48,14 @@ RSpec.feature GardenItem, :type => :feature do
       expect(page).to have_text "Garden item was successfully created."
     end
 
-    scenario "only owner of garden item can see edit/destroy links" do
-      visit "/garden_items"
+    scenario "only owner of garden item can see edit link on show page" do
+      visit "/garden_items/1"
+      expect(page).to have_link "Edit"
       click_link "Log out"
       log_in_with(other_user)
       visit "/garden_items"
-      expect(page).to have_link "Show"
+      click_link "Show"
       expect(page).to_not have_link "Edit"
-      expect(page).to_not have_link "Destroy"
     end
   end
 end
