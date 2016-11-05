@@ -39,8 +39,10 @@
         <td><%= garden_item.quantity %></td>
         <td><%= garden_item.seller.full_name %></td>
         <td><%= link_to 'Show', garden_item %></td>
-        <td><%= link_to 'Edit', edit_garden_item_path(garden_item) %></td>
-        <td><%= link_to 'Destroy', garden_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if logged_in? && current_user?(garden_item.seller) %>
+          <td><%= link_to 'Edit', edit_garden_item_path(garden_item) %></td>
+          <td><%= link_to 'Destroy', garden_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
