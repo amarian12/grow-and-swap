@@ -15,7 +15,9 @@ Rails.application.routes.draw do
 
   resources :users
 
-  resources :garden_items
+  resources :garden_items do
+    get 'current_user_index', on: :collection
+  end
 
   resources :produce_items
 

@@ -15,7 +15,7 @@ FactoryGirl.define do
       end
 
       after(:create) do |user, evaluator|
-        create_list(:garden_item, evaluator.garden_items_count, user: user)
+        create_list(:garden_item, evaluator.garden_items_count, seller: user)
       end
     end
 

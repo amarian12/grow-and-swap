@@ -2,6 +2,9 @@ require "rails_helper"
 
 RSpec.describe GardenItemsController, :type => :routing do
   describe "routing" do
+    it "routes to #current_user_index" do
+      expect(:get => "/garden_items/current_user_index").to route_to("garden_items#current_user_index")
+    end
 
     it "routes to #index" do
       expect(:get => "/garden_items").to route_to("garden_items#index")
@@ -30,6 +33,5 @@ RSpec.describe GardenItemsController, :type => :routing do
     it "routes to #destroy" do
       expect(:delete => "/garden_items/1").to route_to("garden_items#destroy", :id => "1")
     end
-
   end
 end

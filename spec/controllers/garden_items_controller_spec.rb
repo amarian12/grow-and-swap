@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe GardenItemsController, :type => :controller do
+  let(:user) { user = create(:user_with_garden_items) }
+
   let(:garden_item) do
     garden_item = create(:garden_item)
   end
@@ -31,6 +33,23 @@ RSpec.describe GardenItemsController, :type => :controller do
   # in order to pass any filters (e.g. authentication) defined in
   # garden_items Controller. Be sure to keep this updated too.
   # let(:valid_session) { {} }
+
+
+  describe "GET current_user_index" do
+    before(:each) do
+      login(user)
+    end
+
+    it "loads the page successfully" do
+      get :current_user_index
+      expect(response).to be_success
+    end
+
+    it "assigns current user garden items as @current_user_garden_items" do
+      get :current_user_index
+      expect(assigns(:garden_items)).to eq(user.garden_items_selling)
+    end
+  end
 
   describe "GET index" do
     context "when logged in" do

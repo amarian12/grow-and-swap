@@ -3,6 +3,10 @@ class GardenItemsController < ApplicationController
   before_action :logged_in_user, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_trade_offer, only: :index
 
+  def current_user_index
+    @garden_items = GardenItem.current_user_garden_items(current_user)
+  end
+
   def index
     if logged_in?
       @garden_items = GardenItem.other_users_garden_items(current_user)

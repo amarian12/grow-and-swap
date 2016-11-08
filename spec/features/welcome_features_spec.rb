@@ -1,28 +1,29 @@
 require 'rails_helper'
 
 RSpec.feature "Welcome page features", :type => :feature do
-  given(:user) { user = create(:user) }
+  given(:user) { user = create(:user_with_garden_items) }
   given(:admin) { admin = create(:admin) }
 
   context "When not logged in" do
     background do
+      user
       visit '/'
     end
 
-    scenario "Visiting home page shows welcome page" do
+    scenario "visiting home page shows welcome page" do
       expect(page).to have_text("Welcome to Grow and Swap")
     end
 
-    scenario "Visitor can browse garden items" do
+    scenario "visitor can browse garden items" do
       click_link "Browse garden items in your area"
       expect(current_path).to eq(garden_items_path)
     end
 
-    scenario "Visitor can't see 'My trade offers' button" do
+    scenario "visitor can't see 'My trade offers' button" do
       expect(page).to_not have_link "My trade offers"
     end
 
-    scenario "Visitor can't see 'View produce items inventory' button" do
+    scenario "visitor can't see 'View produce items inventory' button" do
       expect(page).to_not have_link "View produce items inventory"
     end
   end
@@ -33,28 +34,33 @@ RSpec.feature "Welcome page features", :type => :feature do
       visit '/'
     end
 
-    scenario "User can browse garden items" do
+    scenario "view list of other users' garden items" do
       click_link "Browse garden items in your area"
-      expect(current_path).to eq(garden_items_path)
+      expect(page).to have_text "Garden Items in Your Area"
     end
 
-    scenario "User can view other gardeners" do
+    scenario "user can view other gardeners" do
       click_link "View other gardeners"
       expect(current_path).to eq(users_path)
     end
 
-    scenario "User can view their trade offers" do
+    scenario "user can view their trade offers" do
       click_link "My trade offers"
       expect(current_path).to eq(trade_offers_path)
     end
 
-    scenario "User cannot see produce items inventory button" do
+    scenario "user cannot see produce items inventory button" do
       expect(page).to_not have_link "View produce items inventory"
+    end
+
+    scenario "user can view list of their own posted garden items" do
+      click_link "My garden items"
+      expect(page).to have_text "My Garden Items"
     end
   end
 
   context "When logged in as admin user" do
-    scenario "User can view produce items inventory" do
+    scenario "user can view produce items inventory" do
       log_in_with(admin)
       visit "/"
       click_link "View produce items inventory"

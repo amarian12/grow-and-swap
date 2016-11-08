@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<div class="ui inverted vertical masthead center aligned green segment">
+  <div class="ui text container">
+    <h1 class="ui inverted header">
+      <h1>My Garden Items</h1>
+    </h1>
+  </div>
+</div>
+
+<div class="ui hidden divider"></div>
+
+<div class="ui center aligned container">
+  <%= link_to(new_garden_item_path) do %>
+    <div class="ui green basic button">
+      New garden item
+    </div>
+  <% end %>
+</div>
+
+<div class="ui hidden divider"></div>
+
+<table class="ui green celled table">
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Category</th>
+      <th>Quantity</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @garden_items.each do |garden_item| %>
+      <tr>
+        <td><%= garden_item.produce_item.name %></td>
+        <td><%= garden_item.produce_item.category %></td>
+        <td><%= garden_item.quantity %></td>
+        <td><%= link_to 'Show', garden_item %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
