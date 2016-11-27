@@ -52,16 +52,15 @@ RSpec.feature User, :type => :feature do
   context "When logged in as admin user" do
     background do
       log_in_with(admin)
+      visit "/users/#{users.last.id}"
     end
 
-    scenario "admin user can see edit/delete links for other users" do
-      visit "/users/#{users.last.id}"
+    scenario "user can see edit/delete links for other users" do
       expect(page).to have_link "Edit"
       expect(page).to have_link "Delete"
     end
 
-    scenario "admin user can edit other user accounts" do
-      visit "/users/#{users.last.id}"
+    scenario "user can edit other user accounts" do
       click_link "Edit"
       fill_in("First name", with: "Spock")
       fill_in("Last name", with: "S'chn T'gai")
@@ -69,7 +68,7 @@ RSpec.feature User, :type => :feature do
       expect(page).to have_text "User was successfully updated"
     end
 
-    scenario "admin user can delete other user accounts" do
+    scenario "user can delete other user accounts" do
       click_link "Delete"
       expect(page).to have_text "User was successfully deleted"
     end
