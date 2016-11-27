@@ -61,8 +61,8 @@ RSpec.describe TradeOffersController, :type => :controller do
       end
 
       it "assigns all trade_offers as @trade_offers" do
-        login(trade_offers.first.buyer)
-        # binding.pry
+        # login(trade_offers.first.buyer)
+        binding.pry
         get :index
         expect(assigns(:trade_offers)).to eq(trade_offers)
       end
@@ -80,9 +80,9 @@ RSpec.describe TradeOffersController, :type => :controller do
     end
 
     describe "GET new" do
-      before(:each) do
-        login(trade_offer.buyer)
-      end
+      # before(:each) do
+      #   login(trade_offer.buyer)
+      # end
 
       # before(:each) do
       #   trade_offer.garden_item_id

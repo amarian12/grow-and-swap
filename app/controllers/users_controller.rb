@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user,        only: [:show, :edit, :update, :destroy]
   before_action :logged_in_user,  only: [:index, :show, :edit, :update, :destroy]
-  before_action :authorized_user,    only: [:edit, :update, :destroy]
+  before_action :authorized_user, only: [:edit, :update, :destroy]
 
   def index
     @users = User.all.paginate(page: params[:page], per_page: 15)
@@ -43,13 +43,13 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    if @user.destroy
+    @user.destroy
       flash[:success] = "User was successfully deleted"
       redirect_to root_path
-    else
-      flash[:error] = "Could not delete user"
-      redirect_to user_path(@user)
-    end
+    # else
+    #   flash[:error] = "Could not delete user"
+    #   redirect_to user_path(@user)
+    # end
   end
 
   private
