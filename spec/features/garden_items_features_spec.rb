@@ -5,6 +5,8 @@ RSpec.feature GardenItem, :type => :feature do
 
   given(:other_user) { other_user = create(:user) }
 
+  given!(:users) { users = create_list(:user, 5) }
+
   given!(:garden_item) do
     garden_item = create(:garden_item)
   end
@@ -29,7 +31,7 @@ RSpec.feature GardenItem, :type => :feature do
       click_link "My garden items"
     end
 
-    scenario "create garden item" do
+    scenario "user can create garden item" do
       click_link "New garden item"
       # Cannot get the following line to test
       # expect(page).to have_current_path(new_garden_item_path)
@@ -62,6 +64,12 @@ RSpec.feature GardenItem, :type => :feature do
       click_link "Show"
       click_link "Delete"
       expect(page).to have_text "Garden item was successfully destroyed."
+    end
+
+    scenario "user can view another user's garden items list" do
+      visit "/users"
+      click_link "#{users.first.full_name}"
+      expect(page).to have_text "garden items"
     end
   end
 end

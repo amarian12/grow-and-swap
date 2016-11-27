@@ -1,8 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user,        only: [:show, :edit, :update, :destroy]
-  before_action :logged_in_user,  only: [:index, :edit, :update, :destroy]
-  before_action :correct_user,    only: [:edit, :update]
-  before_action :admin_user,      only: :destroy
+  before_action :logged_in_user,  only: [:index, :show, :edit, :update, :destroy]
+  before_action :authorized_user,    only: [:edit, :update, :destroy]
 
   def index
     @users = User.all.paginate(page: params[:page], per_page: 15)
@@ -43,12 +42,14 @@ class UsersController < ApplicationController
     end
   end
 
-# Implement user destroy action only with admin user functionality
-
   def destroy
-    @user.destroy
-    flash[:success] = "User was successfully deleted"
-    redirect_to users_path
+    if @user.destroy
+      flash[:success] = "User was successfully deleted"
+      redirect_to root_path
+    else
+      flash[:error] = "Could not delete user"
+      redirect_to user_path(@user)
+    end
   end
 
   private
@@ -64,13 +65,8 @@ class UsersController < ApplicationController
     end
   end
 
-  def correct_user
-    set_user
-    redirect_to root_path unless current_user?(@user)
-  end
-
-  def admin_user
-    redirect_to root_path unless current_user.admin?
+  def authorized_user
+    redirect_to root_path unless current_user?(@user) || current_user.admin?
   end
 
   def user_params

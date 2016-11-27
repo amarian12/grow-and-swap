@@ -38,14 +38,27 @@ RSpec.describe UsersController, :type => :controller do
   end
 
   describe "GET #show" do
-    it "assigns the user" do
-      get :show, id: user.id
-      expect(assigns(:user)).to be_a(User)
+    context "when logged in" do
+      before(:each) do
+        login(user)
+      end
+
+      it "assigns the user" do
+        get :show, id: user.id
+        expect(assigns(:user)).to be_a(User)
+      end
+
+      it "loads the page successfully" do
+        get :show, id: user.id
+        expect(response).to be_success
+      end
     end
 
-    it "loads the page successfully" do
-      get :show, id: user.id
-      expect(response).to be_success
+    context "when not logged in" do
+      it "redirects show to login form" do
+        get :show, id: user.id
+        expect(response).to redirect_to login_path
+      end
     end
   end
 
@@ -86,7 +99,7 @@ RSpec.describe UsersController, :type => :controller do
 
       it "redirects to user home page" do
         post :create, user: user_attributes
-        expect(response).to redirect_to user_path(user)
+        expect(response).to redirect_to user_path(current_user)
       end
     end
 
@@ -203,56 +216,24 @@ RSpec.describe UsersController, :type => :controller do
     end
   end
 
-# Implement user destroy action tests only with admin user functionality
-
   describe "DELETE #destroy" do
-    context "when logged in as correct user with admin privileges" do
+    context "when logged in as correct user" do
       before(:each) do
         login(user)
       end
 
       it "assigns the user" do
-        delete :destroy, id: admin.id
+        delete :destroy, id: user.id
         expect(assigns(:user)).to be_a(User)
       end
 
       it "deletes user" do
         expect {
-          delete :destroy, id: admin.id
+          delete :destroy, id: user.id
           }.to change(User, :count).by(-1)
       end
 
-      it "redirects to users index page" do
-        delete :destroy, id: admin.id
-        expect(response).to redirect_to users_path
-      end
-    end
-
-    context "when not logged in" do
-      it "does not delete user" do
-        expect {
-          delete :destroy, id: user.id
-          }.to change(User, :count).by(0)
-      end
-
-      it "redirects delete to login form" do
-        delete :destroy, id: user.id
-        expect(response).to redirect_to login_path
-      end
-    end
-
-    context "when logged in as a non-admin" do
-      before(:each) do
-        login(user)
-      end
-
-      it "does not delete user" do
-        expect {
-          delete :destroy, id: user.id
-          }.to change(User, :count).by(0)
-      end
-
-      it "redirects delete to welcome page" do
+      it "redirects to welcome page" do
         delete :destroy, id: user.id
         expect(response).to redirect_to root_path
       end
