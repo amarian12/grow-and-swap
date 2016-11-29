@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   has_many :garden_items_selling, class_name: "GardenItem",
            inverse_of: :seller, dependent: :destroy
 
-  has_many :produce_items, through: :garden_items_selling, source: :garden_items
+  has_many :produce_items, through: :garden_items_selling
 
   has_many :trade_offers_received, class_name: "TradeOffer",
            through: :garden_items_selling, source: :trade_offers_made

@@ -19,15 +19,25 @@ RSpec.describe TradeOffer, :type => :model do
 
   describe "Associations" do
     it "belongs to buyer" do
-      is_expected.to belong_to :buyer
+      is_expected.to belong_to(:buyer).
+      class_name("User").
+      with_foreign_key(:user_id)
     end
 
     it "belongs to garden item" do
-      is_expected.to belong_to :garden_item
+      is_expected.to belong_to(:garden_item).with_foreign_key(:garden_item_id)
     end
 
     it "has one seller through garden item" do
-      is_expected.to have_one :seller
+      is_expected.to have_one(:seller).
+      class_name("User").
+      through(:garden_item)
+    end
+
+    it "belongs to initial trade offer" do
+      is_expected.to belong_to(:initial_trade_offer).
+      class_name("TradeOffer").
+      with_foreign_key(:initial_trade_offer_id)
     end
   end
 end

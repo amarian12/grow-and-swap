@@ -6,7 +6,8 @@ class GardenItem < ActiveRecord::Base
 
   belongs_to :produce_item
 
-  has_many :trade_offers_made, class_name: "TradeOffer", inverse_of: :garden_item
+  has_many :trade_offers_made, class_name: "TradeOffer",
+           inverse_of: :garden_item, dependent: :destroy
 
   has_many :buyers, class_name: "User", through: :trade_offers_made
 

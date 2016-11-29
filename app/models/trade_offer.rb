@@ -10,7 +10,7 @@ class TradeOffer < ActiveRecord::Base
   belongs_to :initial_trade_offer, class_name: "TradeOffer", foreign_key: :initial_trade_offer_id
 
   validates_presence_of :buyer, class_name: "User", foreign_key: :user_id
-  validates_presence_of :garden_item
+  validates_presence_of :garden_item, foreign_key: :garden_item_id
 
   def initial?
     self.initial_trade_offer_id.nil?

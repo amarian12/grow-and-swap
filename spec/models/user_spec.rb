@@ -94,4 +94,26 @@ RSpec.describe User, :type => :model do
       end
     end
   end
+
+  describe "Associations" do
+    it "has many garden items selling" do
+      is_expected.to have_many(:garden_items_selling).dependent(:destroy)
+    end
+
+    it "has many produce items through garden items selling" do
+      is_expected.to have_many(:produce_items).through(:garden_items_selling)
+    end
+
+    it "has many trade offers received through garden items selling" do
+      is_expected.to have_many(:trade_offers_received).through(:garden_items_selling)
+    end
+
+    it "has many trade offers made" do
+      is_expected.to have_many(:trade_offers_made).dependent(:destroy)
+    end
+
+    it "has many garden items buying through trade offers made" do
+      is_expected.to have_many(:garden_items_buying).through(:trade_offers_made)
+    end
+  end
 end
