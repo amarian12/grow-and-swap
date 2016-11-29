@@ -43,13 +43,13 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user.destroy
+    if @user.destroy
       flash[:success] = "User was successfully deleted"
       redirect_to root_path
-    # else
-    #   flash[:error] = "Could not delete user"
-    #   redirect_to user_path(@user)
-    # end
+    else
+      flash[:error] = "Could not delete user"
+      redirect_to user_path(@user)
+    end
   end
 
   private
