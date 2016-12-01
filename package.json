@@ -1,8 +1,13 @@
 {
-  "name": "something",
-  "dependencies" : {
+  "name": "grow-and-swap",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dwhite96/grow-and-swap"
+  },
+  "dependencies": {
     "browserify": "~10.2.4",
-    "browserify-incremental": "^3.0.1"
+    "browserify-incremental": "^3.0.1",
+    "underscore": "^1.8.3"
   },
   "license": "MIT",
   "engines": {
