@@ -50,6 +50,8 @@ gem 'libv8', '3.16.14.13'
 gem 'therubyracer', '~> 0.12'
 gem 'foreman'
 gem 'puma'
+gem 'gmaps4rails'
+gem 'browserify-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
