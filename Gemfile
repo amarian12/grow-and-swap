@@ -47,11 +47,13 @@ gem 'mini_magick'
 #  gem install therubyracer -v '0.12.2' -- --with-system-v8
 
 gem 'libv8', '3.16.14.13'
-gem 'therubyracer', '~> 0.12'
+# gem 'therubyracer', '~> 0.12.2'
 gem 'foreman'
 gem 'puma'
 gem 'gmaps4rails'
+gem 'geocoder'
 gem 'browserify-rails'
+gem 'figaro'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -1,3 +1,6 @@
+<script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key=AIzaSyDVyMnyE4uPuzwXeCN8qUstqn0WOOsdfzY"></script>
+<script type="text/javascript" src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
+
 <p id="notice"><%= notice %></p>
 
 <%= image_tag(@user.avatar) %>
@@ -40,3 +43,16 @@
     <% end %>
   </tbody>
 </table>
+
+<div style='width: 800px;'>
+  <div id="map" style='width: 800px; height: 400px;'></div>
+</div>
+
+<script type="text/javascript">
+  handler = Gmaps.build('Google');
+  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+    markers = handler.addMarkers(<%=raw @hash.to_json %>);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+  });
+</script>

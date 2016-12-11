@@ -11,6 +11,14 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: { case_sensitive: false }
   validates :email, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/ }
   validates :password, length: { minimum: 8 }, allow_nil: true
+  validates :street, presence: true
+  validates :city, presence: true
+  validates :state, presence: true
+  validates :zip_code, presence: true
+  validates :country, presence: true
+
+  geocoded_by :full_address
+  after_validation :geocode
 
   before_save { self.email = email.downcase }
 
@@ -56,5 +64,9 @@ class User < ActiveRecord::Base
 
   def full_name
     self.first_name << " " << self.last_name
+  end
+
+  def full_address
+    "#{street} #{city}, #{state}, #{zip_code} #{country}"
   end
 end

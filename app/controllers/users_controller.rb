@@ -8,6 +8,10 @@ class UsersController < ApplicationController
   end
 
   def show
+    @hash = Gmaps4rails.build_markers(@user) do |user, marker|
+      marker.lat user.latitude
+      marker.lng user.longitude
+    end
   end
 
   def new
@@ -78,6 +82,11 @@ class UsersController < ApplicationController
       :password_confirmation,
       :avatar,
       :avatar_cache,
+      :street,
+      :city,
+      :state,
+      :zip_code,
+      :country,
       garden_items_attributes: [:quantity]
     )
   end

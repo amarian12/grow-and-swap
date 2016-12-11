@@ -47,6 +47,11 @@ RSpec.feature User, :type => :feature do
       click_link "Delete"
       expect(page).to have_text "User was successfully deleted"
     end
+
+    scenario "user can see map with location of user" do
+      visit "/users/#{user.id}"
+      expect(page).to have_css('div#map')
+    end
   end
 
   context "When logged in as admin user" do
