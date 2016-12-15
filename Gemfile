@@ -46,10 +46,9 @@ gem 'mini_magick'
 #  gem install libv8 -v '3.16.14.13' -- --with-system-v8
 #  gem install therubyracer -v '0.12.2' -- --with-system-v8
 
-gem 'libv8', '3.16.14.13'
-# gem 'therubyracer', '~> 0.12.2'
 gem 'foreman'
 gem 'puma'
+gem 'underscore-rails'
 gem 'gmaps4rails'
 gem 'geocoder'
 gem 'browserify-rails'
@@ -73,6 +72,8 @@ group :development, :test do
   gem 'faker'
   gem 'capybara-webkit'
   gem 'shoulda-matchers', '~> 3.0'
+  gem 'libv8', '3.16.14.13'
+  gem 'therubyracer', '~> 0.12'
 end
 
 group :production do

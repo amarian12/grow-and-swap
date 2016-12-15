@@ -1,4 +1,4 @@
-<script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key=AIzaSyDVyMnyE4uPuzwXeCN8qUstqn0WOOsdfzY"></script>
+<script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key=<%=ENV['gmaps_api_key']%>"></script>
 <script type="text/javascript" src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
 
 <p id="notice"><%= notice %></p>
@@ -54,5 +54,6 @@
     markers = handler.addMarkers(<%=raw @hash.to_json %>);
     handler.bounds.extendWith(markers);
     handler.fitMapToBounds();
+    handler.getMap().setZoom(14);
   });
 </script>

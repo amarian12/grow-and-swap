@@ -14,6 +14,6 @@
 //= require jquery_ujs
 //= require semantic_ui/semantic_ui
 //= require turbolinks
-var underscore = require('underscore')
+//= require underscore
 //= require gmaps/google
 //= require_tree .
