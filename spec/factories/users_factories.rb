@@ -7,6 +7,11 @@ FactoryGirl.define do
     email { Faker::Internet.email }
     password { Faker::Internet.password }
     password_confirmation { |u| u.password }
+    street { Faker::Address.street_address }
+    city { Faker::Address.city }
+    state { Faker::Address.state }
+    zip_code { Faker::Address.zip_code }
+    country { Faker::Address.country }
 
     factory :user_with_garden_items do
       # factory_girl_rails '~>4.0' uses ignore method; '5.0' uses transient
@@ -41,5 +46,10 @@ FactoryGirl.define do
     password { Faker::Internet.password }
     password_confirmation { |u| u.password }
     admin { true }
+    street { Faker::Address.street_address }
+    city { Faker::Address.city }
+    state { Faker::Address.state }
+    zip_code { Faker::Address.zip_code }
+    country { Faker::Address.country }
   end
 end

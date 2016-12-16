@@ -98,6 +98,10 @@ RSpec.configure do |config|
   config.include(Capybara::Webkit::RspecMatchers, :type => :feature)
 
   config.include CarrierWave::Test::Matchers
+
+  config.before(:each) do
+    allow_any_instance_of(User).to receive(:geocode) { [1, 1] }
+  end
 end
 
 Capybara::Webkit.configure do |config|

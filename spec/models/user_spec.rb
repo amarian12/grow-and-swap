@@ -1,6 +1,5 @@
 require 'rails_helper'
 
-# This code was copied from an online example. Need to modify before running
 RSpec.describe User, :type => :model do
   describe "Validations" do
     context "on a new user" do
@@ -27,13 +26,23 @@ RSpec.describe User, :type => :model do
           first_name:   "John",
           last_name:    "Doe",
           email:        "j_doe@email.com",
-          password:     "password"
+          password:     "password",
+          street: Faker::Address.street_address,
+          city: Faker::Address.city,
+          state: Faker::Address.state,
+          zip_code: Faker::Address.zip_code,
+          country: Faker::Address.country
         )
         user = User.new(
           first_name:   "Jane",
           last_name:    "Doe",
           email:        "J_Doe@email.com",
-          password:     "password"
+          password:     "password",
+          street: Faker::Address.street_address,
+          city: Faker::Address.city,
+          state: Faker::Address.state,
+          zip_code: Faker::Address.zip_code,
+          country: Faker::Address.country
         )
         user.valid?
         expect(user.errors[:email]).to include("has already been taken")

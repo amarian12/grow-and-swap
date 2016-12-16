@@ -18,6 +18,11 @@ RSpec.feature User, :type => :feature do
     fill_in("Email", with: Faker::Internet.email)
     fill_in("Password", with: 12345678)
     fill_in("Password confirmation", with: 12345678)
+    fill_in("Street", with: Faker::Address.street_address)
+    fill_in("City", with: Faker::Address.city)
+    fill_in("State", with: Faker::Address.state)
+    fill_in("Zip code", with: Faker::Address.zip_code)
+    fill_in("Country", with: Faker::Address.country)
     click_button "Submit"
     expect(page).to have_text "Welcome to Grow and Swap!"
   end
