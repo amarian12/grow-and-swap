@@ -53,6 +53,8 @@ gem 'gmaps4rails'
 gem 'geocoder'
 gem 'browserify-rails'
 gem 'figaro'
+gem 'libv8', '3.16.14.13'
+gem 'therubyracer', '~> 0.12'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -72,8 +74,6 @@ group :development, :test do
   gem 'faker'
   gem 'capybara-webkit'
   gem 'shoulda-matchers', '~> 3.0'
-  gem 'libv8', '3.16.14.13'
-  gem 'therubyracer', '~> 0.12'
 end
 
 group :production do
