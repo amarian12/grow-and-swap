@@ -51,18 +51,20 @@ RSpec.describe TradeOffersController, :type => :controller do
 
   context "when logged in" do
     describe "GET index" do
-      # before(:each) do
-      #   login(trade_offer.buyer)
-      # end
+      before(:each) do
+        login(trade_offer.buyer)
+      end
 
       it "loads the page successfully" do
+        login(trade_offer.buyer)
         get :index
         expect(response).to be_success
       end
 
       it "assigns all trade_offers as @trade_offers" do
         # login(trade_offers.first.buyer)
-        binding.pry
+        # binding.pry
+        login(trade_offer.buyer)
         get :index
         expect(assigns(:trade_offers)).to eq(trade_offers)
       end
