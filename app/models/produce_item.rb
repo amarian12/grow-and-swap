@@ -1,6 +1,9 @@
 class ProduceItem < ActiveRecord::Base
+  mount_uploader :photo, PhotoUploader
+
   validates :name, presence: true, uniqueness: { case_sensitive: false }
   validates :category, presence: true
+  validates :photo, presence: true
 
   after_validation :normalize_name, on: :create
 

@@ -34,6 +34,7 @@
   <tbody>
     <% @produce_items.each do |produce_item| %>
       <tr>
+        <td><%= image_tag(produce_item.photo) %></td>
         <td><%= produce_item.name %></td>
         <td><%= produce_item.category %></td>
         <td><%= link_to 'Show', produce_item %></td>

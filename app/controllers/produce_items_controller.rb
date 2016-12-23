@@ -64,6 +64,6 @@ class ProduceItemsController < ApplicationController
     end
 
     def produce_item_params
-      params.require(:produce_item).permit(:name, :category)
+      params.require(:produce_item).permit(:name, :category, :photo)
     end
 end

@@ -20,6 +20,11 @@
       <%= f.label :category %><br>
       <%= f.select(:category, ["Vegetable", "Fruit"]) %><br>
     </div>
+    <div class="field">
+      <%= f.label :photo, "Add photo" %><br>
+      <%= f.file_field :photo %><br>
+      <%= f.hidden_field :photo_cache %>
+    </div>
     <div class="actions">
       <%= f.submit "Create produce item" %>
     </div>
