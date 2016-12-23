@@ -25,6 +25,7 @@
   </caption>
   <thead>
     <tr>
+      <th></th>
       <th>Item</th>
       <th>Category</th>
       <th>Quantity</th>
@@ -35,6 +36,7 @@
   <tbody>
     <% @user.garden_items_selling.each do |garden_item| %>
       <tr>
+        <td><%= image_tag(garden_item.photo) %></td>
         <td><%= garden_item.produce_item.name %></td>
         <td><%= garden_item.produce_item.category %></td>
         <td><%= garden_item.quantity %></td>

@@ -81,6 +81,6 @@ class GardenItemsController < ApplicationController
   end
 
   def garden_item_params
-    params.require(:garden_item).permit(:quantity, :user_id, :produce_item_id)
+    params.require(:garden_item).permit(:quantity, :user_id, :produce_item_id, :photo)
   end
 end

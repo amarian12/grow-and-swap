@@ -1,5 +1,10 @@
 class GardenItem < ActiveRecord::Base
+  mount_uploader :photo, PhotoUploader
+
+  before_validation :check_photo, on: [:create, :update]
+
   validates :quantity, presence: true
+  validates :photo, presence: true
 
   belongs_to :seller, class_name: "User", foreign_key: :user_id,
            inverse_of: :garden_items_selling
@@ -22,5 +27,9 @@ class GardenItem < ActiveRecord::Base
 
   def self.other_users_garden_items(user)
     GardenItem.all.where.not(id: user.garden_items_selling)
+  end
+
+  def check_photo
+    self.photo = self.produce_item.photo if self.photo.blank?
   end
 end

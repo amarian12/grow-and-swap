@@ -11,17 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161222053426) do
+ActiveRecord::Schema.define(version: 20161223022204) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "garden_items", force: :cascade do |t|
-    t.integer  "quantity",        default: 0, null: false
-    t.integer  "user_id",                     null: false
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-    t.integer  "produce_item_id",             null: false
+    t.integer  "quantity",        default: 0,  null: false
+    t.integer  "user_id",                      null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.integer  "produce_item_id",              null: false
+    t.string   "photo",           default: "", null: false
   end
 
   add_index "garden_items", ["produce_item_id"], name: "index_garden_items_on_produce_item_id", using: :btree

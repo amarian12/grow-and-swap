@@ -20,6 +20,11 @@
       <%= f.label :quantity %><br>
       <%= f.number_field :quantity %>
     </div>
+    <div class="field">
+      <%= f.label :photo, "Add photo" %><br>
+      <%= f.file_field :photo %><br>
+      <%= f.hidden_field :photo_cache %>
+    </div>
     <div class="actions">
       <%= f.submit "Create garden item" %>
     </div>
