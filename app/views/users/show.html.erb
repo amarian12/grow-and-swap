@@ -34,7 +34,7 @@
   <tbody>
     <% @user.garden_items_selling.each do |garden_item| %>
       <tr>
-        <td><%= image_tag(garden_item.photo) %></td>
+        <td><%= image_tag(garden_item.photo.thumb) %></td>
         <td><%= garden_item.produce_item.name %></td>
         <td><%= garden_item.produce_item.category %></td>
         <td><%= garden_item.quantity %></td>
