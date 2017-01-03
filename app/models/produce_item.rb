@@ -4,7 +4,7 @@ class ProduceItem < ActiveRecord::Base
   validates :name, presence: true, uniqueness: { case_sensitive: false }
   validates :category, presence: true
 
-  after_validation :normalize_name, on: :create
+  after_validation :normalize_name, on: [:create, :update]
 
   has_many :garden_items
   has_many :sellers, class_name: "User", through: :garden_items
