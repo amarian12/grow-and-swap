@@ -14,6 +14,6 @@ class ProduceItem < ActiveRecord::Base
   protected
 
   def normalize_name
-    self.name = self.name.downcase.titleize unless self.name.nil?
+    self.name = self.name.downcase.titleize.pluralize unless self.name.nil?
   end
 end
