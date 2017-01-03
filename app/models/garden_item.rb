@@ -20,6 +20,10 @@ class GardenItem < ActiveRecord::Base
   validates_presence_of :seller
   validates_presence_of :produce_item
 
+  def self.sort_by_name
+    joins(:produce_item).order("produce_items.name")
+  end
+
   def self.current_user_garden_items(user)
     GardenItem.where(id: user.garden_items_selling)
   end

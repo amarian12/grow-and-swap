@@ -4,14 +4,14 @@ class GardenItemsController < ApplicationController
   before_action :set_trade_offer, only: :index
 
   def current_user_index
-    @garden_items = GardenItem.current_user_garden_items(current_user)
+    @garden_items = GardenItem.sort_by_name.current_user_garden_items(current_user)
   end
 
   def index
     if logged_in?
-      @garden_items = GardenItem.other_users_garden_items(current_user)
+      @garden_items = GardenItem.sort_by_name.other_users_garden_items(current_user)
     else
-      @garden_items = GardenItem.all
+      @garden_items = GardenItem.sort_by_name.all
     end
   end
 

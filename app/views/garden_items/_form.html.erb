@@ -14,7 +14,11 @@
 
     <div class="field">
       <%= f.label :produce_item %><br>
-      <%= f.select(:produce_item_id, produce_items_for_select, prompt: "Select") %><br>
+      <%= f.select(
+            :produce_item_id,
+            produce_items_for_select.sort,
+            prompt: "Select"
+          )%><br>
     </div>
     <div class="field">
       <%= f.label :quantity %><br>
