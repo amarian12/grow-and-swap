@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :produce_item do
-    name { Faker::Lorem.words }
+    name "zucchini"
     category "Vegetable"
 
     factory :produce_item_with_garden_items do
@@ -13,5 +13,20 @@ FactoryGirl.define do
         create_list(:garden_item, evaluator.garden_items_count, produce_item: produce_item)
       end
     end
+  end
+
+  factory :cabbage, class: ProduceItem do
+    name "cabbage"
+    category "Vegetable"
+  end
+
+  factory :apple, class: ProduceItem do
+    name "apple"
+    category "Fruit"
+  end
+
+  factory :potato, class: ProduceItem do
+    name "potato"
+    category "Vegetable"
   end
 end

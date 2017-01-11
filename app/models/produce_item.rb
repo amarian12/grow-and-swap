@@ -13,7 +13,16 @@ class ProduceItem < ActiveRecord::Base
 
   protected
 
+  def self.search(search)
+    if search
+      item = search.downcase.titleize
+      where("name LIKE ?", "%#{item}%")
+    else
+      order(:name).all
+    end
+  end
+
   def normalize_name
-    self.name = self.name.downcase.titleize.pluralize unless self.name.nil?
+    self.name = self.name.downcase.titleize unless self.name.nil?
   end
 end

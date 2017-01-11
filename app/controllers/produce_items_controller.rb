@@ -3,7 +3,7 @@ class ProduceItemsController < ApplicationController
   before_action :logged_in_user
 
   def index
-    @produce_items = ProduceItem.order(:name).all
+    @produce_items = ProduceItem.search(params[:search])
   end
 
   def show

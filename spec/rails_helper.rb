@@ -25,6 +25,7 @@ ActiveRecord::Migration.maintain_test_schema!
 session = Capybara::Session.new :webkit
 
 Capybara.javascript_driver = :webkit
+Capybara.ignore_hidden_elements = false
 
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
