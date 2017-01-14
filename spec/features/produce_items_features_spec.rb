@@ -26,7 +26,7 @@ RSpec.feature ProduceItem, :type => :feature do
         expect(page).to have_field "Category"
         fill_in("Name", with: "carrot")
         select("Vegetable", from: "Category")
-        click_button "Create produce item"
+        click_button "Submit"
         expect(page).to have_text "Produce item was successfully created."
       end
     end
@@ -38,18 +38,18 @@ RSpec.feature ProduceItem, :type => :feature do
       end
 
       scenario "user can click show to see individual produce item" do
-        within("table/tbody/tr", text: "Cabbages") do
+        within("table/tbody/tr", text: "Cabbage") do
           click_link "Show"
         end
-        expect(page).to have_text "Cabbages"
+        expect(page).to have_text "Cabbage"
         expect(page).to have_text "People who have this item"
       end
 
       scenario "user can search for a produce item" do
         fill_in "search", with: "cabbage"
-        click_button "Search produce item"
+        click_button "Search"
         within "table/tbody" do
-          expect(page).to have_text "Cabbages"
+          expect(page).to have_text "Cabbage"
           expect(page).to have_selector("tr", count: 1)
         end
       end
@@ -65,7 +65,7 @@ RSpec.feature ProduceItem, :type => :feature do
       background do
         log_in_with(admin)
         visit "/produce_items"
-        within("table/tbody/tr", text: "Cabbages") do
+        within("table/tbody/tr", text: "Cabbage") do
           click_link "Show"
         end
       end
@@ -73,7 +73,7 @@ RSpec.feature ProduceItem, :type => :feature do
       scenario "admin user can edit produce item" do
         click_link "Edit"
         expect(page).to have_text "Editing Produce Item"
-        expect(page).to have_selector("input[value='Cabbages']")
+        expect(page).to have_selector("input[value='Cabbage']")
       end
 
       scenario "admin user can destroy produce item" do
@@ -91,7 +91,7 @@ RSpec.feature ProduceItem, :type => :feature do
       background do
         log_in_with(user)
         visit "/produce_items"
-        within("table/tbody/tr", text: "Zucchinis") do
+        within("table/tbody/tr", text: "Zucchini") do
           click_link "Show"
         end
       end
