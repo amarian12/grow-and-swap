@@ -1,109 +1,142 @@
-<% if @trade_offer.reciprocated? %>
+<div class="ui two column centered grid">
+  <% if current_user?(@trade_offer.buyer) %>
+    <div class="column">
+      <h1>Item you want:</h1>
 
-  <h1>Initial Trade Offer</h1>
+      <p>
+        <strong>Garden item:</strong>
+        <%= @trade_offer.garden_item.produce_item.name %>
+      </p>
 
-  <p>
-    <strong>Item wanted:</strong>
-    <%= @trade_offer.initial_trade_offer.garden_item.produce_item.name %>
-  </p>
+      <p>
+        <strong>Quantity:</strong>
+        <%= @trade_offer.quantity %>
+      </p>
 
-  <p>
-    <strong>Quantity:</strong>
-    <%= @trade_offer.initial_trade_offer.quantity %>
-  </p>
+      <p>
+        <strong>Status</strong>
+        <%= @trade_offer.accepted_status %>
+      </p>
 
-  <p>
-    <strong>Item wanted by:</strong>
-    <%= @trade_offer.initial_trade_offer.buyer.full_name %>
-  </p>
+      <%=
+        link_to 'Edit', edit_trade_offer_path(
+        @trade_offer, garden_item_id: @trade_offer.garden_item.id)
+      %> |
 
-  <p>
-    <strong>Accepted:</strong>
-    <%= @trade_offer.initial_trade_offer.accepted %>
-  </p>
+      <%=
+        link_to 'Destroy', @trade_offer,
+        method: :delete, data: { confirm: 'Are you sure?' }
+      %>
+    </div>
 
-  <%=
-    link_to 'Accept trade offer',
-    accept_trade_offer_path(@trade_offer.initial_trade_offer,
-    '@trade_offer.initial_trade_offer[accepted]' => true),
-    method: :put, data: { confirm: 'Are you sure?' }
-  %>
+    <div class="column">
+      <% if @reciprocal_trade_offer.nil? %>
+        <h1>No reciprocal trade offer at this time.</h1>
+      <% else %>
+        <h1>Item <%= @reciprocal_trade_offer.buyer.full_name %> wants:</h1>
 
-  <h1>Reciprocated Trade Offer</h1>
+        <p>
+          <strong>Garden item:</strong>
+          <%= @reciprocal_trade_offer.garden_item.produce_item.name %>
+        </p>
 
-  <p>
-    <strong>Item wanted:</strong>
-    <%= @trade_offer.garden_item.produce_item.name %>
-  </p>
+        <p>
+          <strong>Quantity:</strong>
+          <%= @reciprocal_trade_offer.quantity %>
+        </p>
 
-  <p>
-    <strong>Quantity:</strong>
-    <%= @trade_offer.quantity %>
-  </p>
+        <p>
+          <strong>Status</strong>
+          <%= @reciprocal_trade_offer.accepted_status %>
+        </p>
 
-  <p>
-    <strong>Item wanted by:</strong>
-    <%= @trade_offer.buyer.full_name %>
-  </p>
+        <%=
+          link_to 'Accept trade offer',
+          accept_trade_offer_path(@reciprocal_trade_offer.id,
+          '@reciprocal_trade_offer[accepted]' => true),
+          method: :put, data: { confirm: 'Are you sure?' }
+        %> |
 
-  <p>
-    <strong>Accepted:</strong>
-    <%= @trade_offer.accepted %>
-  </p>
+        <%=
+          link_to 'Destroy', @reciprocal_trade_offer,
+          method: :delete, data: { confirm: 'Are you sure?' }
+        %>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="column">
+      <% if @reciprocal_trade_offer.nil? %>
+        <h1>You have not made a reciprocal trade offer.</h1>
 
-  <%= link_to "See #{@trade_offer.initial_trade_offer.buyer.first_name}'s garden items",
-    garden_items_path(
-      initial_trade_offer_id: @trade_offer.initial_trade_offer_id
-    ) %>
+        <%= link_to "See #{@trade_offer.buyer.first_name}'s garden items",
+        user_path(
+          @trade_offer.buyer.id,
+          reciprocal_trade_offer_id: @trade_offer.id
+        ) %>
+      <% else %>
+        <h1>Item you want:</h1>
 
-  <br>
+        <p>
+          <strong>Garden item:</strong>
+          <%= @reciprocal_trade_offer.garden_item.produce_item.name %>
+        </p>
 
-  <%=
-    link_to 'Accept trade offer',
-    accept_trade_offer_path(@trade_offer.id, '@trade_offer[accepted]' => true),
-    method: :put, data: { confirm: 'Are you sure?' }
-  %>
+        <p>
+          <strong>Quantity:</strong>
+          <%= @reciprocal_trade_offer.quantity %>
+        </p>
 
-<% else %>
+        <p>
+          <strong>Status</strong>
+          <%= @reciprocal_trade_offer.accepted_status %>
+        </p>
 
-  <h1>Initial Trade Offer</h1>
+        <%=
+          link_to 'Edit', edit_trade_offer_path(
+          @reciprocal_trade_offer, garden_item_id: @reciprocal_trade_offer.garden_item.id)
+        %> |
 
-  <p>
-    <strong>Item wanted:</strong>
-    <%= @trade_offer.garden_item.produce_item.name %>
-  </p>
+        <%=
+          link_to 'Destroy', @reciprocal_trade_offer,
+          method: :delete, data: { confirm: 'Are you sure?' }
+        %>
+      <% end %>
+    </div>
 
-  <p>
-    <strong>Quantity:</strong>
-    <%= @trade_offer.quantity %>
-  </p>
+    <div class="column">
+      <h1>Item <%= @trade_offer.buyer.full_name %> wants:</h1>
 
-  <p>
-    <strong>Item wanted by:</strong>
-    <%= @trade_offer.buyer.full_name %>
-  </p>
+      <p>
+        <strong>Garden item:</strong>
+        <%= @trade_offer.garden_item.produce_item.name %>
+      </p>
 
-  <p>
-    <strong>Accepted:</strong>
-    <%= @trade_offer.accepted %>
-  </p>
+      <p>
+        <strong>Quantity:</strong>
+        <%= @trade_offer.quantity %>
+      </p>
 
-  <h1>Reciprocated Trade Offer</h1>
+      <p>
+        <strong>Status</strong>
+        <%= @trade_offer.accepted_status %>
+      </p>
 
-  <p>
-    <strong>None at this time</strong>
-  </p>
+      <%=
+        link_to 'Accept trade offer',
+        accept_trade_offer_path(@trade_offer.id, '@trade_offer[accepted]' => true),
+        method: :put, data: { confirm: 'Are you sure?' }
+      %> |
 
-  <%= link_to "See #{@trade_offer.buyer.first_name}'s garden items",
-    garden_items_path(
-      initial_trade_offer_id: @trade_offer.id
-    ) %>
-
-  <br>
-
-<% end %>
+      <%=
+        link_to 'Destroy', @trade_offer,
+        method: :delete, data: { confirm: 'Are you sure?' }
+      %>
+    </div>
+  <% end %>
+</div>
 
 <br>
 
-<%= link_to 'Edit', edit_trade_offer_path(@trade_offer) %> |
+<div class="ui section divider"></div>
+
 <%= link_to 'Back', trade_offers_path %>

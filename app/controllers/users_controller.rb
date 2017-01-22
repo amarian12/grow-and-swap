@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user,        only: [:show, :edit, :update, :destroy]
   before_action :logged_in_user,  only: [:index, :show, :edit, :update, :destroy]
   before_action :authorized_user, only: [:edit, :update, :destroy]
+  before_action :set_trade_offer_session_store, only: :show
 
   def index
     @users = User.all.paginate(page: params[:page], per_page: 15)
@@ -71,6 +72,13 @@ class UsersController < ApplicationController
 
   def authorized_user
     redirect_to root_path unless current_user?(@user) || current_user.admin?
+  end
+
+  def set_trade_offer_session_store
+    if params[:reciprocal_trade_offer_id].present?
+      @trade_offer = TradeOffer.find(params[:reciprocal_trade_offer_id])
+      session[:reciprocal_trade_offer_id] = @trade_offer.id
+    end
   end
 
   def user_params

@@ -1,7 +1,7 @@
 <div class="ui inverted vertical masthead center aligned green segment">
   <div class="ui text container">
     <h1 class="ui inverted header">
-      <h1>My Trade Offers Made</h1>
+      <h1>Trade Offers Made</h1>
     </h1>
   </div>
 </div>
@@ -12,7 +12,7 @@
       <th>Item I want</th>
       <th>Quantity</th>
       <th>Trade offer made to</th>
-      <th>Accepted</th>
+      <th>Status</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -23,10 +23,16 @@
         <td><%= trade_offer.garden_item.produce_item.name %></td>
         <td><%= trade_offer.quantity %></td>
         <td><%= trade_offer.garden_item.seller.full_name %></td>
-        <td><%= trade_offer.accepted %></td>
+        <td><%= trade_offer.accepted_status %></td>
         <td><%= link_to 'Show', trade_offer %></td>
-        <td><%= link_to 'Edit', edit_trade_offer_path(trade_offer) %></td>
-        <td><%= link_to 'Destroy', trade_offer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=
+          link_to 'Edit', edit_trade_offer_path(trade_offer,
+          garden_item_id: trade_offer.garden_item.id)
+        %></td>
+        <td><%=
+          link_to 'Destroy', trade_offer,
+          method: :delete, data: { confirm: 'Are you sure?' }
+        %></td>
       </tr>
     <% end %>
   </tbody>
@@ -34,10 +40,12 @@
 
 <br>
 
+<div class="ui hidden section divider"></div>
+
 <div class="ui inverted vertical masthead center aligned green segment">
   <div class="ui text container">
     <h1 class="ui inverted header">
-      <h1>My Trade Offers Received</h1>
+      <h1>Trade Offers Received</h1>
     </h1>
   </div>
 </div>
@@ -48,7 +56,7 @@
       <th>Item wanted by others</th>
       <th>Quantity</th>
       <th>Trade offer made from</th>
-      <th>Accepted</th>
+      <th>Status</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -59,10 +67,16 @@
         <td><%= trade_offer.garden_item.produce_item.name %></td>
         <td><%= trade_offer.quantity %></td>
         <td><%= trade_offer.buyer.full_name %></td>
-        <td><%= trade_offer.accepted %></td>
+        <td><%= trade_offer.accepted_status %></td>
         <td><%= link_to 'Show', trade_offer %></td>
-        <td><%= link_to 'Edit', edit_trade_offer_path(trade_offer) %></td>
-        <td><%= link_to 'Destroy', trade_offer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=
+          link_to 'Edit', edit_trade_offer_path(trade_offer,
+          garden_item_id: trade_offer.garden_item.id)
+        %></td>
+        <td><%=
+          link_to 'Destroy', trade_offer,
+          method: :delete, data: { confirm: 'Are you sure?' }
+        %></td>
       </tr>
     <% end %>
   </tbody>

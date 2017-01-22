@@ -5,8 +5,8 @@ RSpec.describe TradeOffersController, :type => :controller do
     trade_offer = create(:trade_offer)
   end
 
-  let(:initial_trade_offer) do
-    initial_trade_offer = create(:initial_trade_offer)
+  let(:reciprocal_trade_offer) do
+    reciprocal_trade_offer = create(:reciprocal_trade_offer)
   end
 
   let(:trade_offers) do
@@ -43,7 +43,7 @@ RSpec.describe TradeOffersController, :type => :controller do
 
     describe "GET show" do
       it "redirects new to login form" do
-        get :show, id: initial_trade_offer.to_param
+        get :show, id: reciprocal_trade_offer.to_param
         expect(response).to redirect_to login_path
       end
     end

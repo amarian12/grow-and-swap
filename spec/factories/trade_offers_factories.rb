@@ -4,10 +4,10 @@ FactoryGirl.define do
     accepted false
     buyer
     garden_item
-    initial_trade_offer
+    reciprocal_trade_offer
   end
 
-  factory :initial_trade_offer, class: TradeOffer do
+  factory :reciprocal_trade_offer, class: TradeOffer do
     quantity 6
     accepted false
     buyer

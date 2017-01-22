@@ -1,5 +1,5 @@
 class TradeOffersController < ApplicationController
-  before_action :set_trade_offer, only: [:show, :edit, :update, :accept, :destroy]
+  before_action :set_trade_offer, only: [:show, :update, :accept, :destroy]
   before_action :logged_in_user
 
   def index
@@ -8,6 +8,7 @@ class TradeOffersController < ApplicationController
   end
 
   def show
+    @reciprocal_trade_offer = @trade_offer.reciprocal_trade_offer
   end
 
   def new
@@ -16,13 +17,16 @@ class TradeOffersController < ApplicationController
   end
 
   def edit
+    @garden_item = GardenItem.find(params[:garden_item_id])
+    @trade_offer = TradeOffer.find(params[:id])
   end
 
   def create
     @trade_offer = current_user.trade_offers_made.build(trade_offer_params)
     @trade_offer.garden_item = GardenItem.find(params[:trade_offer][:garden_item_id].to_i)
-    if session[:initial_trade_offer_id].present?
-      @trade_offer.initial_trade_offer = TradeOffer.find(session[:initial_trade_offer_id])
+    if session[:reciprocal_trade_offer_id].present?
+      @reciprocal_trade_offer = TradeOffer.find(session[:reciprocal_trade_offer_id])
+      @trade_offer.reciprocal_trade_offer = @reciprocal_trade_offer
     end
 
     respond_to do |format|
@@ -34,12 +38,16 @@ class TradeOffersController < ApplicationController
         format.json { render json: @trade_offer.errors, status: :unprocessable_entity }
       end
     end
-    session[:initial_trade_offer_id] = nil
+
+    if session[:reciprocal_trade_offer_id].present?
+      @reciprocal_trade_offer.update(reciprocal_trade_offer_id: @trade_offer.id)
+      session[:reciprocal_trade_offer_id] = nil
+    end
   end
 
   def update
     respond_to do |format|
-      if @trade_offer.update(trade_offer_params)
+      if @trade_offer.update_attribute(:quantity, params[:trade_offer][:quantity])
         format.html { redirect_to @trade_offer, notice: 'Trade offer was successfully updated.' }
         format.json { render :show, status: :ok, location: @trade_offer }
       else
@@ -51,9 +59,9 @@ class TradeOffersController < ApplicationController
 
   def accept
     respond_to do |format|
-      if params['@trade_offer.initial_trade_offer'].present?
+      if params['@trade_offer.reciprocal_trade_offer'].present?
         @trade_offer.update_attribute(
-          :accepted, params['@trade_offer.initial_trade_offer'][:accepted]
+          :accepted, params['@trade_offer.reciprocal_trade_offer'][:accepted]
         )
         format.html { redirect_to @trade_offer, notice: 'Trade offer was successfully updated.' }
         format.json { render :show, status: :ok, location: @trade_offer }
@@ -91,7 +99,7 @@ class TradeOffersController < ApplicationController
 
   def trade_offer_params
     params.require(:trade_offer).permit(
-      :quantity, :accepted, :user_id, :garden_item_id, :initial_trade_offer_id
+      :quantity, :accepted, :user_id, :garden_item_id, :reciprocal_trade_offer_id
     )
   end
 end

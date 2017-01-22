@@ -17,7 +17,10 @@
       <%= @garden_item.produce_item.name %><br>
 
       <strong>Category:</strong>
-      <%= @garden_item.produce_item.category %>
+      <%= @garden_item.produce_item.category %><br>
+
+      <strong>Available Quantity:</strong>
+      <%= @garden_item.quantity %>
     </p>
 
     <div class="field">
@@ -25,16 +28,16 @@
     </div>
 
     <div class="field">
-      <%= f.hidden_field :initial_trade_offer_id, value: params[:intial_trade_offer_id] %>
+      <%= f.hidden_field :reciprocal_trade_offer_id, value: params[:reciprocal_trade_offer_id] %>
     </div>
 
     <div class="field">
       <%= f.label :quantity %><br>
-      <%= f.number_field :quantity %>
+      <%= f.number_field :quantity, min: 1, max: @garden_item.quantity %>
     </div>
 
     <div class="actions">
-      <%= f.submit "Submit trade offer" %>
+      <%= f.submit "Submit" %>
     </div>
   <% end %>
 </div>
