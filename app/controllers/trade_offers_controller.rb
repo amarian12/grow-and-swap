@@ -59,16 +59,8 @@ class TradeOffersController < ApplicationController
 
   def accept
     respond_to do |format|
-      if params['@trade_offer.reciprocal_trade_offer'].present?
-        @trade_offer.update_attribute(
-          :accepted, params['@trade_offer.reciprocal_trade_offer'][:accepted]
-        )
-        format.html { redirect_to @trade_offer, notice: 'Trade offer was successfully updated.' }
-        format.json { render :show, status: :ok, location: @trade_offer }
-      elsif params['@trade_offer'].present?
-        @trade_offer.update_attribute(:accepted, params['@trade_offer'][:accepted])
-        format.html { redirect_to @trade_offer, notice: 'Trade offer was successfully updated.' }
-        format.json { render :show, status: :ok, location: @trade_offer }
+      if @trade_offer.update_attribute(:accepted, params[:trade_offer][:accepted])
+        format.js {}
       else
         format.html { redirect_to :back }
         format.json { render json: @trade_offer.errors, status: :unprocessable_entity }

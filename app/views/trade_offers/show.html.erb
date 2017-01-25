@@ -14,18 +14,18 @@
       </p>
 
       <p>
-        <strong>Status</strong>
+        <strong>Status:</strong>
         <%= @trade_offer.accepted_status %>
       </p>
 
       <%=
-        link_to 'Edit', edit_trade_offer_path(
+        link_to "Edit", edit_trade_offer_path(
         @trade_offer, garden_item_id: @trade_offer.garden_item.id)
       %> |
 
       <%=
-        link_to 'Destroy', @trade_offer,
-        method: :delete, data: { confirm: 'Are you sure?' }
+        link_to "Destroy", @trade_offer,
+        method: :delete, data: { confirm: "Are you sure?" }
       %>
     </div>
 
@@ -45,21 +45,11 @@
           <%= @reciprocal_trade_offer.quantity %>
         </p>
 
-        <p>
-          <strong>Status</strong>
-          <%= @reciprocal_trade_offer.accepted_status %>
-        </p>
+        <%= render partial: "accept", locals: { trade_offer: @reciprocal_trade_offer } %>
 
         <%=
-          link_to 'Accept trade offer',
-          accept_trade_offer_path(@reciprocal_trade_offer.id,
-          '@reciprocal_trade_offer[accepted]' => true),
-          method: :put, data: { confirm: 'Are you sure?' }
-        %> |
-
-        <%=
-          link_to 'Destroy', @reciprocal_trade_offer,
-          method: :delete, data: { confirm: 'Are you sure?' }
+          link_to "Destroy", @reciprocal_trade_offer,
+          method: :delete, data: { confirm: "Are you sure?" }
         %>
       <% end %>
     </div>
@@ -87,18 +77,18 @@
         </p>
 
         <p>
-          <strong>Status</strong>
+          <strong>Status:</strong>
           <%= @reciprocal_trade_offer.accepted_status %>
         </p>
 
         <%=
-          link_to 'Edit', edit_trade_offer_path(
+          link_to "Edit", edit_trade_offer_path(
           @reciprocal_trade_offer, garden_item_id: @reciprocal_trade_offer.garden_item.id)
         %> |
 
         <%=
-          link_to 'Destroy', @reciprocal_trade_offer,
-          method: :delete, data: { confirm: 'Are you sure?' }
+          link_to "Destroy", @reciprocal_trade_offer,
+          method: :delete, data: { confirm: "Are you sure?" }
         %>
       <% end %>
     </div>
@@ -116,20 +106,11 @@
         <%= @trade_offer.quantity %>
       </p>
 
-      <p>
-        <strong>Status</strong>
-        <%= @trade_offer.accepted_status %>
-      </p>
+      <%= render partial: "accept", locals: { trade_offer: @trade_offer } %>
 
       <%=
-        link_to 'Accept trade offer',
-        accept_trade_offer_path(@trade_offer.id, '@trade_offer[accepted]' => true),
-        method: :put, data: { confirm: 'Are you sure?' }
-      %> |
-
-      <%=
-        link_to 'Destroy', @trade_offer,
-        method: :delete, data: { confirm: 'Are you sure?' }
+        link_to "Destroy", @trade_offer,
+        method: :delete, data: { confirm: "Are you sure?" }
       %>
     </div>
   <% end %>
@@ -139,4 +120,4 @@
 
 <div class="ui section divider"></div>
 
-<%= link_to 'Back', trade_offers_path %>
+<%= link_to "Back", trade_offers_path %>

@@ -1,0 +1,22 @@
+<span id="accepted_status">
+  <p>
+    <strong>Status:</strong>
+    <%= trade_offer.accepted_status %>
+  </p>
+
+  <% if trade_offer.accepted? %>
+    <%=
+      link_to "Unaccept trade offer",
+      accept_trade_offer_path(trade_offer.id,
+      "trade_offer[accepted]" => false),
+      remote: true, method: :put
+    %> |
+  <% else %>
+    <%=
+      link_to "Accept trade offer",
+      accept_trade_offer_path(trade_offer.id,
+      "trade_offer[accepted]" => true),
+      remote: true, method: :put
+    %> |
+  <% end %>
+</span>
