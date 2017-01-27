@@ -57,7 +57,8 @@ gem 'underscore-rails'
 gem 'gmaps4rails'
 gem 'geocoder'
 gem 'figaro'
-gem 'libv8', '3.16.14.13'
+gem 'libv8', '~> 3.16.14.0'
+# gem 'mini_racer', platforms: :ruby
 gem 'therubyracer', '~> 0.12'
 
 group :development, :test do

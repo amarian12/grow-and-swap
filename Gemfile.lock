@@ -270,7 +270,7 @@ DEPENDENCIES
   jquery-rails
   less-rails (~> 2.7.0)
   less-rails-semantic_ui
-  libv8 (= 3.16.14.13)
+  libv8 (~> 3.16.14.0)
   mini_magick
   pg
   possessive
