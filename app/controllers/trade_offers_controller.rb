@@ -1,6 +1,7 @@
 class TradeOffersController < ApplicationController
   before_action :set_trade_offer, only: [:show, :update, :accept, :destroy]
   before_action :logged_in_user
+  before_action :initialize_shared_store, only: :show
 
   def index
     @trade_offers_made = current_user.trade_offers_made
@@ -9,6 +10,7 @@ class TradeOffersController < ApplicationController
 
   def show
     @reciprocal_trade_offer = @trade_offer.reciprocal_trade_offer
+    @chat_props = { messages: "Stranger" }
   end
 
   def new
@@ -87,6 +89,10 @@ class TradeOffersController < ApplicationController
       flash[:danger] = "Please log in"
       redirect_to login_path
     end
+  end
+
+  def initialize_shared_store
+    redux_store()
   end
 
   def trade_offer_params

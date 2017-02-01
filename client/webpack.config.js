@@ -14,6 +14,7 @@ const config = {
     'es5-shim/es5-sham',
     'babel-polyfill',
     './app/bundles/HelloWorld/startup/registration',
+    './app/bundles/Chat/startup/registration',
   ],
 
   output: {
@@ -45,6 +46,14 @@ const config = {
         test: /\.jsx?$/,
         loader: 'babel-loader',
         exclude: /node_modules/,
+      },
+      {
+        test: /\.css$/,
+        loader: 'style!css',
+      },
+      {
+        test: /\.scss$/,
+        loader: 'style!css!sass',
       },
     ],
   },
