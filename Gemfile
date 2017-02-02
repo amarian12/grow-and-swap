@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.3.0'
 
-# gem 'react_on_rails', '~> 6'
+gem 'react_on_rails', '~> 6'
 
 gem 'less-rails'
 gem 'less-rails-semantic_ui'
