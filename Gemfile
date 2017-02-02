@@ -4,11 +4,6 @@ ruby '2.3.0'
 
 gem 'react_on_rails', '~> 6'
 
-gem 'less-rails'
-gem 'less-rails-semantic_ui'
-
-gem 'autoprefixer-rails'
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Use postgresql as the database for Active Record
