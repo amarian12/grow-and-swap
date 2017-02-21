@@ -1,0 +1,8 @@
+"web_accessible_resources": [
+ "*.png",
+ "*.eot",
+ "*.woff",
+ "*.woff2",
+ "*.ttf",
+ "*.svg"
+]

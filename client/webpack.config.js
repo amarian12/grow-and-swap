@@ -10,10 +10,11 @@ const nodeEnv = devBuild ? 'development' : 'production';
 
 const config = {
   entry: [
+    // 'configure-webpack', // use this module to be able to use semantic-ui fonts; see https://gist.github.com/thejohnfreeman/563337119e20d090ea2d22bee9b05a6b
     'es5-shim/es5-shim',
     'es5-shim/es5-sham',
     'babel-polyfill',
-    './app/bundles/HelloWorld/startup/registration',
+    './app/bundles/Chat/startup/registration',
   ],
 
   output: {
@@ -27,6 +28,7 @@ const config = {
       react: path.resolve('./node_modules/react'),
       'react-dom': path.resolve('./node_modules/react-dom'),
     },
+    root: __dirname,
   },
   plugins: [
     new webpack.DefinePlugin({
@@ -45,6 +47,19 @@ const config = {
         test: /\.jsx?$/,
         loader: 'babel-loader',
         exclude: /node_modules/,
+      },
+      {
+        test: /\.css$/,
+        loaders: ['style', 'css'],
+      },
+      {
+        test: /\.scss$/,
+        loader: 'style!css!sass',
+      },
+      {
+        test: /\.(eot|png|svg|[ot]tf|woff2?)(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'url',
+        query: {limit: 10000},
       },
     ],
   },
