@@ -3,18 +3,36 @@ import { combineReducers } from 'redux'
 import {
   CHANGE_NEW_MESSAGE,
   SUBMIT_NEW_MESSAGE,
+  ADD_HISTORY,
   INCOMING_NEW_MESSAGE
 } from '../constants/chatConstants'
 
-const messages = (state = [], action) => {
+const initialState = {
+  messageList: [],
+  lastMessageTimestamp: null
+}
+
+const messages = (state = initialState, action) => {
   // The following function was used in the Flux version of this chat app
   // global.setTimeout(() => {
   //  console.log(action.type)
   // },0)
 
   switch(action.type) {
+    case ADD_HISTORY:
+      let newMessageList = state.messageList
+      newMessageList.unshift(...action.payload.messages)
+
+      return {
+        ...state,
+        messageList: newMessageList,
+        lastMessageTimestamp: action.payload.timestamp
+      }
     case INCOMING_NEW_MESSAGE:
-      return [...state, action.payload]
+      return {
+        ...state,
+        messageList: state.messageList.concat(action.payload)
+      }
     default:
       return state
   }

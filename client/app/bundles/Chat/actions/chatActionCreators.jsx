@@ -3,6 +3,7 @@
 import {
   CHANGE_NEW_MESSAGE,
   SUBMIT_NEW_MESSAGE,
+  ADD_HISTORY,
   INCOMING_NEW_MESSAGE
 } from '../constants/chatConstants'
 
@@ -17,10 +18,15 @@ export const submitMessage = () => ({
   type: SUBMIT_NEW_MESSAGE
 })
 
-export const incomingMessage = (content) => ({
-  type: INCOMING_NEW_MESSAGE,
+export const addHistory = (messages, timestamp) => ({
+  type: ADD_HISTORY,
   payload: {
-    id: Date.now(),
-    content
+    messages,
+    timestamp
   }
+})
+
+export const incomingMessage = (message) => ({
+  type: INCOMING_NEW_MESSAGE,
+  payload: message
 })

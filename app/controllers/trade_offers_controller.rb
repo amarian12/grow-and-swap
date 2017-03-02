@@ -9,7 +9,7 @@ class TradeOffersController < ApplicationController
 
   def show
     @reciprocal_trade_offer = @trade_offer.reciprocal_trade_offer
-    @chat_props = { messages: [], newMessage: "" }
+    @chat_props = { messages: { messageList: [], lastMessageTimestamp: nil }, newMessage: "" }
     redux_store("chatStore", props: @chat_props)
   end
 
