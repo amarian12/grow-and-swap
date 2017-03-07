@@ -7,17 +7,16 @@ import {
   INCOMING_NEW_MESSAGE
 } from '../constants/chatConstants'
 
+const channel = (state = '', action) => {
+  return state
+}
+
 const initialState = {
   messageList: [],
   lastMessageTimestamp: null
 }
 
 const messages = (state = initialState, action) => {
-  // The following function was used in the Flux version of this chat app
-  // global.setTimeout(() => {
-  //  console.log(action.type)
-  // },0)
-
   switch(action.type) {
     case ADD_HISTORY:
       let newMessageList = state.messageList
@@ -39,11 +38,6 @@ const messages = (state = initialState, action) => {
 }
 
 const newMessage = (state = '', action) => {
-  // The following function was used in the Flux version of this chat app
-  // global.setTimeout(() => {
-  //  console.log(action.type)
-  // },0)
-
   switch(action.type) {
     case CHANGE_NEW_MESSAGE:
       return action.payload.newValue
@@ -54,9 +48,15 @@ const newMessage = (state = '', action) => {
   }
 }
 
+const railsContext = (state = {}, action) => {
+  return state
+}
+
 const chatReducer = combineReducers({
+  channel,
   messages,
-  newMessage
+  newMessage,
+  railsContext
 })
 
 export default chatReducer

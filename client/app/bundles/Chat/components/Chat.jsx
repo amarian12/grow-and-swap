@@ -5,6 +5,7 @@ require('../chat.scss')
 
 export default class Chat extends React.Component {
   static propTypes = {
+    channel: PropTypes.string.isRequired,
     messages: PropTypes.object.isRequired,
     newMessage: PropTypes.string.isRequired,
     actions: PropTypes.object.isRequired
@@ -66,7 +67,7 @@ export default class Chat extends React.Component {
     }
 
     this.PubNub.publish({
-      channel: 'grow-and-swap',
+      channel: this.props.channel,
       message: messageObj,
       callback: function(m){
         console.log(m)
@@ -78,8 +79,8 @@ export default class Chat extends React.Component {
 
   fetchHistory() {
     this.PubNub.history({
-      channel: 'grow-and-swap',
-      count: 3,
+      channel: this.props.channel,
+      count: 20,
       start: this.props.messages.lastMessageTimestamp,
       callback: (data) => {
         // data is Array(3), where index 0 is an array of messages
@@ -98,7 +99,7 @@ export default class Chat extends React.Component {
     })
 
     this.PubNub.subscribe({
-      channel: 'grow-and-swap',
+      channel: this.props.channel,
       message: (msg) => this.props.actions.incomingMessage(msg)
     })
 
