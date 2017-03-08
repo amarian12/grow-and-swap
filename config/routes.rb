@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'hello_world', to: 'hello_world#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -14,7 +13,9 @@ Rails.application.routes.draw do
 
   get 'sessions/new'
 
-  resources :users
+  resources :users do
+    get 'gardeners_near_me', on: :collection
+  end
 
   resources :garden_items do
     get 'current_user_index', on: :collection

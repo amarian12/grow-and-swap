@@ -20,9 +20,9 @@
   <div class="ui hidden divider"></div>
 
   <% if logged_in? %>
-    <%= link_to(users_path) do %>
+    <%= link_to(gardeners_near_me_users_path) do %>
       <div class="ui green basic button">
-        View other gardeners
+        View gardeners in your area
       </div>
     <% end %>
 
@@ -50,9 +50,19 @@
     <div class="ui hidden divider"></div>
 
   <% if logged_in? && current_user.admin? %>
+    <h4>Administrator Actions</h4>
     <%= link_to(produce_items_path) do %>
       <div class="ui green basic button">
         View produce items inventory
+      </div>
+    <% end %>
+
+    <br>
+    <div class="ui hidden divider"></div>
+
+    <%= link_to(users_path) do %>
+      <div class="ui green basic button">
+        View users
       </div>
     <% end %>
   <% end %>

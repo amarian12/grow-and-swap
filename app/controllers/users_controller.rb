@@ -1,8 +1,20 @@
 class UsersController < ApplicationController
   before_action :set_user,        only: [:show, :edit, :update, :destroy]
-  before_action :logged_in_user,  only: [:index, :show, :edit, :update, :destroy]
+  before_action :logged_in_user,  only: [
+                                          :gardeners_near_me,
+                                          :index,
+                                          :show,
+                                          :edit,
+                                          :update,
+                                          :destroy
+                                        ]
   before_action :authorized_user, only: [:edit, :update, :destroy]
   before_action :set_trade_offer_session_store, only: :show
+
+  def gardeners_near_me
+    @users = User.near([current_user.latitude, current_user.longitude], 40)
+      .paginate(page: params[:page], per_page: 15)
+  end
 
   def index
     @users = User.all.paginate(page: params[:page], per_page: 15)
