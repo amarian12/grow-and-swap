@@ -1,16 +1,14 @@
 {
   "name": "grow-and-swap",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/dwhite96/grow-and-swap"
-  },
-  "dependencies": {
-    "browserify": "~10.2.4",
-    "browserify-incremental": "^3.0.1",
-    "underscore": "^1.8.3"
-  },
-  "license": "MIT",
+  "version": "0.0.1",
+  "private": true,
   "engines": {
-    "node": ">= 0.10"
+    "node": "6.9.0",
+    "npm": "4.1.1"
+  },
+  "scripts": {
+    "postinstall": "cd client && npm install",
+    "rails-server": "echo 'visit http://localhost:3000/hello_world' && foreman start -f Procfile.dev",
+    "test": "rspec"
   }
 }

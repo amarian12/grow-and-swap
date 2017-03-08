@@ -9,6 +9,22 @@ class TradeOffersController < ApplicationController
 
   def show
     @reciprocal_trade_offer = @trade_offer.reciprocal_trade_offer
+
+    # Need to know the id of the initiating trade offer so that the React Chat
+    #   component PubNub channel is always the same regardless of which trade
+    #   offer is clicked on -- initial or reciprocal.
+    if @reciprocal_trade_offer.nil?
+      initial_trade_offer_id = @trade_offer.id
+    else
+      initial_trade_offer_id = [@trade_offer.id, @reciprocal_trade_offer.id].min
+    end
+
+    # Initial state for react_on_rails component
+    @chat_props = { channel:    "trade_offer_#{initial_trade_offer_id}",
+                    messages:   { messageList: [], lastMessageTimestamp: nil },
+                    newMessage: ""
+                  }
+    redux_store("chatStore", props: @chat_props)
   end
 
   def new

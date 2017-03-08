@@ -2,20 +2,19 @@ source 'https://rubygems.org'
 
 ruby '2.3.0'
 
-gem 'less-rails', '~> 2.7.0'
-gem 'less-rails-semantic_ui'
-
-gem 'autoprefixer-rails'
+gem 'react_on_rails', '~> 6'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Use postgresql as the database for Active Record
 gem 'pg'
-gem 'sprockets-rails'
+gem 'sprockets', '3.6.3'
 # Use SCSS for stylesheets
-# gem 'sass-rails', '~> 5.0'
+gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
+# Use CoffeeScript for .coffee assets and views
+gem 'coffee-rails', '~> 4.1.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -54,9 +53,9 @@ gem 'puma'
 gem 'underscore-rails'
 gem 'gmaps4rails'
 gem 'geocoder'
-gem 'browserify-rails'
 gem 'figaro'
-gem 'libv8', '3.16.14.13'
+gem 'libv8', '~> 3.16.14.0'
+# gem 'mini_racer', platforms: :ruby
 gem 'therubyracer', '~> 0.12'
 
 group :development, :test do
