@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   before_action :set_trade_offer_session_store, only: :show
 
   def gardeners_near_me
-    @users = User.near([current_user.latitude, current_user.longitude], 40)
+    @users = User.near([current_user.latitude, current_user.longitude], 20)
       .paginate(page: params[:page], per_page: 15)
   end
 

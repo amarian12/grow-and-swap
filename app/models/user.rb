@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   validates :country, presence: true
 
   geocoded_by :full_address
-  after_validation :geocode
+  after_validation :geocode, :normalize_name, on: [:create, :update]
 
   before_save { self.email = email.downcase }
 
@@ -68,5 +68,10 @@ class User < ActiveRecord::Base
 
   def full_address
     "#{street} #{city}, #{state}, #{zip_code} #{country}"
+  end
+
+  def normalize_name
+    self.first_name = self.first_name.downcase.titleize unless self.first_name.nil?
+    self.last_name = self.last_name.downcase.titleize unless self.last_name.nil?
   end
 end
