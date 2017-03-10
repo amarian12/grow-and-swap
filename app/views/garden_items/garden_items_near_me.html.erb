@@ -1,7 +1,7 @@
 <div class="ui inverted vertical masthead center aligned green segment">
   <div class="ui text container">
     <h1 class="ui inverted header">
-      <h1>Garden Items</h1>
+      <h1>Garden Items in Your Area</h1>
     </h1>
   </div>
 </div>
@@ -37,6 +37,11 @@
         <td><%= garden_item.produce_item.name %></td>
         <td><%= garden_item.produce_item.category %></td>
         <td><%= garden_item.quantity %></td>
+        <td><%= garden_item.seller.full_name %>
+          - <%= garden_item
+            .seller
+            .distance_to([current_user.latitude,
+                          current_user.longitude]).round(1) %> miles away</td>
         <td><%= link_to 'Show', garden_item, class: "ui green basic label" %></td>
       </tr>
     <% end %>

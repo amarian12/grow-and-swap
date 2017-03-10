@@ -1,17 +1,23 @@
 class GardenItemsController < ApplicationController
   before_action :set_garden_item, only: [:show, :edit, :update, :destroy]
-  before_action :logged_in_user, only: [:new, :create, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:current_user_index,
+                                        :garden_items_near_me,
+                                        :new,
+                                        :create,
+                                        :edit,
+                                        :update,
+                                        :destroy]
 
   def current_user_index
     @garden_items = GardenItem.sort_by_name.current_user_garden_items(current_user)
   end
 
+  def garden_items_near_me
+    @garden_items = GardenItem.garden_items_near_me(current_user)
+  end
+
   def index
-    if logged_in?
-      @garden_items = GardenItem.sort_by_name.other_users_garden_items(current_user)
-    else
-      @garden_items = GardenItem.sort_by_name.all
-    end
+    @garden_items = GardenItem.includes(:produce_item).sort_by_name.limit(20)
   end
 
   def show

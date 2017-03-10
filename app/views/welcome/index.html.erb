@@ -3,23 +3,23 @@
     <h1 class="ui inverted header">
       <h1>Welcome to Grow and Swap</h1>
     </h1>
-    <h2>A resource to locally trade your produce.</h2>
+    <h2>A resource to locally trade your produce</h2>
   </div>
 </div>
 
 <div class="ui hidden divider"></div>
 
 <div class="ui center aligned container">
-  <%= link_to(garden_items_path) do %>
-    <div class="ui green basic button">
-      Browse garden items in your area
-    </div>
-  <% end %>
-
-  <br>
-  <div class="ui hidden divider"></div>
-
   <% if logged_in? %>
+    <%= link_to(garden_items_near_me_garden_items_path) do %>
+      <div class="ui green basic button">
+        Browse garden items in your area
+      </div>
+    <% end %>
+
+    <br>
+    <div class="ui hidden divider"></div>
+
     <%= link_to(gardeners_near_me_users_path) do %>
       <div class="ui green basic button">
         View gardeners in your area
@@ -43,7 +43,12 @@
         My trade offers
       </div>
     <% end %>
-
+  <% else %>
+    <%= link_to(garden_items_path) do %>
+      <div class="ui green basic button">
+        Browse garden items
+      </div>
+    <% end %>
   <% end %>
 
     <br>

@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   resources :garden_items do
     get 'current_user_index', on: :collection
+    get 'garden_items_near_me', on: :collection
   end
 
   resources :produce_items

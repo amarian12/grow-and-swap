@@ -25,11 +25,16 @@ class GardenItem < ActiveRecord::Base
   end
 
   def self.current_user_garden_items(user)
-    GardenItem.where(id: user.garden_items_selling)
+    where(id: user.garden_items_selling)
   end
 
-  def self.other_users_garden_items(user)
-    GardenItem.all.where.not(id: user.garden_items_selling)
+  def self.garden_items_near_me(user)
+    nearby_sellers = User.near([user.latitude, user.longitude], 20)
+    seller_ids = nearby_sellers.each_with_object([]) { |s, a| a.push(s.id) }
+
+    joins(:seller, :produce_item)
+      .where(user_id: seller_ids)
+      .where.not(id: user.garden_items_selling)
   end
 
   def check_photo
