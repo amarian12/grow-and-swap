@@ -18,6 +18,7 @@
 
 /config/database.yml
 /public/uploads
+/public/assets
 
 # Ignore .sublime-workspace file
 *.sublime-workspace
