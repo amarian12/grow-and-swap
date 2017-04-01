@@ -95,7 +95,8 @@ export default class Chat extends React.Component {
 
     this.PubNub = PUBNUB.init({
       publish_key: 'pub-c-7e4cb727-12f0-4f11-8d63-29b1a27bfe10', // only required if publishing
-      subscribe_key: 'sub-c-c28a8948-f585-11e6-bb94-0619f8945a4f' // always required
+      subscribe_key: 'sub-c-c28a8948-f585-11e6-bb94-0619f8945a4f', // always required
+      ssl: true
     })
 
     this.PubNub.subscribe({
