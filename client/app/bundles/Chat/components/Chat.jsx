@@ -26,9 +26,9 @@ export default class Chat extends React.Component {
     if (this.props.messages.messageList.length > 0) {
       return this.props.messages.messageList.map(m => {
         return (
-          <div className="message" key={m.id}>
-            {m.message}
-            {this.timeOfMessage(m)}
+          <div className="message" key={m.entry.id}>
+            {m.entry.message}
+            {this.timeOfMessage(m.entry)}
           </div>
         )
       })
@@ -66,50 +66,54 @@ export default class Chat extends React.Component {
       message: msg
     }
 
-    this.PubNub.publish({
-      channel: this.props.channel,
-      message: messageObj,
-      callback: function(m){
-        console.log(m)
+    this.pubnub.publish(
+      {
+        message: messageObj,
+        channel: this.props.channel
+      },
+      function (status, response) {
+        if (status.error) {
+          // handle error
+          console.log(status)
+        } else {
+          console.log("message Published w/ timetoken", response.timetoken)
+        }
       }
-    })
+    )
 
     this.props.actions.submitMessage()
   }
 
   fetchHistory() {
-    this.PubNub.history({
+    this.pubnub.history({
       channel: this.props.channel,
-      count: 20,
+      count: 30,
       start: this.props.messages.lastMessageTimestamp,
-      callback: (data) => {
-        // data is Array(3), where index 0 is an array of messages
-        // and index 1 and 2 are start and end dates of the messages
-        this.props.actions.addHistory(data[0], data[1])
-      },
+    }).then((response) => {
+
+      // response is Array(3), where index 0 is an array of messages
+      // and index 1 and 2 are start and end dates of the messages
+      this.props.actions.addHistory(response.messages, response.startTimeToken)
     })
   }
 
   componentDidMount() {
     this.refs.messageInput.focus()
 
-    this.PubNub = PUBNUB.init({
-      publish_key: 'pub-c-7e4cb727-12f0-4f11-8d63-29b1a27bfe10', // only required if publishing
-      subscribe_key: 'sub-c-c28a8948-f585-11e6-bb94-0619f8945a4f', // always required
-      ssl: (location.protocol.toLowerCase() === 'https:')
+    this.pubnub = new PubNub({
+      publishKey: "pub-c-7e4cb727-12f0-4f11-8d63-29b1a27bfe10",
+      subscribeKey: "sub-c-c28a8948-f585-11e6-bb94-0619f8945a4f",
+      ssl: true
     })
 
-    // The following PubNub initialization is for version 4.7.0 if used. Could not get
-    //  it to work with React
-    // this.PubNub = new PubNub({
-    //   publishKey: "pub-c-7e4cb727-12f0-4f11-8d63-29b1a27bfe10",
-    //   subscribeKey: "sub-c-c28a8948-f585-11e6-bb94-0619f8945a4f",
-    //   ssl: true
-    // })
+    this.pubnub.addListener({
+      message: (message) => {
+        this.props.actions.incomingMessage(message.message)
+      }
+    })
 
-    this.PubNub.subscribe({
-      channel: this.props.channel,
-      message: (msg) => this.props.actions.incomingMessage(msg)
+    this.pubnub.subscribe({
+      channels: [this.props.channel]
     })
 
     this.fetchHistory()

@@ -28,5 +28,7 @@ export const addHistory = (messages, timestamp) => ({
 
 export const incomingMessage = (message) => ({
   type: INCOMING_NEW_MESSAGE,
-  payload: message
+  payload: {
+    entry: message
+  }
 })
