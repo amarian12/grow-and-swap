@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react'
 import Textarea from 'react-textarea-autosize'
+import PubNub from 'pubnub'
 
 require('../chat.scss')
 
@@ -58,6 +59,7 @@ export default class Chat extends React.Component {
 
   onSubmitClick() {
     this.submitNewMessage(this.props.newMessage)
+    this.refs.messageInput.focus()
   }
 
   submitNewMessage(msg) {
