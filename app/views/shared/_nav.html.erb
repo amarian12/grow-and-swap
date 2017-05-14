@@ -1,5 +1,5 @@
 <% if logged_in? %>
-  <div class="ui top menu">
+  <div class="ui top fixed menu">
     <%= link_to "Home", root_path, class: "item" %>
     <div class="right menu">
       <%= "Welcome #{current_user.full_name}" %>
@@ -7,7 +7,7 @@
     </div>
   </div>
 <% else %>
-  <div class="ui top menu">
+  <div class="ui top fixed menu">
     <%= link_to "Home", root_path, class: "item" %>
     <div class="right menu">
       <%= link_to "Log in", login_path, class: "item" %>
